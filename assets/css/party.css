@@ -1,0 +1,27 @@
+#event-participant-form .field-container {
+    position: relative;
+    margin-bottom: 20px
+}
+
+#event-participant-form .field-msg {
+    display: none;
+    position: absolute;
+    left: 2px;
+    bottom: -14px;
+    font-size: 9px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em
+}
+
+#event-participant-form .field-msg.show {
+    display: block
+}
+
+#event-participant-form .error {
+    color: #901313
+}
+
+#event-participant-form .success {
+    color: #2f812f
+}

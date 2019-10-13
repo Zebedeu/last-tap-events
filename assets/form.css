@@ -1,0 +1,29 @@
+#church-testimonial-form .field-container {
+    position: relative;
+    margin-bottom: 20px
+}
+
+#church-testimonial-form .field-msg {
+    display: none;
+    position: absolute;
+    left: 2px;
+    bottom: -14px;
+    font-size: 9px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em
+}
+
+#church-testimonial-form .field-msg.show {
+    display: block
+}
+
+#church-testimonial-form .error {
+    color: #901313
+}
+
+#church-testimonial-form .success {
+    color: #2f812f
+}
+
+/*# sourceMappingURL=form.css.map */
