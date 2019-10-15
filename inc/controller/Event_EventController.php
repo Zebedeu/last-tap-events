@@ -698,7 +698,25 @@ class Event_EventController extends Event_BaseController
             $html .= "</div></div>"; 
 
             echo  $html;
-          
+            ?>
+            
+            <div class="ch-col-12">
+                <div class="ch-row">
+                    <hr>
+                    <div class="ch-col-12">
+                        <?php 
+                        if($event_partici == count($total)){?>
+                            <header class="header">
+                                <button class="ch-tab" style="background: red;" onclick="myFunction()"><?php esc_html_e( 'INSCRIPTIONS ARE CLOSED! We have reached the maximum number of members, and that is why registration is closed.!', 'k7-event' );?></button>
+                            </header>
+                        <?php }else{
+                            $this->get_participe_event_form();
+                        } ?>
+                    </div>
+                </div>
+            </div>
+            <?php 
+
 
         } else {
             return $content;

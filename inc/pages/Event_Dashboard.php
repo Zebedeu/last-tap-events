@@ -59,11 +59,6 @@ class Event_Dashboard extends Event_BaseController
                 'option_group' => 'event_plugin_settings',
                 'option_name' => 'event_plugin',
                 'callback' => array($this->callbacks_mngr, 'ev_checkboxSanitize')
-           ),
-            array(
-                'option_group' => 'event_plugin_settings',
-                'option_name' => 'event_plugin_color',
-                'callback' => array($this->callbacks_mngr, 'ev_checkboxSanitize')
            )
         );
 
