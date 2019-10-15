@@ -134,7 +134,7 @@ class Event_NotificationController extends Event_BaseController
     {
         /** possible values: 'post', 'page', 'dashboard', 'link', 'attachment', 'custom_post_type' **/
         
-        $screens = array('post', 'locations', 'participant'); 
+        $screens = array('post', 'locations', 'event'); 
 
         foreach ($screens as $screen) {
             add_meta_box(
