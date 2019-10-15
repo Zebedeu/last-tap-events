@@ -7,7 +7,7 @@ $getpost= get_post($postid);
 ?>
 
 <header class="header">
-    <button class="ch-tab" onclick="myFunction()"><?php esc_html_e( 'Complete the form to register for this event!', 'k7-event' );?></button>
+    <button class="ch-tab" style="background:<?php echo esc_attr( get_option('event_background_color_button_show_form')); ?>; color:<?php echo esc_attr( get_option('event_text_color_button_show_form')); ?>;" onclick="myFunction()"><?php esc_html_e( 'Complete the form to register for this event!', 'k7-event' );?></button>
 </header>
 
 <form id="event-participant-form" style="display: none;" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
@@ -45,12 +45,11 @@ $getpost= get_post($postid);
             <label class="meta-label w-50 text-left"
                    for="party"><?php _e('I will participate', 'k7-event'); ?></label>
             <div class="text-right w-10 inline">
-                <div class="ui-toggle inline field-input"><input type="checkbox" id="party"
-                                                     name="party"
-                                                     value="1" >
+                <div class="ui-toggle inline field-input">
+                  <input type="checkbox" id="party" name="party">
                     <label for="party">
                         <div></div>
-                                <small class="field-msg error"
+                       <small class="field-msg error"
                data-error="invalidChecked"><?php _e('The Check is not valid', 'k7-event') ?></small>
 
                     </label>

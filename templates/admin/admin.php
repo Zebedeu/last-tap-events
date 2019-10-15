@@ -4,7 +4,14 @@
     <?php
     if (isset($_GET['tab'])) {
         $active_tab = $_GET['tab'];
-    } else {
+    }
+        elseif (isset($_GET['events'])) {
+        $active_tab = $_GET['events'];
+    }
+        elseif (isset($_GET['event_color'])) {
+        $active_tab = $_GET['event_color'];
+    }
+     else {
         $active_tab = 'tab_one';
     }
     ?>
@@ -14,6 +21,8 @@
            class="nav-tab <?php echo $active_tab == 'tab_one' ? 'nav-tab-active' : ''; ?>">GENERAL SETTINGS</a>
         <a href="?page=event_plugin&tab=events"
            class="nav-tab <?php echo $active_tab == 'events' ? 'nav-tab-active' : ''; ?>">Events</a>
+        <a href="?page=event_plugin&tab=event_color"
+           class="nav-tab <?php echo $active_tab == 'event_color' ? 'nav-tab-active' : ''; ?>">Color Control</a>
     </h2>
     <form method="post" action="options.php">
         <?php
@@ -131,8 +140,15 @@
                     settings_fields( 'event_options_group' );
                     do_settings_sections( 'event_settings' );
                     submit_button( $text = null, $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = null );
-       
+        }
+         elseif ($active_tab == 'event_color') {
+                  /** settings manager */ 
 
+                    settings_fields( 'event_options_group' );
+                    do_settings_sections( 'colors' );
+                    submit_button( $text = null, $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = null );
         }
         ?>
+    </form>
+
 </div>

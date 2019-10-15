@@ -11,7 +11,7 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 }
 
 // Clear Database stored data
-$books = get_posts(array('post_type' => 'event','post_type' => 'locations','post_type' => 'sermon', 'numberposts' => -1));
+$books = get_posts(array('post_type' => 'event','post_type' => 'locations','post_type' => 'participant', 'numberposts' => -1));
 
 foreach ($books as $book) {
     wp_delete_post($book->ID, true);

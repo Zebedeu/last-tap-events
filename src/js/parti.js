@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             email: participantForm.querySelector('[name="email"]').value,
             telephone: participantForm.querySelector('[name="telephone"]').value,
             message: participantForm.querySelector('[name="message"]').value,
-            party: participantForm.querySelector('[name="party"]').value,
+            party: participantForm.querySelector('#party'),
             nonce: participantForm.querySelector('[name="nonce"]').value
         }
 
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             participantForm.querySelector('[data-error="invalidMessage"]').classList.add('show');
             return;
         }
-        if (!data.party) {
+        if (!data.party.checked)  {
             participantForm.querySelector('[data-error="invalidChecked"]').classList.add('show');
             return;
         }
@@ -78,4 +78,8 @@ function resetMessages() {
 function validateEmail(email) {
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
+}
+
+function validateCheckBox (argument) {
+    alert(argument);
 }

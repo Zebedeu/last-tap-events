@@ -50,7 +50,8 @@ class Event_EventController extends Event_BaseController
                 'capability' => 'manage_options' ,
                 'menu_slug' => 'event_settings' ,
                 'callback' => array($this->callbacks , 'ev_event_settings')
-            )
+            ),
+
         );
 
         $this->settings->ev_addSubPages($subpage)->ev_register();
@@ -62,9 +63,9 @@ class Event_EventController extends Event_BaseController
             array(
                 'option_group' => 'event_options_group' ,
                 'option_name' => 'event_border_color' ,
-                'callback' => array($this->callbacks , 'ev_event_sanitize')
+                'callback' => array($this->callbacks , 'ev_event_sanitize_color')
 
-            ) ,
+            ),
             array(
                 'option_group' => 'event_options_group' ,
                 'option_name' => 'event_status_started'
@@ -79,16 +80,30 @@ class Event_EventController extends Event_BaseController
                 'option_group' => 'event_options_group' ,
                 'option_name' => 'event_status_soon'
             ),
-                        array(
+            array(
+                'option_group' => 'event_options_group' ,
+                'option_name' => 'event_status_button'
+            ),
+
+            array(
                 'option_group' => 'event_options_group' ,
                 'option_name' => 'event_currency',
-                'callback' => array($this->callbacks , 'ev_event_sanitize')
+                'callback' => array($this->callbacks , 'ev_validate_currency')
 
             ),
             array(
                 'option_group' => 'event_options_group' ,
-                'option_name' => 'event_status_button'
-            )
+                'option_name' => 'event_background_color_button_show_form',
+                'callback' => array($this->callbacks , 'ev_event_sanitize_background_color')
+            ),
+
+            array('option_group' => 'event_options_group',
+                'option_name' => 'event_text_color_button_show_form',
+                'callback' => array($this->callbacks , 'ev_event_sanitize_text_color')
+
+        ),
+
+
         );
         $this->settings->ev_setSettings($args);
     }
@@ -102,6 +117,13 @@ class Event_EventController extends Event_BaseController
                 'callback' => array($this->callbacks , 'ev_event_section') ,
                 'page' => 'event_settings'
 
+            ),
+            array(
+                'id' => 'event_color' ,
+                'title' => __( 'Color Control', 'k7-event') ,
+                'callback' => array($this->callbacks , 'ev_event_section_color') ,
+                'page' => 'colors'
+
             )
         );
 
@@ -111,19 +133,7 @@ class Event_EventController extends Event_BaseController
     public function ev_setFields()
     {
         $args = array(
-            array(
-                'id' => 'event_border_color' ,
-                'title' => __('Border color', 'k7-event') ,
-                'callback' => array($this->callbacks , 'ev_event_textFields_border') ,
-                'page' => 'event_settings' ,
-                'section' => 'event_id' ,
-                'args' => array(
-                    'laber_for' => 'event_border_color' ,
-                    'class' => 'example-class'
-                ) ,
 
-            )
-            ,
             array(
                 'id' => 'event_currency' ,
                 'title' => __('Currency ', 'k7-event') ,
@@ -135,7 +145,43 @@ class Event_EventController extends Event_BaseController
                     'class' => 'example-class'
                 ),
 
-            )
+            ),
+
+            array(
+                'id' => 'event_border_color' ,
+                'title' => __('Border color', 'k7-event') ,
+                'callback' => array($this->callbacks , 'ev_event_textFields_border') ,
+                'page' => 'colors' ,
+                'section' => 'event_color' ,
+                'args' => array(
+                    'laber_for' => 'event_border_color' ,
+                    'class' => 'example-class'
+                ),
+
+            ),
+            array(
+                'id'=> 'event_background_color_button_show_form',
+                 'title' => __('Color background button', 'k7-event'),
+                 'callback' => array($this->callbacks, 'ev_chanche_background_color_button'),
+                 'page' => 'colors',
+                 'section'=> 'event_color',
+                 'args' => array(
+                    'label' => 'event_background_color_button_show_form',
+                    'class' => 'exemple-class'
+                 ),
+            ),
+
+            array(
+                'id'=> 'event_text_color_button_show_form',
+                 'title' => __('Text Color button', 'k7-event'),
+                 'callback' => array($this->callbacks, 'ev_chanche_text_color_button'),
+                 'page' => 'colors',
+                 'section'=> 'event_color',
+                 'args' => array(
+                    'label' => 'event_text_color_button_show_form',
+                    'class' => 'exemple-class'
+                 ),
+            ),
 
         );
 
@@ -162,7 +208,7 @@ class Event_EventController extends Event_BaseController
             'all_items' => __('All Events' , 'k7-event') ,
             'searev_items' => __('Search Events' , 'k7-event') ,
             'parent_item_colon' => __('Parent Event:' , 'k7-event') ,
-            'not_found' => 'No Sermons found.' ,
+            'not_found' => __('No Event found.', 'k7-event') ,
             'not_found_in_trash' => __('No Events found in Trash.' , 'k7-event') ,
         );
         //arguments for post type
@@ -635,22 +681,7 @@ class Event_EventController extends Event_BaseController
                 </div>
             </div>
 
-            <div class="ch-col-12">
-                <div class="ch-row">
-                    <hr>
-                    <div class="ch-col-12">
-                        <?php 
-                        if($event_partici == count($total)){?>
-                            <header class="header">
-                                <button class="ch-tab" style="background: red;" onclick="myFunction()"><?php esc_html_e( 'INSCRIPTIONS ARE CLOSED! We have reached the maximum number of members, and that is why registration is closed.!', 'k7-event' );?></button>
-                            </header>
-                        <?php }else{
-                            $this->get_participe_event_form();
-                        } ?>
-                    </div>
-                </div>
-            </div>
-
+            
             <?php $event_permalink = get_permalink($event);
             $html = '';
             $html .= '<h2 class="ch-title">';
@@ -664,10 +695,10 @@ class Event_EventController extends Event_BaseController
             $html .= $content;
             $html .= '</div><div class="ch-col-6">';
             $html .= get_the_post_thumbnail($event->ID , 'thumbnail');
-            $html .= "</div></div>";
+            $html .= "</div></div>"; 
 
-
-            return $html;
+            echo  $html;
+          
 
         } else {
             return $content;
@@ -704,7 +735,7 @@ class Event_EventController extends Event_BaseController
         }
 
 
-        //find sermon
+        //find event
         $event_args = array(
             'post_type' => 'event' ,
             'posts_per_page' => $default_args['number_of_event'] ,
@@ -713,7 +744,7 @@ class Event_EventController extends Event_BaseController
             'orderby' => 'meta_value_num' ,
 
         );
-        //if we passed in a single sermon to display
+        //if we passed in a single event to display
         if (!empty($default_args['event_id'])) {
             $event_args['include'] = $default_args['event_id'];
         }
@@ -727,12 +758,12 @@ class Event_EventController extends Event_BaseController
         list($today_year , $today_month , $today_day , $hour , $minute , $second) = preg_split('([^0-9])' , $current_time);
         $current_timestamp = $today_year . '-' . $today_month . '-' . $today_day . ' ' . $hour . ':' . $minute;
 
-        //if we have sermon
+        //if we have event
         if ($events) {
-            //foreach sermon
+            //foreach event
             foreach ($events as $key => $event) {
                                 //title
-                //collect sermon data
+                //collect event data
                 $event_id = $event->ID;
                 $event_title = get_the_title($event_id);
                 $event_permalink = get_permalink($event_id);
@@ -817,6 +848,116 @@ class Event_EventController extends Event_BaseController
                     }
 
                 }
+                ?>
+
+
+
+<script type="text/javascript">
+    function myFunction() {
+  var x = document.getElementById("event-participant-form");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      defaultDate: '2019-08-12',
+      navLinks: true, // can click day/week names to navigate views
+      selectable: true,
+      selectMirror: true,
+      select: function(arg) {
+        var title = prompt('Event Title:');
+        if (title) {
+          calendar.addEvent({
+            title: title,
+            start: arg.start,
+            end: arg.end,
+            allDay: arg.allDay
+          })
+        }
+        calendar.unselect()
+      },
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      events: [
+        {
+          title: 'All Day Event',
+          start: '2019-08-01'
+        },
+        {
+          title: 'Long Event',
+          start: '2019-08-07',
+          end: '2019-08-10'
+        },
+        {
+          groupId: 999,
+          title: 'Repeating Event',
+          start: '2019-08-09T16:00:00'
+        },
+        {
+          groupId: 999,
+          title: 'Repeating Event',
+          start: '2019-08-16T16:00:00'
+        },
+        {
+          title: 'Conference',
+          start: '2019-08-11',
+          end: '2019-08-13'
+        },
+        {
+          title: 'Meeting',
+          start: '2019-08-12T10:30:00',
+          end: '2019-08-12T12:30:00'
+        },
+        {
+          title: 'Lunch',
+          start: '2019-08-12T12:00:00'
+        },
+        {
+          title: 'Meeting',
+          start: '2019-08-12T14:30:00'
+        },
+        {
+          title: 'Happy Hour',
+          start: '2019-08-12T17:30:00'
+        },
+        {
+          title: 'Dinner',
+          start: '2019-08-12T20:00:00'
+        },
+        {
+          title: 'Birthday Party',
+          start: '2019-08-13T07:00:00'
+        },
+        {
+          title: 'Click for Google',
+          url: 'http://google.com/',
+          start: '2019-08-28'
+        }
+      ]
+    });
+
+    calendar.render();
+  });
+
+
+
+</script>
+
+
+  <div id='calendar'></div>
+<?php
 
                 //apply the filter after the main content, before it ends
                 //(lets third parties hook into the HTML output to output data)
