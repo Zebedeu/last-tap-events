@@ -34,9 +34,9 @@
 
 
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab-1"><?php _e('Manage Settings', 'k7-event'); ?></a></li>
-                    <li><a href="#tab-2"><?php _e('Updates', 'k7-event'); ?></a></li>
-                    <li><a href="#tab-3"><?php _e('About', 'k7-event'); ?></a></li>
+                    <li class="active"><a href="#tab-1"><?php _e('Manage Settings', 'last-tap-event'); ?></a></li>
+                    <li><a href="#tab-2"><?php _e('Updates', 'last-tap-event'); ?></a></li>
+                    <li><a href="#tab-3"><?php _e('About', 'last-tap-event'); ?></a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -53,49 +53,13 @@
                     </div>
 
                     <div id="tab-2" class="tab-pane">
-                        <h3><?php _e('Updates', 'k7-event'); ?></h3>
+                        <h3><?php _e('Updates', 'last-tap-event'); ?></h3>
                         <p>
                             <code>
-                                == Changelog ==
+                                == <?php __('Changelog','last-tap-event');?> ==
 
-                                == 1.0.10 ==
-                                Add Custom Post Type Manager, Custom Taxonomy Manager
-                                fixe bug
 
-                                = 1.0.9
-                                fix bug
-
-                                = 1.0.8
-                                fix bug
-
-                                = 1.0.7
-                                fix bug
-
-                                = 1.0.6
-                                fix bug
-
-                                = 1.0.5
-                                fix bug
-
-                                = 1.0.4
-                                fix bug
-
-                                = 1.0.3
-
-                                CSS style sheet repair, page fix for user account,
-                                = 1.0.2
-
-                                has been added to the login page, register page, recaptcha login page
-                                fixe bug
-
-                                = 1.0.1
-
-                                fixe bug
-                                = 1.0.0 =
-
-                                fixing various bugs
-
-                                == Upgrade Notice ==
+                                == <?php __('Upgrade Notice','last-tap-event');?> ==
                                 no
                             </code>
                         </p>
@@ -104,28 +68,28 @@
                     <div id="tab-3" class="tab-pane">
 
                         <P>
-                            K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your
-                            church's website.
+                            <?php __('K7 Church is a Wordpress plugin for churches that claims to be simple and objective for your
+                            church website ', 'last-tap-event');?>.
                         </P>
                         <div class='wrap'>
                             
 
-                            <p>Testimonial Form Shortcode</p>
+                            <p><?php __('Testimonial Form Shortcode', 'last-tap-event');?></p>
                             <code>[testimonial-form]</code>
-                            <p>Testimonial SlideShow Shortcode</p><br>
+                            <p><?php __('Testimonial SlideShow Shortcode', 'last-tap-event');?></p><br>
                             <code>[testimonial-slideshow]</code>
-                            <p>location for defaul </p><br>
+                            <p><?php __('location for defaul ', 'last-tap-event');?></p><br>
                             <code>[locations location_id=1]</code>
-                            <p>Location for namber the post</p>
+                            <p><?php __('Location for namber the post', 'last-tap-event');?></p>
                             <code>[locations location_id=1 number_of_locations=1]</code>
                             <code>[locations location_id="1" number_of_locations=1 post_status="publish"]</code>
                             <br>
                             <p>
-                            <h2>3. Go to Settings » Permalinks, and simply click on Save Changes button.</h2></p>
-                            <em>If you like this plugin, please <a href="http://wordpress.org/extend/plugins/k7-eventchurch">vote</a>
+                            <h2><?php __('3. Go to Settings » Permalinks, and simply click on Save Changes button.', 'last-tap-event');?></h2></p>
+                            <em><?php __('If you like this plugin, please', 'last-tap-event');?> <a href="http://wordpress.org/extend/plugins/last-tap-event"><?php __('vote', 'last-tap-event');?></a>
                                 .
-                                Author : <a href="https://github.com/zebedeu">Máecio Zebedeu</a>
-                                You can <a href="https://github.com/knut7/k7-eventchurch">for bugs,</a> thanks.</em>
+                                <?php __('Author : ', 'last-tap-event');?><a href="https://github.com/zebedeu">Máecio Zebedeu</a>
+                                <?php __('You can ', 'last-tap-event');?><a href="https://github.com/knut7/last-tap-event"><?php __('for bugs, </a> thanks.</em>','last-tap-event');?>
 
                         </div>
                     </div>

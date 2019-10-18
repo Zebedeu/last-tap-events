@@ -1,27 +1,27 @@
 <div class="wrap">
-    <h1><?php _e('CPT Manager', 'k7-event'); ?></h1>
+    <h1><?php _e('CPT Manager', 'last-tap-event'); ?></h1>
     <?php settings_errors(); ?>
 
     <ul class="nav nav-tabs">
         <li class="<?php echo !isset($_POST["edit_post"]) ? 'active' : '' ?>"><a
-                    href="#tab-1"><?php _e('Your Custom Post Types', 'k7-event'); ?></a></li>
+                    href="#tab-1"><?php _e('Your Custom Post Types', 'last-tap-event'); ?></a></li>
         <li class="<?php echo isset($_POST["edit_post"]) ? 'active' : '' ?>">
             <a href="#tab-2">
                 <?php echo isset($_POST["edit_post"]) ? 'Edit' : 'Add' ?> Custom Post Type
             </a>
         </li>
-        <li><a href="#tab-3"><?php _e('Export', 'k7-event'); ?></a></li>
+        <li><a href="#tab-3"><?php _e('Export', 'last-tap-event'); ?></a></li>
     </ul>
 
     <div class="tab-content">
         <div id="tab-1" class="tab-pane <?php echo !isset($_POST["edit_post"]) ? 'active' : '' ?>">
 
-            <h3><?php _e('Manage Your Custom Post Types', 'k7-event'); ?></h3>
+            <h3><?php _e('Manage Your Custom Post Types', 'last-tap-event'); ?></h3>
 
             <?php
             $options = get_option('event_plugin_cpt') ?: array();
 
-            echo '<table class="cpt-table"><tr><th>' . __("ID", "k7-event") . '</th><th>' . __("Singular Name", "k7-event") . '</th><th>' . __("Plural Name", "k7-event") . '</th><th class="text-center">' . __("Public", "k7-event") . '</th><th class="text-center">' . __("Archive", "k7-event") . '</th><th class="text-center">' . __("Actions", "k7-event") . '</th></tr>';
+            echo '<table class="cpt-table"><tr><th>' . __("ID", "last-tap-event") . '</th><th>' . __("Singular Name", "last-tap-event") . '</th><th>' . __("Plural Name", "last-tap-event") . '</th><th class="text-center">' . __("Public", "last-tap-event") . '</th><th class="text-center">' . __("Archive", "last-tap-event") . '</th><th class="text-center">' . __("Actions", "last-tap-event") . '</th></tr>';
 
             foreach ($options as $option) {
                 $public = isset($option['public']) ? "TRUE" : "FALSE";
@@ -38,7 +38,7 @@
                 settings_fields('event_plugin_cpt_settings');
                 echo '<input type="hidden" name="remove" value="' . $option['post_type'] . '">';
                 submit_button('Delete', 'delete small', 'submit', false, array(
-                    'onclick' => 'return confirm("' . __("Are you sure you want to delete this Custom Post Type? The data associated with it will not be deleted.", "k7-event") . '" );'
+                    'onclick' => 'return confirm("' . __("Are you sure you want to delete this Custom Post Type? The data associated with it will not be deleted.", "last-tap-event") . '" );'
                 ));
                 echo '</form></td></tr>';
             }
@@ -59,7 +59,7 @@
         </div>
 
         <div id="tab-3" class="tab-pane">
-            <h3><?php _e('Export Your Custom Post Types', 'k7-event'); ?></h3>
+            <h3><?php _e('Export Your Custom Post Types', 'last-tap-event'); ?></h3>
 
             <?php foreach ($options as $option) { ?>
 
@@ -86,7 +86,7 @@ function custom_post_type() {
 		'update_item'           => __( 'Update Item', 'text_domain' ),
 		'view_item'             => __( 'View Item', 'text_domain' ),
 		'view_items'            => __( 'View Items', 'text_domain' ),
-		'searev_items'          => __( 'Search Item', 'text_domain' ),
+		'searlt_items'          => __( 'Search Item', 'text_domain' ),
 		'not_found'             => __( 'Not found', 'text_domain' ),
 		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
 		'featured_image'        => __( 'Featured Image', 'text_domain' ),

@@ -1,1 +1,1 @@
-<h1><?php _e('Widgets Manager', 'k7-event'); ?></h1>
+<h1><?php _e('Widgets Manager', 'last-tap-event'); ?></h1>

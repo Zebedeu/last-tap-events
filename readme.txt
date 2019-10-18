@@ -1,6 +1,6 @@
-=== K7 Events ===
+=== Last Tap Events ===
 Contributors: Márcio Zebedeu
-Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type Manager, Custom Taxonomy Manager, Testimonial, Sermon post, Advanced Notification System,  
+Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type Manager, Custom Taxonomy Manager, Testimonial, post, Advanced Notification System,  
 Requires at least: 4.9
 Tested up to: 5.2.3
 Requires PHP: 5.6.20
@@ -8,8 +8,8 @@ Stable tag: 1.0.20
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-K7 Events is a Wordpress plugin that claims to be simple and objective so you can place event announcements on your site.== Description ==
-K7 Events is a Wordpress plugin that claims to be simple and objective so you can place event announcements on your site.
+Last Tap Events is a Wordpress plugin that claims to be simple and objective so you can place event announcements on your site.== Description ==
+Last Tap Events is a Wordpress plugin that claims to be simple and objective so you can place event announcements on your site.
 
 ==Also the plugin you can: ==
 add events
