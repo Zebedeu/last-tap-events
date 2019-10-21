@@ -594,7 +594,7 @@ class LastTap_EventController extends LastTap_BaseController
             <strong><?php echo "\t\n" . __('End event timestamp:' , 'last-tap-event'); ?></strong><?php echo "\t\n" . $this->callbacks->formatDate($endEvent); ?><br>
                 </div>
                     <div class="ch-col-5">
-                            <?php $price = get_post_meta($event->ID , '_ch_event_price' , true);
+                            <?php $price = get_post_meta($event->ID , '_lt_event_price' , true);
 
                              $currency = get_option( 'event_currency', true );
 
@@ -702,9 +702,9 @@ class LastTap_EventController extends LastTap_BaseController
 
             <?php
 
-            $html .= '<div class="ch-row"><div class="ch-col-6">';
+            $html .= '<div class="ch-row"><div class="ch-col-12">';
             $html .= $content;
-            $html .= '</div><div class="ch-col-6">';
+            $html .= '</div><div class="ch-col-12">';
             $html .= get_the_post_thumbnail($event->ID , 'thumbnail');
             $html .= "</div></div>"; 
             echo  $html;

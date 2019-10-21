@@ -7,7 +7,7 @@
 
 /**
  *  Plugin Name: Last Tap Events
- *  Description:  Last Tap Events is a Wordpress plugin for churches that claims to be simple and objective for your church's website.
+ *  Description:  Last Tap Events is a Wordpress plugin that claims to be simple and objective so you can place event announcements on your site.
  *  Version:      1.0.0
  *  Author:       Márcio Zebedeu
  *  Author URI:    https://profiles.wordpress.org/marcio-zebedeu

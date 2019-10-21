@@ -93,7 +93,7 @@ class LastTap_ParticipantController extends LastTap_BaseController
 
             $subject = apply_filters( 'lt_subject_participant', __('Hei! vou participar', 'last-tap-event'));
 
-            $message = apply_filters( 'lt_message_participant', sprintf(  __('Hi!,', 'last-tap-event'), $message) );
+            $message = apply_filters( 'lt_message_participant', sprintf(  __('Hi! %s,', 'last-tap-event'), "<br>". $message) );
 
            (new LastTap_EmailController())->lt_send_email($to, $subject, $message);
             
@@ -119,23 +119,13 @@ class LastTap_ParticipantController extends LastTap_BaseController
 
     public function lt_participant_form()
     {
-        ob_start();
-        echo "<link rel=\"stylesheet\" href=\"$this->plugin_url/assets/css/party.css\" type=\"text/css\" media=\"all\" />";
-                echo "<link rel=\"stylesheet\" href=\"$this->plugin_url/assets/mystyle.css\" type=\"text/css\" media=\"all\" />";
 
         require_once("$this->plugin_path/templates/participe-form.php");
-        echo "<script src=\"$this->plugin_url/src/js/parti.js\"></script>";
-        // echo "<script src=\"$this->plugin_url/src/js/form.js\"></script>";
-        return ob_get_clean();
     }
 
     public function lt_participant_slideshow()
     {
-        ob_start();
-        echo "<link rel=\"stylesheet\" href=\"$this->plugin_url/assets/slider.css\" type=\"text/css\" media=\"all\" />";
         require_once("$this->plugin_path/templates/slider.php");
-        echo "<script src=\"$this->plugin_url/assets/slider.js\"></script>";
-        return ob_get_clean();
     }
 
     public function lt_participant_cpt()

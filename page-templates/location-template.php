@@ -1,7 +1,7 @@
 <?php
 
 /* 
-Template Name: Location  Layout
+Template Name: Location Layout
 */
 
 get_header(); ?>
@@ -17,17 +17,26 @@ get_header(); ?>
 
                 <?php
 
+                    $args = array(
+                
+                        // Type & Status Parameters
+                        'post_type'   => 'location',            
+                    );
+                
+                $query = new WP_Query( $args );
+                
+
                 if (have_posts()) :
                     while (have_posts()) : the_post();
                         ?>
                         <div class="ch-row" style="background:; color: #ffffff;">
                             <?php
-                            the_content($more_link_text = null, $strip_teaser = false);
+                            the_content();
                             ?>
                         </div>
                     <?php endwhile;
                 else :
-                    get_template_part('content', 'none');
+                    // get_template_part('content', 'none');
                 endif;
                 ?>
 
@@ -36,7 +45,6 @@ get_header(); ?>
     </div><!-- #main-content -->
 
     <div class="ch-col-3" style="background: #fff;">
-        <?php get_sidebar(); ?>
     </div>
 <?php
 get_footer();

@@ -179,7 +179,7 @@ class LastTap_LocationController extends LastTap_BaseController
             </div>
             <hr>
             <div class="field">
-                <label for="_lt_location_country"><?php _e('Cult Country:'); ?></label><br>
+                <label for="_lt_location_country"><?php _e('Location Country:'); ?></label><br>
                 <small><?php _e('location where the cult will take place' , 'last-tap-event'); ?></small>
                 <input type="text" name="_lt_location_country" value="<?php echo $location_country; ?>"/>
             </div>
@@ -194,20 +194,20 @@ class LastTap_LocationController extends LastTap_BaseController
             <hr>
             <div class="field">
                 <label for="_lt_location_address"><?php _e('Address:'); ?></label><br>
-                <small><?php _e('Cult Address' , 'last-tap-event'); ?></small>
+                <small><?php _e('Location Address' , 'last-tap-event'); ?></small>
                 <input type="text" name="_lt_location_address" value="<?php echo $location_address; ?>"/>
             </div>
             <div class="field">
-                <label for="_lt_location_street"><?php _e('Cult Street:'); ?></label><br>
-                <small><?php _e('Cult Street' , 'last-tap-event'); ?></small>
+                <label for="_lt_location_street"><?php _e('Location Street:'); ?></label><br>
+                <small><?php _e('Location Street' , 'last-tap-event'); ?></small>
                 <input type="text" name="_lt_location_street" value="<?php echo $location_street; ?>"/>
             </div>
             <?php
             //cult hours
             if (!empty(self::$location_cult_hour_days)) {
                 echo '<div class="field">';
-                echo '<label>'. __( 'Cult Hours', 'last-tap-event'). '</label>';
-                echo '<small>' . __('Cult hours for the location (e.g 9am - 5pm) ' , 'last-tap-event') . '</small>';
+                echo '<label>'. __( 'Location Hours', 'last-tap-event'). '</label>';
+                echo '<small>' . __('Location hours for the location (e.g 9am - 5pm) ' , 'last-tap-event') . '</small>';
                 //go through all of our registered cult hour days
                 foreach (self::$location_cult_hour_days as $day_key => $day_value) {
                     //collect cult hour meta data
@@ -274,7 +274,7 @@ class LastTap_LocationController extends LastTap_BaseController
             //location
             if (!empty(self::$location_cult_hour_days)) {
                 $html .= '<p>';
-                $html .= '<b>' . apply_filters( 'location_cult_title', __( 'Cult Hours' , 'last-tap-event') ). ' </b></br><br>';
+                $html .= '<b>' . apply_filters( 'location_cult_title', __( 'Location Hours' , 'last-tap-event') ). ' </b></br><br>';
                 foreach (self::$location_cult_hour_days as $day_key => $day_value) {
                     $cult_hours = get_post_meta($post->ID , '_lt_location_cult_hours_' . $day_key , true);
                     $html .= '<img src="' . $this->plugin_url . '/assets/icon/clock.svg" style="width:20px; height:20px;">'."\t\n".'<span class="day">' . ucfirst(__($day_key)) . ": \t" . '</span><span class="hours">' . $cult_hours . '</span></br>';

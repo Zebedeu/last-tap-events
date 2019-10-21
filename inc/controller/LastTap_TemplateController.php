@@ -17,7 +17,8 @@ class LastTap_TemplateController extends LastTap_BaseController
         if (!$this->lt_activated('templates_manager')) return;
 
         $this->templates = array(
-            'page-templates/location-template.php' => __('Location  Layout', 'last-tap-event')
+            'page-templates/location-template.php' => __('Location  Layout', 'last-tap-event'),
+            'page-templates/event-template.php' => __('Event  Layout', 'last-tap-event')
         );
 
         add_filter('theme_page_templates', array($this, 'lt_custom_template'));

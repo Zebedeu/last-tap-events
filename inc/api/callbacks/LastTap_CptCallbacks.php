@@ -21,7 +21,7 @@ class LastTap_CptCallbacks
         $output = get_option('event_plugin_cpt');
 
         if (isset($_POST["remove"])) {
-            unset($output[$_POST["remove"]]);
+            unset($output[sanitize_text_field( $_POST["remove"])]);
 
             return $output;
         }
@@ -51,7 +51,8 @@ class LastTap_CptCallbacks
 
         if (isset($_POST["edit_post"])) {
             $input = get_option($option_name);
-            $value = $input[$_POST["edit_post"]][$name];
+            $sanitize_edit = sanitize_text_field( $_POST["edit_post"]);
+            $value = $input[$sanitize_edit][$name];
         }
 
         echo '<input type="text" class="regular-text" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="' . $value . '" placeholder="' . $args['placeholder'] . '" required>';
@@ -66,7 +67,8 @@ class LastTap_CptCallbacks
 
         if (isset($_POST["edit_post"])) {
             $checkbox = get_option($option_name);
-            $checked = isset($checkbox[$_POST["edit_post"]][$name]) ?: false;
+            $sanitize_edit = sanitize_text_field( $_POST["edit_post"]);
+            $checked = isset($checkbox[$sanitize_edit][$name]) ?: false;
         }
 
         echo '<div class="' . $classes . '"><input type="checkbox" id="' . $name . '" name="' . $option_name . '[' . $name . ']" value="1" class="" ' . ($checked ? 'checked' : '') . '><label for="' . $name . '"><div></div></label></div>';

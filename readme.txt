@@ -62,18 +62,11 @@ add event on a page
 == Frequently Asked Questions ==
 
 == Screenshots ==
-1. Post Testimonial
-2. slide view of the testimony
-3. location post
-4. quick view of the location
-5. full location view
-6. Notify subscribers
-7. Location  Layout and front-page
-8. Event Post
-9. Event List
-10. Event Information
-11. Limit of participants
-12. Form for registration to the event
+
+2. Event Layout
+2. Event Information
+3. Limit of participants
+4. Form for registration to the event
 
 
 == Changelog ==

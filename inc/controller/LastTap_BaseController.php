@@ -36,6 +36,7 @@ class LastTap_BaseController
             'notify_manager' => __('Activate Notification', 'last-tap-event'),
             'templates_manager' => __('Activate Custom Templates', 'last-tap-event'),
             'participant_manager' => __('Activate Custom Participe', 'last-tap-event'),
+            'calendar_manager' => __('Activate Custom Participe', 'last-tap-event'),
         );
     }
 
