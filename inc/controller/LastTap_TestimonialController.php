@@ -3,6 +3,7 @@
  * @version 1.0
  *
  * @package LastTapEvents/inc/controller
+ * @see LastTap_BaseController
  */
 
 defined('ABSPATH') || exit;
@@ -101,13 +102,17 @@ class LastTap_TestimonialController extends LastTap_BaseController
     }
 
     public function lt_testimonial_form()
-    {
+    {        ob_start();
         require_once("$this->plugin_path/templates/contact-form.php");
+        return ob_get_clean();
+
     }
 
     public function lt_testimonial_slideshow()
-    {
-        require_once("$this->plugin_path/templates/slider.php");
+    {        ob_start();
+            require_once("$this->plugin_path/templates/slider.php");
+            return ob_get_clean();
+
     }
 
     public function lt_testimonial_cpt()

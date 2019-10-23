@@ -16,19 +16,19 @@ get_header(); ?>
                             $event_title = get_the_title($post_id);
                             $event_permalink = get_permalink($post_id);
 
-                            $event_thumbnail = get_the_post_thumbnail($post_id , 'event-thumb', array( 'class' => 'img-responsive', 'alt'=> 'Event Image') );
-                $event_content = apply_filters('the_content' , $value->post_content);
+                            $event_thumbnail = get_the_post_thumbnail($post_id, 'event-thumb', array( 'class' => 'img-responsive', 'alt'=> 'Event Image') );
+                $event_content = apply_filters('the_content', $value->post_content);
 
-                    $event_content = strip_shortcodes(wp_trim_words($event_content , 40 , '...'));
+                    $event_content = strip_shortcodes(wp_trim_words($event_content, 40, '...'));
 
-                           $mm =  get_post_meta( $post_id, '_lt_start_month', true );
-                           $dd =  get_post_meta( $post_id, '_lt_start_day', true );
-                           $yyy =  get_post_meta( $post_id, '_lt_start_year', true );
-                           $start =  get_post_meta( $post_id, '_lt_start_eventtimestamp', true );
-                           $end =  get_post_meta( $post_id, '_lt_end_eventtimestamp', true );
+                           $mm =  get_post_meta( $post_id, '_event_detall_info', true )['_lt_start_month'];
+                           $dd =  get_post_meta( $post_id, '_event_detall_info', true )['_lt_start_day'];
+                           $yyy =  get_post_meta( $post_id, '_event_detall_info', true )['_lt_start_year'];
+                           $start =  get_post_meta( $post_id, '_event_detall_info', true )['_lt_start_eventtimestamp'];
+                           $end =  get_post_meta( $post_id, '_event_detall_info', true )['_lt_end_eventtimestamp'];
 
                                            $current_time = $end;
-                list($end_year , $end_month , $end_day , $hour , $minute) = preg_split('([^0-9])' , $current_time);
+                list($end_year, $end_month, $end_day, $hour, $minute) = preg_split('([^0-9])', $current_time);
                 $current_timestamp = $end_year . '-' . $end_month . '-' . $end_day . ' ' . $hour . ':' . $minute;
                                                 
                         ?>

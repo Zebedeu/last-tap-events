@@ -6870,7 +6870,7 @@ Docs & License: https://fullcalendar.io/
             var oldDateEnv = this.dateEnv; // do this before handleOptions
             var isTimeZoneDirty = false;
             var isSizeDirty = false;
-            var anyDifficultOptions = Boolean(removals.length);
+            var anyDiffieventOptions = Boolean(removals.length);
             for (var name_1 in updates) {
                 if (changeHandlers[name_1]) {
                     specialUpdates[name_1] = updates[name_1];
@@ -6885,19 +6885,19 @@ Docs & License: https://fullcalendar.io/
                 }
                 else if (/^(defaultDate|defaultView)$/.test(name_2)) ;
                 else {
-                    anyDifficultOptions = true;
+                    anyDiffieventOptions = true;
                     if (name_2 === 'timeZone') {
                         isTimeZoneDirty = true;
                     }
                 }
             }
             this.optionsManager.mutate(normalUpdates, removals, isDynamic);
-            if (anyDifficultOptions) {
+            if (anyDiffieventOptions) {
                 this.handleOptions(this.optionsManager.computed);
                 this.needsFullRerender = true;
             }
             this.batchRendering(function () {
-                if (anyDifficultOptions) {
+                if (anyDiffieventOptions) {
                     if (isTimeZoneDirty) {
                         _this.dispatch({
                             type: 'CHANGE_TIMEZONE',

@@ -36,7 +36,7 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab-1"><?php _e('Manage Settings', 'last-tap-event'); ?></a></li>
                     <li><a href="#tab-2"><?php _e('Updates', 'last-tap-event'); ?></a></li>
-                    <li><a href="#tab-3"><?php _e('About', 'last-tap-event'); ?></a></li>
+                    <li><a href="#tab-3"><?php _e('All Available Shortcodes', 'last-tap-event'); ?></a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -55,13 +55,10 @@
                     <div id="tab-2" class="tab-pane">
                         <h3><?php _e('Updates', 'last-tap-event'); ?></h3>
                         <p>
-                            <code>
-                                == <?php __('Changelog','last-tap-event');?> ==
+                            == <?php _e('Changelog','last-tap-event');?> ==<br>
 
 
-                                == <?php __('Upgrade Notice','last-tap-event');?> ==
-                                no
-                            </code>
+                            == <?php _e('Upgrade Notice','last-tap-event');?> ==
                         </p>
                     </div>
 
@@ -72,26 +69,34 @@
                             church website ', 'last-tap-event');?>.
                         </P>
                         <div class='wrap'>
-                            
+                            <?php
+                                global $shortcode_tags;
+                            ?>
+                            <div id="icon-options-general" class="icon32"><br>
+                            </div>
+                                <div class="section panel">
+                                    <p>T<?php _e('his page will display all of the available shortcodes that you can use on your Wordpress blog.', 'last-tap-event"');?></p>
+                                        <table class="widefat importers">
+                                            <tr><td><strong><?php _e('Shortcodes', 'last-tap-event"');?></strong></td></tr>
+                                            <?php
 
-                            <p><?php __('Testimonial Form Shortcode', 'last-tap-event');?></p>
-                            <code>[testimonial-form]</code>
-                            <p><?php __('Testimonial SlideShow Shortcode', 'last-tap-event');?></p><br>
-                            <code>[testimonial-slideshow]</code>
-                            <p><?php __('location for defaul ', 'last-tap-event');?></p><br>
-                            <code>[locations location_id=1]</code>
-                            <p><?php __('Location for namber the post', 'last-tap-event');?></p>
-                            <code>[locations location_id=1 number_of_locations=1]</code>
-                            <code>[locations location_id="1" number_of_locations=1 post_status="publish"]</code>
-                            <br>
-                            <p>
-                            <h2><?php __('3. Go to Settings » Permalinks, and simply click on Save Changes button.', 'last-tap-event');?></h2></p>
-                            <em><?php __('If you like this plugin, please', 'last-tap-event');?> <a href="http://wordpress.org/extend/plugins/last-tap-event"><?php __('vote', 'last-tap-event');?></a>
-                                .
-                                <?php __('Author : ', 'last-tap-event');?><a href="https://github.com/zebedeu">Máecio Zebedeu</a>
-                                <?php __('You can ', 'last-tap-event');?><a href="https://github.com/knut7/last-tap-event"><?php __('for bugs, </a> thanks.</em>','last-tap-event');?>
+                                                foreach($shortcode_tags as $code => $function){
+                                                ?>
+                                                        <tr><td>[<?php echo $code; ?>]</td></tr>
+                                                <?php
+                                                    }
+                                            ?>
 
+                                        </table>
+                                </div>
                         </div>
+                            
+                            <h2><?php _e('3. Go to Settings » Permalinks, and simply click on Save Changes button.', 'last-tap-event');?></h2></p>
+                            <em><?php _e('If you like this plugin, please', 'last-tap-event');?> <a href="http://wordpress.org/extend/plugins/last-tap-event"><?php _e('vote', 'last-tap-event');?></a>
+                                .
+                                <?php _e('Author : ', 'last-tap-event');?><a href="https://github.com/zebedeu">Márcio Zebedeu</a>
+                                <?php _e('You can ', 'last-tap-event');?><a href="https://github.com/knut7/last-tap-event"><?php _e('for bugs, </a> thanks.</em>','last-tap-event');?>
+
                     </div>
                 </div>
             </div>
@@ -140,12 +145,10 @@
                         $data[] = array_merge($title, $start, $end);
                         }
                         $my = json_encode($data);
-                        $locale = substr( get_locale() , 0 , -3);
+                        $locale = substr( get_locale(), 0, -3);
 
+                        ?>
 
-
-?>
-                        
                             <script>
 
                                 var today = new Date();
@@ -174,6 +177,20 @@
                                   navLinks: true, // can click day/week names to navigate views
                                   businessHours: true, // display business hours
                                   editable: true,
+                                  selectable: true,
+                                  selectMirror: true,
+                                  select: function(arg) {
+                                    var title = prompt('Event Title:');
+                                    if(title) {
+                                        calendar.addEvent({
+                                            title: title,
+                                            start: arg.start,
+                                            end: arg.end,
+                                            allDay: arg.allDay
+                                        })
+                                    }
+                                    calendar.unselect()
+                                  },
                                   events: <?php echo $my; ?>
                                 });
 

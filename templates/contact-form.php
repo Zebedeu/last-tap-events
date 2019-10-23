@@ -21,7 +21,7 @@
 
     <div class="field-container">
         <div>
-            <button type="stubmit" class="btn btn-default btn-lg btn-sunset-form">Submit</button>
+            <button type="stubmit" class="btn btn-default btn-lg btn-sunset-form"><?php _e('Submit', 'last-tap-event');?></button>
         </div>
         <small class="field-msg js-form-submission"><?php _e('Submission in process, please wait&hellip;', 'last-tap-event') ?></small>
         <small class="field-msg success js-form-success"><?php _e('Message Successfully submitted, thank you!', 'last-tap-event') ?></small>

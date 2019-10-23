@@ -3,6 +3,7 @@
  * @version 1.0
  *
  * @package LastTapEvents/inc/controller
+ * @see LastTap_BaseController
  */
 
 
@@ -26,29 +27,11 @@ class LastTap_ParticipantController extends LastTap_BaseController
         add_action('manage_participant_posts_columns', array($this, 'lt_set_partici_custom_columns'));
         add_action('manage_participant_posts_custom_column', array($this, 'lt_set_partici_custom_columns_data'), 10, 2);
         add_filter('manage_edit-participant_sortable_columns', array($this, 'lt_set_partici_custom_columns_sortable'));
-
-        $this->lt_setShortcodePage();
-
+        add_action('admin_menu', array($this, 'lastTap_count_participant'));
         add_shortcode('particip-form', array($this, 'lt_participant_form'));
         add_shortcode('particip-slideshow', array($this, 'lt_participant_slideshow'));
         add_action('wp_ajax_submit_participant', array($this, 'lt_submit_participant'));
         add_action('wp_ajax_nopriv_submit_participant', array($this, 'lt_submit_participant'));
-    }
-
-    public function lt_setShortcodePage()
-    {
-        $subpage = array(
-            array(
-                'parent_slug' => 'edit.php?post_type=participant',
-                'page_title' => 'Shortcodes',
-                'menu_title' => 'Shortcodes',
-                'capability' => 'manage_options',
-                'menu_slug' => 'event_participant_shortcode',
-                'callback' => array($this->callbacks, 'lt_shortcodePage')
-            )
-        );
-
-        $this->settings->lt_addSubPages($subpage)->lt_register();
     }
 
     public function lt_submit_participant()
@@ -247,7 +230,6 @@ class LastTap_ParticipantController extends LastTap_BaseController
             return $post_id;
         }
 
-
         $data = array(
             'post_event_id' => sanitize_text_field($_POST['post_event_id']),
             'name' => sanitize_text_field($_POST['event_participant_author']),
@@ -311,4 +293,41 @@ class LastTap_ParticipantController extends LastTap_BaseController
 
         return $columns;
     }
+
+    /*
+    *total de numeros de participantes 
+    */
+    public function lastTap_count_participant() {
+        global $menu;
+
+         // get poty_type participant
+        $all_post_ids = get_posts(array(
+
+                'fields'          => 'post_id',
+                'posts_per_page'  => -1,
+                'post_type' => 'participant'
+            ));
+        $count_participant = [];
+
+        // get post meta from post type participant
+        foreach ($all_post_ids as $k => $v) {
+            $count = get_post_meta( $v->ID, '_event_participant_key', false );
+                foreach ($count as $key => $value) {
+                    if( $value['approved'] == 0){
+                        $count_participant[] = $value['post_event_id'];
+                    }
+                }
+        }
+                       
+        // only display the number of pending posts over a certain amount
+        if ( count($count_participant) > 0 ) {
+            foreach ( $menu as $key => $value ) {
+                if ( $menu[$key][2] == 'edit.php?post_type=participant' ) {
+                    $menu[$key][0] .= ' <span class="update-plugins count-2"><span class="update-count">' . count($count_participant) . '</span></span>';
+                    return;
+                }
+            }
+        }
+    }
+     
 }

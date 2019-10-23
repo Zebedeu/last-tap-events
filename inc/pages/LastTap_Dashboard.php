@@ -3,6 +3,7 @@
  * @version 1.0
  *
  * @package LastTapEvents/inc/controller
+ * @see LastTap_BaseController
  */
 
 defined('ABSPATH') || exit;
@@ -59,7 +60,49 @@ class LastTap_Dashboard extends LastTap_BaseController
                 'option_group' => 'event_plugin_settings',
                 'option_name' => 'event_plugin',
                 'callback' => array($this->callbacks_mngr, 'lt_checkboxSanitize')
-           )
+           ),
+            array(
+                'option_group' => 'event_options_group',
+                'option_name' => 'event_border_color',
+                'callback' => array($this->callbacks, 'lt_event_sanitize_color')
+
+            ),
+            array(
+                'option_group' => 'event_options_group',
+                'option_name' => 'event_status_started'
+            ),
+            array(
+
+
+                'option_group' => 'event_options_group',
+                'option_name' => 'event_status_finished'
+            ),
+            array(
+                'option_group' => 'event_options_group',
+                'option_name' => 'event_status_soon'
+            ),
+            array(
+                'option_group' => 'event_options_group',
+                'option_name' => 'event_status_button'
+            ),
+
+            array(
+                'option_group' => 'event_options_group',
+                'option_name' => 'event_currency',
+                'callback' => array($this->callbacks, 'lt_validate_currency')
+
+            ),
+            array(
+                'option_group' => 'event_options_group',
+                'option_name' => 'event_background_color_button_show_form',
+                'callback' => array($this->callbacks, 'lt_event_sanitize_background_color')
+            ),
+
+            array('option_group' => 'event_options_group',
+                'option_name' => 'event_text_color_button_show_form',
+                'callback' => array($this->callbacks, 'lt_event_sanitize_text_color')
+
+        )
         );
 
         $this->settings->lt_setSettings($args);
@@ -73,8 +116,23 @@ class LastTap_Dashboard extends LastTap_BaseController
                 'title' => 'Settings Manager',
                 'callback' => array($this->callbacks_mngr, 'lt_adminSectionManager'),
                 'page' => 'event_plugin'
+            ),
+            array(
+                'id' => 'event_id',
+                'title' => __( 'Settings', 'last-tap-event'),
+                'callback' => array($this->callbacks, 'lt_event_section'),
+                'page' => 'event_settings'
+
+            ),
+            array(
+                'id' => 'event_color',
+                'title' => __( 'Color Control', 'last-tap-event'),
+                'callback' => array($this->callbacks, 'lt_event_section_color'),
+                'page' => 'colors'
+
             )
         );
+
 
         $this->settings->lt_setSections($args);
     }
@@ -83,6 +141,58 @@ class LastTap_Dashboard extends LastTap_BaseController
     {
         $args = array();
 
+      $args = array(
+
+            array(
+                'id' => 'event_currency',
+                'title' => __('Currency ', 'last-tap-event'),
+                'callback' => array($this->callbacks, 'lt_currency'),
+                'page' => 'event_settings',
+                'section' => 'event_id',
+                'args' => array(
+                    'laber_for' => 'event_currency',
+                    'class' => 'example-class'
+                ),
+
+            ),
+
+            array(
+                'id' => 'event_border_color',
+                'title' => __('Border color', 'last-tap-event'),
+                'callback' => array($this->callbacks, 'lt_event_textFields_border'),
+                'page' => 'colors',
+                'section' => 'event_color',
+                'args' => array(
+                    'laber_for' => 'event_border_color',
+                    'class' => 'example-class'
+                ),
+
+            ),
+            array(
+                'id'=> 'event_background_color_button_show_form',
+                 'title' => __('Color background button', 'last-tap-event'),
+                 'callback' => array($this->callbacks, 'lt_chanche_background_color_button'),
+                 'page' => 'colors',
+                 'section'=> 'event_color',
+                 'args' => array(
+                    'label' => 'event_background_color_button_show_form',
+                    'class' => 'exemple-class'
+                 ),
+            ),
+
+            array(
+                'id'=> 'event_text_color_button_show_form',
+                 'title' => __('Text Color button', 'last-tap-event'),
+                 'callback' => array($this->callbacks, 'lt_chanche_text_color_button'),
+                 'page' => 'colors',
+                 'section'=> 'event_color',
+                 'args' => array(
+                    'label' => 'event_text_color_button_show_form',
+                    'class' => 'exemple-class'
+                 ),
+            ),
+
+        );
         foreach ($this->managers as $key => $value) {
             $args[] = array(
                 'id' => $key,

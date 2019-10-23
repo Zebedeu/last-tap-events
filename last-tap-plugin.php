@@ -1,16 +1,20 @@
 <?php
 /**
  * @version 1.0
- *
  * @package LastTapEvents
+ * @link         https://github.com/zebedeu/last-tap-events
+ * @author       Marcio Zebedeu
+ * @copyright    2018 Marcio Zebedeu
+ * @license      GPL2
  */
 
 /**
  *  Plugin Name: Last Tap Events
  *  Description:  Last Tap Events is a Wordpress plugin that claims to be simple and objective so you can place event announcements on your site.
- *  Version:      1.0.0
+ * GitHub Plugin URI: https://github.com/zebedeu/last-tap-events
+ *  Version:      1.0.2
  *  Author:       Márcio Zebedeu
- *  Author URI:    https://profiles.wordpress.org/marcio-zebedeu
+ *  Author URI:    http://marciozebedeu.com
  *  License:      GPL2
  *  License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  *  Text Domain:  last-tap-event

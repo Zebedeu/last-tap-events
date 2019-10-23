@@ -4,7 +4,7 @@ Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type
 Requires at least: 4.9
 Tested up to: 5.2.3
 Requires PHP: 5.6.20
-Stable tag: 1.0.20
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,9 +19,9 @@ There is a Post Type manager where you can create several post type according to
 
 == FIlters ==
 
-* location_cult_hours_days : With this filter you can create a function that returns an array with new fields for your location meta box with days of the week and hours
+* location_event_hours_days : With this filter you can create a function that returns an array with new fields for your location meta box with days of the week and hours
 
-* location_cult_title: serves to change the title that appears above the hours of cults
+* location_event_title: serves to change the title that appears above the hours of events
 
 * {pot_type}_before_main_content & {post_type}_after_main_content:  This will add extra content before the title of  and  before the button.. 
 
@@ -61,6 +61,10 @@ add event on a page
 
 == Frequently Asked Questions ==
 
+= Can I contribute to this plugin? =
+Sure! You are welcome to report any issues or add feature suggestions on the [GitHub repository](https://github.com/Zebedeu/last-tap-events).
+
+
 == Screenshots ==
 
 2. Event Layout
@@ -71,3 +75,11 @@ add event on a page
 
 == Changelog ==
 
+= 1.0.1 =
+add notification bubble
+fixe bug removed configuration page in event post type
+other bug
+
+= 1.0.2 =
+database optimisation / data from each event went on to be in a single array in postmeta
+fix bug Shortcode was not recording when commands have syntax errors -> [testimonial-form]

@@ -3,6 +3,7 @@
  * @version 1.0
  *
  * @package LastTapEvents/inc/controller
+ * @see LastTap_BaseController
  */
 
 defined('ABSPATH') || exit;
