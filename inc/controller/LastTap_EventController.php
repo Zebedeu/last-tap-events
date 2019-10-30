@@ -171,11 +171,7 @@ class LastTap_EventController extends LastTap_BaseController
         $event_price = get_post_meta($post->ID, '_lt_event_price', true); 
 
 
-        $detal = get_post_meta($post->ID, '_event_detall_info', true); 
-
-        var_dump($detal);
-
-        ?>
+        $detal = get_post_meta($post->ID, '_event_detall_info', true); ?>
 
 
 
@@ -186,7 +182,7 @@ class LastTap_EventController extends LastTap_BaseController
                 <div class="ch-col-12">
                     <div class="ch-col-1">
                         <label for="_lt_event_price"><?php _e('Event price :'); ?></label>
-                        <input type="text" name="_lt_event_price"  value="<?php echo $detal["_lt_event_price"]; ?>" />
+                        <input type="text" name="_lt_event_price"  value="<?php echo $detal["_lt_event_price"] ?? ""; ?>" />
 
                     </div>
                     <div class="ch-col-5">
@@ -195,7 +191,7 @@ class LastTap_EventController extends LastTap_BaseController
                     </div>
                     <div class="ch-col-12">
                          <label for="_lt_event_partic_limit"><?php _e('Event Participe Limits:'); ?></label>
-                        <input type="text" name="_lt_event_partic_limit" value="<?php echo $detal["_lt_event_partic_limit"]; ?>"/>
+                        <input type="text" name="_lt_event_partic_limit" value="<?php echo $detal["_lt_event_partic_limit"] ?? ""; ?>"/>
             
                     </div>
                 </div>
@@ -205,19 +201,19 @@ class LastTap_EventController extends LastTap_BaseController
                 <div class="ch-col-12">
                     <div class="ch-col-5">
                         <label for="_lt_event_country"><?php _e('Event Country:'); ?></label>
-                        <input type="text" name="_lt_event_country" value="<?php echo $detal["_lt_event_country"]; ?>"/>
+                        <input type="text" name="_lt_event_country" value="<?php echo $detal["_lt_event_country"] ?? ""; ?>"/>
                     </div>
                     <div class="ch-col-5">
                         <label for="_lt_event_city"><?php _e('Event City:'); ?></label>
-                        <input type="text" name="_lt_event_city" value="<?php echo $detal["_lt_event_city"]; ?>"/>
+                        <input type="text" name="_lt_event_city" value="<?php echo $detal["_lt_event_city"] ?? ""; ?>"/>
                     </div>
                     <div class="ch-col-5">
                         <label for="_lt_event_address"><?php _e('Event Address:'); ?></label>
-                        <input type="text" name="_lt_event_address" value="<?php echo $detal["_lt_event_address"]; ?>"/>
+                        <input type="text" name="_lt_event_address" value="<?php echo $detal["_lt_event_address"] ?? ""; ?>"/>
                     </div>
                     <div class="ch-col-5">
                          <label for="_lt_event_street"><?php _e('Event Street:'); ?></label>
-                         <input type="text" name="_lt_event_street" value="<?php echo $detal["_lt_event_street"]; ?>"/>
+                         <input type="text" name="_lt_event_street" value="<?php echo $detal["_lt_event_street"] ?? ""; ?>"/>
                     </div>
 
                 </div>
@@ -227,20 +223,20 @@ class LastTap_EventController extends LastTap_BaseController
                 <div class="ch-col-12">
                     <div class="ch-col-5">
                         <label for="_lt_event_email"><?php _e('Event Email:'); ?></label>
-                        <input type="email" name="_lt_event_email" value="<?php echo $detal["_lt_event_email"]; ?>"/>
+                        <input type="email" name="_lt_event_email" value="<?php echo $detal["_lt_event_email"] ?? ""; ?>"/>
                     </div>
                     <div class="ch-col-5">
                         <label for="_lt_event_organizer"><?php _e('Event Organizers email:'); ?></label>
-                        <input type="email" name="_lt_event_organizer" value="<?php echo $detal["_lt_event_organizer"]; ?>"/>
+                        <input type="email" name="_lt_event_organizer" value="<?php echo $detal["_lt_event_organizer"] ?? ""; ?>"/>
                     </div>
                     <div class="ch-col-5">
                         <label for="_lt_event_phone"><?php _e('Event Phone:'); ?></label>
-                        <input type="tel" name="_lt_event_phone" value="<?php echo $detal["_lt_event_phone"]; ?>"/>
+                        <input type="tel" name="_lt_event_phone" value="<?php echo $detal["_lt_event_phone"] ?? ""; ?>"/>
                     </div>
                 </div>
             <div class="field">
                 <label for="_lt_event_phone_2"><?php _e('Event Phone 2:'); ?></label>
-                <input type="tel" name="_lt_event_phone_2" value="<?php echo $detal["_lt_event_phone_2"]; ?>"/>
+                <input type="tel" name="_lt_event_phone_2" value="<?php echo $detal["_lt_event_phone_2"] ?? ""; ?>"/>
             </div>
         </div>
         </div>

@@ -4,7 +4,7 @@ Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type
 Requires at least: 4.9
 Tested up to: 5.2.3
 Requires PHP: 5.6.20
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,3 +83,7 @@ other bug
 = 1.0.2 =
 database optimisation / data from each event went on to be in a single array in postmeta
 fix bug Shortcode was not recording when commands have syntax errors -> [testimonial-form]
+
+= 1.0.3 =
+
+Warning:   Illegal string offset == correction of 8 critical errors
