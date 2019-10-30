@@ -23,7 +23,7 @@ class LastTap_LocationWidget extends \WP_Widget
     {
 
         $this->widget_ID = 'event_location_widget';
-        $this->widget_name = 'Church Location Widget';
+        $this->widget_name = 'Event Location Widget';
 
         $this->widget_options = array(
             'classname' => $this->widget_ID,

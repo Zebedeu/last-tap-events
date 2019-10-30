@@ -3,7 +3,7 @@
 /**
  * Trigger this file on Plugin uninstall
  *
- * @package  K7Church
+ * @package  LastTapEvents
  */
 
 if (!defined('WP_UNINSTALL_PLUGIN')) {

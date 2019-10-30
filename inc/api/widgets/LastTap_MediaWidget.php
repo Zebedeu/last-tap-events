@@ -22,7 +22,7 @@ class LastTap_MediaWidget extends \WP_Widget
     {
 
         $this->widget_ID = 'event_media_widget';
-        $this->widget_name = 'Church Media Widget';
+        $this->widget_name = 'Event Media Widget';
 
         $this->widget_options = array(
             'classname' => $this->widget_ID,
