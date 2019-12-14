@@ -16,6 +16,8 @@ class LastTap_Enqueue extends LastTap_BaseController
         add_action('wp_head', array($this, 'lt_enqueue_public'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_js'));
         add_action('admin_enqueue_scripts', array($this, 'lt_enqueue'));
+        add_action('init', array($this, 'ev_gutemberg_register'));
+
     }
 
     public function lt_enqueue()
@@ -29,6 +31,16 @@ class LastTap_Enqueue extends LastTap_BaseController
         wp_enqueue_script('mypluginscript', $this->plugin_url . 'assets/myscript.js');
         
 
+    }
+
+
+    public function ev_gutemberg_register(){
+
+        wp_enqueue_script( 'my-bloc', $this->plugin_url . 'build/index.js', array('wp-blocks', 'wp-editor', 'wp-components', 'wp-i18n'), filemtime($this->plugin_path . 'build/index.js')  );
+        register_block_type( 'blockevent/custom-cta', array( 
+
+            'editor_script' => 'cta-block.js'
+         ) );
     }
 
     public function enqueue_admin_js() { 
@@ -62,6 +74,8 @@ class LastTap_Enqueue extends LastTap_BaseController
         wp_enqueue_script('form_parti', $this->plugin_url. 'src/js/parti.js', array('jquery'), '1.0.0', false);
         wp_enqueue_script('slide', $this->plugin_url. 'assets/slider.js', array('jquery'), '1.0.0', false);
         wp_enqueue_script('custom_jsww', $this->plugin_url . 'assets/js/my-account.js',array( 'jquery'));
+        // wp_enqueue_script('qr_code_js_min', $this->plugin_url . 'assets/qr_code/qrcode.min.js', array(), '', true);
+        // wp_enqueue_script('qr_code_js', $this->plugin_url . 'assets/qr_code/qrcode.js',array(), '', true);
 
 
     }

@@ -125,7 +125,7 @@ class LastTap_ParticipantController extends LastTap_BaseController
             'menu_icon' => 'dashicons-admin-site-alt',
             'exclude_from_search' => true,
             'publicly_queryable' => false,
-            'supports' => array('title', 'editor'),
+            'supports' => array('thumbnail', 'title', 'editor'),
             'show_in_rest' => false
         );
 
@@ -239,6 +239,101 @@ class LastTap_ParticipantController extends LastTap_BaseController
             'party' => isset($_POST['event_participant_party']) ? 1 : 0,
         );
 
+$tempDir = wp_upload_dir();
+$uploadfile = $tempDir['path'] . '/' . $filename;
+
+    // here our data
+        $post_event_id = $data['post_event_id'];
+        $name = $data['name'];
+        $email = $data['email'];
+        $telephone = $data['telephone'];
+        $approved =  $data['approved'] == 1  ? "YES" : "NO";
+        $party = $data['party'] == 1 ? "YES" : "NO";
+
+        $codeContents= '';
+        $codeContents .= "Code: ".$post_event_id. "\n";
+        $codeContents .= "Name: ".$name. "\n";
+        $codeContents .= "Email: ".$email. "\n";
+        $codeContents .= "Telephone: ".$telephone. "\n";
+        $codeContents .= "Approved: ".$approved. "\n";
+        $codeContents .= "Party: ".$party. "\n";
+
+
+    // generating
+    QRcode::png($codeContents, $tempDir.'026.png', QR_ECLEVEL_L, 3);
+
+    $wp_filetype = wp_check_filetype(basename($tempDir.'026.png'), null );
+
+$attachment = array(
+    'post_mime_type' => $wp_filetype['type'],
+    'post_title' => $filename,
+    'post_content' => '',
+    'post_status' => 'inherit'
+);
+
+        $attach_id = wp_insert_attachment( $attachment, $uploadfile );
+
+        $imagenew = get_post( $attach_id );
+        $fullsizepath = get_attached_file( $imagenew->ID );
+        $attach_data = wp_generate_attachment_metadata( $attach_id, $fullsizepath );
+        wp_update_attachment_metadata( $attach_id, $attach_data );
+
+
+        $data['code_qr'] =  'http://localhost:8888/wordpress/wp-content/uploads/026.png';
+// Gives us access to the download_url() and wp_handle_sideload() functions
+require_once( ABSPATH . 'wp-admin/includes/file.php' );
+
+// URL to the WordPress logo
+$url = 'http://s.w.org/style/images/wp-header-logo.png';
+$timeout_seconds = 5;
+
+// Download file to temp dir
+$temp_file = download_url( $url, $timeout_seconds );
+
+if ( !is_wp_error( $temp_file ) ) {
+
+    // Array based on $_FILE as seen in PHP file uploads
+    $file = array(
+        'name'     => basename($url), // ex: wp-header-logo.png
+        'type'     => 'image/png',
+        'tmp_name' => $temp_file,
+        'error'    => 0,
+        'size'     => filesize($temp_file),
+    );
+
+    $overrides = array(
+        // Tells WordPress to not look for the POST form
+        // fields that would normally be present as
+        // we downloaded the file from a remote server, so there
+        // will be no form fields
+        // Default is true
+        'test_form' => false,
+
+        // Setting this to false lets WordPress allow empty files, not recommended
+        // Default is true
+        'test_size' => true,
+    );
+
+    // Move the temporary file into the uploads directory
+    $results = wp_handle_sideload( $file, $overrides );
+
+    if ( !empty( $results['error'] ) ) {
+        // Insert any error handling here
+    } else {
+
+        $filename  = $results['file']; // Full path to the file
+        $local_url = $results['url'];  // URL to the file in the uploads dir
+        $type      = $results['type']; // MIME type of the file
+
+        // Perform any actions here based in the above results
+    }
+
+}
+
+    // displaying
+    echo "<img src=".$this->plugin_url."026.png />";
+
+
         update_post_meta($post_id, '_event_participant_key', $data);
     }
 
@@ -253,6 +348,7 @@ class LastTap_ParticipantController extends LastTap_BaseController
         $columns['telephone'] =  __('Telphone', 'last-tap-event');
         $columns['approved'] = __('Approved', 'last-tap-event');
         $columns['party'] = __('Partic', 'last-tap-event');
+        $columns['code_qr'] = 'codigo';
         $columns['date'] = $date;
 
         return $columns;
@@ -266,6 +362,11 @@ class LastTap_ParticipantController extends LastTap_BaseController
         $telephone = isset($data['telephone']) ? $data['telephone'] : '';
         $approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>'. __( 'YES', 'last-tap-event').'</strong>' : __(  'NO', 'last-tap-event');
         $party = isset($data['party']) && $data['party'] === 1 ? '<strong>'. __( 'YES', 'last-tap-event').'</strong>' : __(  'NO', 'last-tap-event');
+
+  $upload_dir = wp_upload_dir();
+  $upload_dir = $upload_dir['baseurl'] . '/2019/12/wp-header-logo.png' ;
+  $a =preg_replace('/^https?:/', '', $upload_dir);
+
 
         switch ($column) {
             case 'name':
@@ -282,7 +383,12 @@ class LastTap_ParticipantController extends LastTap_BaseController
             case 'party':
                 echo $party;
                 break;
+            case 'code_qr':
+                echo '<img src=' .$a.'/>';
+                break;
+            
         }
+
     }
 
     public function lt_set_partici_custom_columns_sortable($columns)

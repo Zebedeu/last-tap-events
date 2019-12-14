@@ -12,7 +12,7 @@
  *  Plugin Name: Last Tap Events
  *  Description:  Last Tap Events is a Wordpress plugin that claims to be simple and objective so you can place event announcements on your site.
  * GitHub Plugin URI: https://github.com/zebedeu/last-tap-events
- *  Version:      1.0.3
+ *  Version:      1.0.4
  *  Author:       Márcio Zebedeu
  *  Author URI:    http://marciozebedeu.com
  *  License:      GPL2
@@ -50,6 +50,10 @@ require_once(dirname(__FILE__) . '/inc/api/LastTap_SettingsApi.php');
 require_once(dirname(__FILE__) . '/inc/pages/LastTap_Dashboard.php');
 require_once(dirname(__FILE__) . '/inc/api/LatTap_API_Client.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/LastTap_AdminCallbacks.php');
+// require_once(dirname(__FILE__) . '/inc/api/qr_code/qrcode.php');
+require_once(dirname(__FILE__) . '/inc/api/phpqrcode/qrlib.php');
+require_once(dirname(__FILE__) . '/inc/api/phpqrcode/qrconfig.php');
+
 require_once(dirname(__FILE__) . '/inc/api/LastTap_Currency.php');
 require_once(dirname(__FILE__) . '/inc/api/LastTap_Country.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/LastTap_EventCallbacks.php');

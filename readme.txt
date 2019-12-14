@@ -87,3 +87,7 @@ fix bug Shortcode was not recording when commands have syntax errors -> [testimo
 = 1.0.3 =
 
 Warning:   Illegal string offset == correction of 8 critical errors
+
+= 1.0.4 = 
+
+add Qr Code
