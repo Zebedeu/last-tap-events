@@ -50,10 +50,8 @@ require_once(dirname(__FILE__) . '/inc/api/LastTap_SettingsApi.php');
 require_once(dirname(__FILE__) . '/inc/pages/LastTap_Dashboard.php');
 require_once(dirname(__FILE__) . '/inc/api/LatTap_API_Client.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/LastTap_AdminCallbacks.php');
-// require_once(dirname(__FILE__) . '/inc/api/qr_code/qrcode.php');
 require_once(dirname(__FILE__) . '/inc/api/phpqrcode/qrlib.php');
 require_once(dirname(__FILE__) . '/inc/api/phpqrcode/qrconfig.php');
-
 require_once(dirname(__FILE__) . '/inc/api/LastTap_Currency.php');
 require_once(dirname(__FILE__) . '/inc/api/LastTap_Country.php');
 require_once(dirname(__FILE__) . '/inc/api/callbacks/LastTap_EventCallbacks.php');

@@ -341,17 +341,17 @@ class LastTap_LocationController extends LastTap_BaseController
         $locations = get_posts($location_args);
         //if we have locations
         if ($locations) {
-            $html .= '<article class="ch-col-3 location_list cf">';
+            $html .= '<articlelocation_list cf">';
             //foreach location
             foreach ($locations as $location) {
-                $html .= '<section class="ch-col-3 location">';
+                $html .= '<section class="location">';
                 //collect location data
                 $location_id = $location->ID;
                 $location_title = get_the_title($location_id);
-                $location_thumbnail = get_the_post_thumbnail($location_id , 'thumbnail');
+                $location_thumbnail = get_the_post_thumbnail($location_id);
                 $location_content = apply_filters('the_content' , $location->post_content);
                 if (!empty($location_content)) {
-                    $location_content = strip_shortcodes(wp_trim_words($location->post_excerpt , 40 , '...'));
+                    $location_content = strip_shortcodes(wp_trim_words($location->post_excerpt , 20 , '...'));
                 }
                 $location_permalink = get_permalink($location_id);
                 $location_phone = get_post_meta($location_id , '_lt_location_phone' , true);
@@ -364,18 +364,19 @@ class LastTap_LocationController extends LastTap_BaseController
                 $html = apply_filters('location_before_main_content' , $html);
 
                 //title
+                                $html .= '<a href="' . esc_url($location_permalink) . '" title="' . esc_attr__('view location' , 'last-tap-event') . '">';
+
                 $html .= '<h2 class="ch-title">';
-                $html .= '<a href="' . esc_url($location_permalink) . '" title="' . esc_attr__('view location' , 'last-tap-event') . '">';
                 $html .= $location_title;
-                $html .= '</a>';
                 $html .= '</h2>';
+                $html .= '</a>';
 
 
                 //image & content
                 if (!empty($location_thumbnail) || !empty($location_content)) {
 
                     if (!empty($location_thumbnail)) {
-                        $html .= '<p class="ch-col-4 image_content">';
+                        $html .= '<p class="ch-col-12">';
                         $html .= $location_thumbnail;
                         $html .= '</p>';
                     }
@@ -416,7 +417,7 @@ class LastTap_LocationController extends LastTap_BaseController
             $html .= '<div class="cf"></div>';
         }
 
-        return $html;
+        echo $html;
     }
 
     //triggered when adding or editing a location

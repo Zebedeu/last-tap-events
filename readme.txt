@@ -91,3 +91,5 @@ Warning:   Illegal string offset == correction of 8 critical errors
 = 1.0.4 = 
 
 add Qr Code
+fix bug for widget Media
+fix bug for widget Location

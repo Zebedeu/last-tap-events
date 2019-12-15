@@ -54,8 +54,8 @@ class LastTap_MediaWidget extends \WP_Widget
         if (!empty($instance['title'])) {
             echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
         }
-        if (!empty($instance['image'])) {
-            echo '<img src="' . esc_url($instance['image']) . '" alt="">';
+        if (!empty($instance['image']) || !empty($instance['css']) ) {
+            echo '<img class="'.$instance['css'].'" src="' . esc_url($instance['image']) . '" alt="">';
         }
         echo $args['after_widget'];
     }
@@ -64,12 +64,20 @@ class LastTap_MediaWidget extends \WP_Widget
     {
         $title = !empty($instance['title']) ? $instance['title'] : '';
         $image = !empty($instance['image']) ? $instance['image'] : '';
+        $css = !empty($instance['css']) ? $instance['css'] : '';
         ?>
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_attr_e('Title:', 'last-tap-event'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text"
                    value="<?php echo esc_attr($title); ?>">
+        </p>
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('css')); ?>"><?php esc_attr_e('Image Style:', 'last-tap-event'); ?></label>
+
+            <input class="widefat" id="<?php echo esc_attr($this->get_field_id('css')); ?>"
+                   name="<?php echo esc_attr($this->get_field_name('css')); ?>" type="text"
+                   value="<?php echo esc_attr($css); ?>">
         </p>
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('image')); ?>"><?php esc_attr_e('Image:', 'last-tap-event'); ?></label>
@@ -86,6 +94,7 @@ class LastTap_MediaWidget extends \WP_Widget
         $instance = $old_instance;
         $instance['title'] = sanitize_text_field($new_instance['title']);
         $instance['image'] = !empty($new_instance['image']) ? $new_instance['image'] : '';
+        $instance['css'] = !empty($new_instance['css']) ? $new_instance['css'] : '';
 
         return $instance;
     }
