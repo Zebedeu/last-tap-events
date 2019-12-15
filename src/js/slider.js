@@ -2,7 +2,7 @@
 const sliderView = document.querySelector('.ac-slider--view > ul'),
     sliderViewSlides = document.querySelectorAll('.ac-slider--view__slides'),
     arrowLeft = document.querySelector('.ac-slider--arrows__left'),
-    arrowRight = document.querySelector('.ac-slider--arrows__right'),
+    arrowRight = document.querySelector('.ac-slider--arrows__right');
     sliderLength = sliderViewSlides.length;
 
 // sliding function
@@ -37,5 +37,8 @@ const beforeSliding = i => {
 }
 
 // triggers arrows
+
+if(arrowRight || arrowLeft ){ 
 arrowRight.addEventListener('click', () => beforeSliding(1));
 arrowLeft.addEventListener('click', () => beforeSliding(0));
+}

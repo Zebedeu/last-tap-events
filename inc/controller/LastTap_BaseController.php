@@ -32,7 +32,6 @@ class LastTap_BaseController
             'cpt_manager' => __('Activate CPT Manager', 'last-tap-event'),
             'taxonomy_manager' => __('Activate Taxonomy Manager', 'last-tap-event'),
             'location_manager' => __('Activate Localion Manager', 'last-tap-event'),
-            'location_widget' => __('Activate Location Widget', 'last-tap-event'),
             'media_widget' => __('Activate Media Widget', 'last-tap-event'),
             'notify_manager' => __('Activate Notification', 'last-tap-event'),
             'templates_manager' => __('Activate Custom Templates', 'last-tap-event')

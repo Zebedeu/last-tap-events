@@ -530,6 +530,13 @@ time.blue_green { background-color: #148aa5 }
     background-color: rgb(221, 75, 57) !important;
   }
 
+.elizama-widget-title" {
+  color: blue;
+  background: red;
+  height: 10px;
+  width: 20px;
+}
+
   @media (min-width: 768px) {
     .event-list > li {
       position: relative;

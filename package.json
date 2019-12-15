@@ -1,0 +1,16 @@
+{
+  "name": "blockevent",
+  "version": "1.0.0",
+  "description": "block to generate a custom call to Action",
+  "main": "(index.js) build/index.js",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+  },
+  "author": "marcio zebedeu",
+  "license": " GPL-2.0-only",
+  "devDependencies": {
+    "@wordpress/scripts": "6.0.0",
+    "gulp": "^4.0.2"
+  }
+}

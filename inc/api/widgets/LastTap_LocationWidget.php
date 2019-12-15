@@ -65,7 +65,7 @@ class LastTap_LocationWidget extends \WP_Widget
                 <?php
                 $args = array(
                     'posts_per_page' => -1,
-                    'post_type' => 'last-tap-event_locations'
+                    'post_type' => 'locations'
                 );
                 $locations = get_posts($args);
                 if ($locations) {
@@ -137,18 +137,20 @@ class LastTap_LocationWidget extends \WP_Widget
 //$args - arguments set by the widget area, $instance - saved values
     public function widget($args, $instance)
     {
+        // $tot = absint( $instance[ 'location_id' ] );
 
+        // var_dump($tot); die;
         //pass any arguments if we have any from the widget
         $arguments = array();
         $simple_locations = new LastTap_LocationController();
         //if we specify a location
 
         //if we specify a single location
-        if ($instance['location_id'] != 'default') {
+        if ( $instance['location_id'] != 'default' ) {
             $arguments['location_id'] = $instance['location_id'];
         }
         //if we specify a number of locations
-        if ($instance['number_of_locations'] != 'default') {
+        if ( $instance['number_of_locations'] != 'default') {
             $arguments['number_of_locations'] = $instance['number_of_locations'];
         }
 

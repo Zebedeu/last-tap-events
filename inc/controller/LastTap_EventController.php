@@ -560,6 +560,10 @@ class LastTap_EventController extends LastTap_BaseController
             $html .= "</div></div>"; 
             echo  $html;
 
+
+
+    // how to build raw content - QRCode with detailed Business Card (VCard)
+
             ?>
 
             <div class="ch-col-12">
@@ -574,6 +578,7 @@ class LastTap_EventController extends LastTap_BaseController
                         <?php }else{
                             $this->get_participe_event_form();
                         } ?>
+
                     </div>
                 </div>
             </div>
