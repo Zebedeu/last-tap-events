@@ -44,6 +44,12 @@ class LastTap_LocationWidget extends \WP_Widget
 
         add_action('widgets_init', array($this, 'lt_register_location_widgets'));
     }
+    
+    //registers our widget for use
+    public function lt_register_location_widgets()
+    {
+        register_widget($this);
+    }
 
 
 
@@ -159,7 +165,6 @@ class LastTap_LocationWidget extends \WP_Widget
 
         $html .= $args['before_widget'];
         $html .= $args['before_title'];
-        $html .= 'Locations';
         $html .= $args['after_title'];
 
         //uses the main output function of the location class
@@ -169,9 +174,4 @@ class LastTap_LocationWidget extends \WP_Widget
         echo $html;
     }
 
-    //registers our widget for use
-    public function lt_register_location_widgets()
-    {
-        register_widget($this);
-    }
 }

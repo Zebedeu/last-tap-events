@@ -15,7 +15,7 @@ class LastTap_LocationController extends LastTap_BaseController
 
     public $callbacks;
 
-    private static $location_cult_hour_days = array();
+    private static $location_hour_days = array();
 
     public function lt_register()
     {
@@ -26,7 +26,7 @@ class LastTap_LocationController extends LastTap_BaseController
         $this->callbacks = new LastTap_LocationCallbacks();
 
 
-        add_action('init' , array($this , 'lt_set_cult_hour_days')); //sets the default cult hour days (used by the content type)
+        add_action('init' , array($this , 'lt_set_hour_days')); //sets the default cult hour days (used by the content type)
         add_action('init' , array($this , 'lt_Location_cpt')); //register location content type
         add_action('add_meta_boxes' , array($this , 'lt_add_location_meta_boxes')); //add meta boxes
         add_action('save_post_locations' , array($this , 'lt_save_location')); //save location
@@ -71,11 +71,11 @@ class LastTap_LocationController extends LastTap_BaseController
 
 
     /**
-     * @param array $location_cult_hour_days
+     * @param array $location_hour_days
      */
-    public static function lt_set_cult_hour_days()
+    public static function lt_set_hour_days()
     {
-        self::$location_cult_hour_days = apply_filters('location_cult_hours_days' ,
+        self::$location_hour_days = apply_filters('location_hours_days' ,
             array('monday' => __('Monday' , 'last-tap-event') ,
                 'tuesday' => __('Tuesday' , 'last-tap-event') ,
                 'wednesday' => __('Wednesday' , 'last-tap-event') ,
@@ -187,7 +187,7 @@ class LastTap_LocationController extends LastTap_BaseController
 
             <hr>
             <div class="field">
-                <label for="_cult_city"><?php _e('City:'); ?></label><br>
+                <label for="_city"><?php _e('City:'); ?></label><br>
                 <small><?php _e('City/Province where the cult will take place' , 'last-tap-event'); ?></small>
                 <input type="text" name="_lt_location_city" value="<?php echo $location_city; ?>"/>
             </div>
@@ -205,18 +205,18 @@ class LastTap_LocationController extends LastTap_BaseController
             </div>
             <?php
             //cult hours
-            if (!empty(self::$location_cult_hour_days)) {
+            if (!empty(self::$location_hour_days)) {
                 echo '<div class="field">';
                 echo '<label>'. __( 'Location Hours', 'last-tap-event'). '</label>';
                 echo '<small>' . __('Location hours for the location (e.g 9am - 5pm) ' , 'last-tap-event') . '</small>';
                 //go through all of our registered cult hour days
-                foreach (self::$location_cult_hour_days as $day_key => $day_value) {
+                foreach (self::$location_hour_days as $day_key => $day_value) {
                     //collect cult hour meta data
-                    $location_cult_hour_value = get_post_meta($post->ID , '_lt_location_cult_hours_' . $day_key , true);
+                    $location_hour_value = get_post_meta($post->ID , '_lt_location_hours_' . $day_key , true);
                     //dsiplay label and input
                     echo '<br>';
-                    echo '<label for="_lt_location_cult_hours_' . $day_key . '">' . ucfirst($day_key) . '</label>';
-                    echo '<input type="text" name="_lt_location_cult_hours_' . $day_key . '" id="location_cult_hours_' . $day_key . '" value="' . $location_cult_hour_value . '" autocomplete="off"/>';
+                    echo '<label for="_lt_location_hours_' . $day_key . '">' . ucfirst($day_key) . '</label>';
+                    echo '<input type="text" name="_lt_location_hours_' . $day_key . '" id="location_hours_' . $day_key . '" value="' . $location_hour_value . '" autocomplete="off"/>';
                 }
                 echo '</div>';
             }
@@ -229,6 +229,10 @@ class LastTap_LocationController extends LastTap_BaseController
         <?php
 
     }
+    /*
+    * filter return string
+    * string example return  'class="col-lg-12" style="color: orange; border: 12px, solid #000000;"';
+    */
 
     public function lt_prepend_location_meta_to_content($content)
     {
@@ -239,7 +243,7 @@ class LastTap_LocationController extends LastTap_BaseController
         if ($post_type == 'locations' && is_singular('locations')) {
 
             //collect variables
-            $location_id = $post->ID;
+        $location_id = $post->ID;
         $location_phone = get_post_meta($post->ID , '_lt_location_phone' , true);
         $location_email = get_post_meta($post->ID , '_lt_location_email' , true);
         $location_address = get_post_meta($post->ID , '_lt_location_address' , true);
@@ -250,14 +254,21 @@ class LastTap_LocationController extends LastTap_BaseController
             //display
             $html = '';
 
-            $html .= '<section class="ch-col-12 meta-data">';
+            $html .= '<section '.apply_filters( "section_two_location", "class='ch-col-12'"). '>';
+            $html .= '<div '.apply_filters( "row_two_location", "class='ch-row'"). '>';
+            $html .= $content;
+            $html .= '</div>';
+            $html .= '</section>';
+
+
+            $html .= '<section '.apply_filters( "section_location", "class='ch-col-12 meta-data'"). '>';
 
             //hook for outputting additional meta data (at the start of the form)
             do_action('location_meta_data_output_start' , $location_id);
 
-            $html .= '<div class="ch-col-12">';
-            $html .= '<div class="ch-row">';
-            $html .= '<div class="ch-col-6"><br>';
+            $html .= '<div '.apply_filters( "before_row_location", "class='ch-col-12'"). '>';
+            $html .= '<div '.apply_filters( "row_location", "class='ch-row'"). '>';
+            $html .= '<div '.apply_filters( "before_row_location", "class='ch-col-6'"). '>';
             //phone
             if (!empty($location_phone)) {
                 $html .= '<img src="' . $this->plugin_url . '/assets/icon/phone2.svg" style="width:20px; height:20px;">'."\t\n".'<b>' . __('Phone:' , 'last-tap-event') . '</b> ' . __($location_phone) . '<br>';
@@ -268,16 +279,16 @@ class LastTap_LocationController extends LastTap_BaseController
             }
             //address
             if (!empty($location_address)) {
-                $html .= '<hr><img src="' . $this->plugin_url . '/assets/icon/location.svg" style="width:20px; height:20px;">'."\t\n".'<b class="teste">' . __( 'Address:' , 'last-tap-event') . '</b><br>'. __($location_country) . '<br>'. __($location_city). '<br>'. __($location_street). '<br>'. __($location_address) . '<br>';
+                $html .= '<hr><img src="' . $this->plugin_url . '/assets/icon/location.svg" style="width:20px; height:20px;">'."\t\n".'<b class="address">' . __( 'Address:' , 'last-tap-event') . '</b><br>'. __($location_country) . '<br>'. __($location_city). '<br>'. __($location_street). '<br>'. __($location_address) . '<br>';
             }
             $html .= '</div>';
             $html .= '<div class="ch-col-6">';
             //location
-            if (!empty(self::$location_cult_hour_days)) {
+            if (!empty(self::$location_hour_days)) {
                 $html .= '<p>';
-                $html .= '<b>' . apply_filters( 'location_cult_title', __( 'Location Hours' , 'last-tap-event') ). ' </b></br><br>';
-                foreach (self::$location_cult_hour_days as $day_key => $day_value) {
-                    $cult_hours = get_post_meta($post->ID , '_lt_location_cult_hours_' . $day_key , true);
+                $html .= '<b>' . apply_filters( 'location_title', __( 'Location Hours' , 'last-tap-event') ). ' </b></br><br>';
+                foreach (self::$location_hour_days as $day_key => $day_value) {
+                    $cult_hours = get_post_meta($post->ID , '_lt_location_hours_' . $day_key , true);
                     $html .= '<img src="' . $this->plugin_url . '/assets/icon/clock.svg" style="width:20px; height:20px;">'."\t\n".'<span class="day">' . ucfirst(__($day_key)) . ": \t" . '</span><span class="hours">' . $cult_hours . '</span></br>';
                 }
                 $html .= '</p>';
@@ -291,7 +302,7 @@ class LastTap_LocationController extends LastTap_BaseController
             do_action('location_meta_data_output_end' , $location_id);
 
             $html .= '</section>';
-            $html .= $content;
+            
 
             return $html;
 
@@ -306,10 +317,9 @@ class LastTap_LocationController extends LastTap_BaseController
     public function lt_get_locations_output($arguments = "")
     {
 
-
         //default args
         $default_args = array(
-            'location_id' => '' ,
+            'post_type' => 'locations',
             'number_of_locations' => -1 ,
         );
 
@@ -328,7 +338,6 @@ class LastTap_LocationController extends LastTap_BaseController
         $location_args = array(
             'post_type' => 'locations' ,
             'posts_per_page' => $default_args['number_of_locations'] ,
-            'post_name' => '' ,
             'post_status' => 'publish'
         );
         //if we passed in a single location to display
@@ -344,6 +353,8 @@ class LastTap_LocationController extends LastTap_BaseController
             $html .= '<articlelocation_list cf">';
             //foreach location
             foreach ($locations as $location) {
+
+
                 $html .= '<section class="location">';
                 //collect location data
                 $location_id = $location->ID;
@@ -364,7 +375,7 @@ class LastTap_LocationController extends LastTap_BaseController
                 $html = apply_filters('location_before_main_content' , $html);
 
                 //title
-                                $html .= '<a href="' . esc_url($location_permalink) . '" title="' . esc_attr__('view location' , 'last-tap-event') . '">';
+                $html .= '<a href="' . esc_url($location_permalink) . '" title="' . esc_attr__('view location' , 'last-tap-event') . '">';
 
                 $html .= '<h2 class="ch-title">';
                 $html .= $location_title;
@@ -412,10 +423,12 @@ class LastTap_LocationController extends LastTap_BaseController
                 //readmore
                 $html .= '<a class="link" href="' . esc_url($location_permalink) . '" title="' . esc_attr__('view location' , 'last-tap-event') . '">' . __('View Location' , 'last-tap-event') . '</a>';
                 $html .= '</section>';
-            }
+            
             $html .= '</article>';
             $html .= '<div class="cf"></div>';
-        }
+        } // end foresch
+    }
+        
 
         echo $html;
     }
@@ -457,7 +470,7 @@ class LastTap_LocationController extends LastTap_BaseController
         //search for our cult hour data and update
         foreach ($sanitize_data as $key => $value) {
             //if we found our cult hour data, update it
-            if (preg_match('/^_lt_location_cult_hours_/' , $key)) {
+            if (preg_match('/^_lt_location_hours_/' , $key)) {
                 update_post_meta($post_id , $key , $value);
             }
         }

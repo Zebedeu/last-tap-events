@@ -9,7 +9,7 @@
 defined('ABSPATH') || exit;
 
 
-class LastTap_WidgetController extends LastTap_BaseController
+class LastTap_MediaWidgetController extends LastTap_BaseController
 {
     public function lt_register()
     {

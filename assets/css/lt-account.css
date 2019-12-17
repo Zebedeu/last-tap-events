@@ -207,6 +207,9 @@ li#ch-list-nav {
     clear: both;
 }
 
+/* image responsive */
+
+.ch-img-responsive,.thumbnail a>img,.thumbnail>img{display:block;max-width:100%;height:auto}
 /*location listing*/
 .location_list {
     float: left;

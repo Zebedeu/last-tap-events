@@ -27,6 +27,10 @@ class LastTap_EventController extends LastTap_BaseController
         add_action('save_post', array($this, 'lt_eventposts_save_meta'), 1, 2);
         add_filter('the_content', array($this, 'lt_prepend_event_meta_to_content')); //gets our meta data and dispayed it before the content
         add_shortcode('events', array($this, 'lt_event_shortcode_output'));
+        add_action('manage_event_posts_columns', array($this, 'lt_set_event_custom_columns'));
+        add_action('manage_event_posts_custom_column', array($this, 'lt_set_event_custom_columns_data'), 10, 2);
+        add_filter('manage_edit-event_sortable_columns', array($this, 'lt_set_event_custom_columns_sortable'));
+
 
 
     }
@@ -777,5 +781,74 @@ class LastTap_EventController extends LastTap_BaseController
 
 
     }
+
+    public function lt_set_event_custom_columns($columns)
+    {
+        $title = $columns['title'];
+        $date = $columns['date'];
+        unset($columns['title'], $columns['date']);
+
+        $columns['title'] = $title;
+        $columns['telephone'] =  __('Telephone', 'last-tap-event');
+        $columns['price'] =  __('Price', 'last-tap-event');
+        $columns['email'] =  __('Event Organizers email', 'last-tap-event');
+        $columns['date'] = $date;
+
+        return $columns;
+    }
+
+    public function lt_set_event_custom_columns_data($column, $post_id)
+    {
+        // $title = get_post_meta($post_id, '_event_participant_key', true);
+        $telefone = get_post_meta($post_id, '_lt_event_phone', true);
+        $price = get_post_meta($post_id, '_lt_event_price', true);
+        $email = get_post_meta($post_id, '_lt_event_organizer', true);
+        $corrency = esc_attr( get_option( 'event_currency' ) );
+        // $title = isset($title['name']) ? $title['name'] : '';
+        $email = isset($email) ? $email : '';
+        $telephone = isset($telefone) ? $telefone : '';
+        $price = isset($price) ? $price : '00.00';
+        $corrency = isset($corrency) ? $corrency : '';
+
+
+  $upload_dir = wp_upload_dir();
+  $upload_dir = $upload_dir['baseurl'] . '/2019/12/wp-header-logo.png' ;
+  $a =preg_replace('/^https?:/', '', $upload_dir);
+
+
+        switch ($column) {
+            case 'name':
+                echo '<strong>' . $title . '</strong><br/><a href="mailto:' . $email . '">' . $email . '</a>';
+                break;
+
+            case 'telephone':
+                echo $telephone;
+                break;
+            case 'price':
+                echo $price . ' '.$corrency;
+                break;
+
+            case 'email':
+                echo $email;
+                break;
+
+        }
+
+    }
+
+
+    public function lt_set_event_custom_columns_sortable($columns)
+    {
+        $columns['name'] = __( 'name', 'last-tap-event');
+        $columns['telephone'] = __( 'Telephone', 'last-tap-event');
+        $columns['email'] = __( 'Email', 'last-tap-event');
+        $columns['price'] = __( 'price', 'last-tap-event');
+
+        return $columns;
+    }
+
+
+
+
 
 }

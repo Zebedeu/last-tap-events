@@ -36,7 +36,7 @@ class LastTap_Enqueue extends LastTap_BaseController
 
     public function lt_gutemberg_register(){
 
-        wp_enqueue_script( 'let-block', $this->plugin_url . 'build/index.js', array('wp-blocks', 'wp-editor', 'wp-components', 'wp-i18n'), filemtime($this->plugin_path . 'build/index.js')  );
+        wp_enqueue_script( 'my-bloc', $this->plugin_url . 'build/index.js', array('wp-blocks', 'wp-editor', 'wp-components', 'wp-i18n'), filemtime($this->plugin_path . 'build/index.js')  );
         register_block_type( 'blockevent/custom-cta', array( 
 
             'editor_script' => 'cta-block.js'
@@ -63,6 +63,7 @@ class LastTap_Enqueue extends LastTap_BaseController
 }
     public function lt_enqueue_public()
     {
+        wp_enqueue_style('boostrap-lastTap', $this->plugin_url . 'assets/css/bootstrap.css');
         wp_enqueue_style('event_css3', $this->plugin_url . 'assets/css/lt-account.css');
         wp_enqueue_style('mypluginstyle', $this->plugin_url . 'assets/lt-style.css');
         wp_enqueue_style('part_css', $this->plugin_url . 'assets/css/parti.css', array(), false, 'all');
