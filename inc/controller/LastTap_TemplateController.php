@@ -19,7 +19,8 @@ class LastTap_TemplateController extends LastTap_BaseController
 
         $this->templates = array(
             'page-templates/location-template.php' => __('Location  Layout', 'last-tap-event'),
-            'page-templates/event-template.php' => __('Event  Layout', 'last-tap-event')
+            'page-templates/event-template.php' => __('Event  Layout', 'last-tap-event'),
+            'page-templates/event-membership.php' => __('Event MemberShip Layout', 'last-tap-event'),
         );
 
         add_filter('theme_page_templates', array($this, 'lt_custom_template'));

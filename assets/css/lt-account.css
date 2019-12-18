@@ -183,6 +183,28 @@ li#ch-list-nav {
     background-color: #ccc;
 }
 
+/* links */
+.ch-tab .links {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.ch-tab .links:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.ch-tab .links.active {
+    background-color: #ccc;
+}
+
 /* Style the tab content */
 .ch-tabcontent {
     display: none;
@@ -207,6 +229,9 @@ li#ch-list-nav {
     clear: both;
 }
 
+/* image responsive */
+
+.ch-img-responsive,.thumbnail a>img,.thumbnail>img{display:block;max-width:100%;height:auto}
 /*location listing*/
 .location_list {
     float: left;

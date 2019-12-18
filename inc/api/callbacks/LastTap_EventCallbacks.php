@@ -21,7 +21,8 @@ class LastTap_EventCallbacks extends LastTap_BaseController
         return $newData = date("F j Y H:i", strtotime($date));
 
     }
-  public function comments($value='')
+
+    public function comments($value='')
     {
             global $post;
 

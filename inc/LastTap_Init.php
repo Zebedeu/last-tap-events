@@ -41,7 +41,8 @@ final class LastTap_Init
             LastTap_SettingsLinks::class,
             LastTap_CustomPostTypeController::class,
             LastTap_CustomTaxonomyController::class,
-            LastTap_WidgetController::class,
+            LastTap_LocationWidgetController::class,
+            LastTap_MediaWidgetController::class,
             LastTap_TestimonialController::class,
             LastTap_TemplateController::class,
             LastTap_LocationController::class,
@@ -49,6 +50,7 @@ final class LastTap_Init
             LastTap_NotificationController::class,
             LastTap_EventController::class,
             LastTap_ParticipantController::class,
+            LastTap_MembershipController::class,
         ];
     }
 

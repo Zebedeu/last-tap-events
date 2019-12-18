@@ -216,7 +216,6 @@ public function lt_chanche_text_color_button()
         <?php
     }
 
-
     public function lt_adminDashboard()
     {
         return require_once("$this->plugin_path/templates/admin/admin.php");
