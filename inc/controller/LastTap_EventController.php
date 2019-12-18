@@ -13,6 +13,7 @@ defined('ABSPATH') || exit;
 class LastTap_EventController extends LastTap_BaseController
 
 {
+    private  $is_user_logged_in;
 
     public function lt_register()
     {
@@ -30,6 +31,8 @@ class LastTap_EventController extends LastTap_BaseController
         add_action('manage_event_posts_columns', array($this, 'lt_set_event_custom_columns'));
         add_action('manage_event_posts_custom_column', array($this, 'lt_set_event_custom_columns_data'), 10, 2);
         add_filter('manage_edit-event_sortable_columns', array($this, 'lt_set_event_custom_columns_sortable'));
+        add_action('init', function(){ $this->is_user_logged_in = is_user_logged_in(); $this->is_user_logged_in; });
+
 
 
 
@@ -180,20 +183,20 @@ class LastTap_EventController extends LastTap_BaseController
 
 
 
-        <div class="field-container">
+        <div class="lastTap field-container">
 
-            <div class="field">
-                <div class="ch-col-12">
-                    <div class="ch-col-1">
+            <div class="lastTap field">
+                <div class="lastTap col-lg-12">
+                    <div class="lastTap col-lg-1">
                         <label for="_lt_event_price"><?php _e('Event price :'); ?></label>
                         <input type="text" name="_lt_event_price"  value="<?php echo $detal["_lt_event_price"] ?? ""; ?>" />
 
                     </div>
-                    <div class="ch-col-5">
+                    <div class="lastTap col-lg-5">
                         <label for="_lt_event_price"><?php _e('Event Currency :'); ?></label>
                             <?php echo $value = esc_attr( get_option( 'event_currency' ) );?>
                     </div>
-                    <div class="ch-col-12">
+                    <div class="lastTap col-lg-12">
                          <label for="_lt_event_partic_limit"><?php _e('Event Participe Limits:'); ?></label>
                         <input type="text" name="_lt_event_partic_limit" value="<?php echo $detal["_lt_event_partic_limit"] ?? ""; ?>"/>
             
@@ -201,21 +204,21 @@ class LastTap_EventController extends LastTap_BaseController
                 </div>
             </div>
             <hr>
-            <div class="field">
-                <div class="ch-col-12">
-                    <div class="ch-col-5">
+            <div class="lastTap field">
+                <div class="lastTap col-lg-12">
+                    <div class="lastTap col-lg-5">
                         <label for="_lt_event_country"><?php _e('Event Country:'); ?></label>
                         <input type="text" name="_lt_event_country" value="<?php echo $detal["_lt_event_country"] ?? ""; ?>"/>
                     </div>
-                    <div class="ch-col-5">
+                    <div class="lastTap col-lg-5">
                         <label for="_lt_event_city"><?php _e('Event City:'); ?></label>
                         <input type="text" name="_lt_event_city" value="<?php echo $detal["_lt_event_city"] ?? ""; ?>"/>
                     </div>
-                    <div class="ch-col-5">
+                    <div class="lastTap col-lg-5">
                         <label for="_lt_event_address"><?php _e('Event Address:'); ?></label>
                         <input type="text" name="_lt_event_address" value="<?php echo $detal["_lt_event_address"] ?? ""; ?>"/>
                     </div>
-                    <div class="ch-col-5">
+                    <div class="lastTap col-lg-5">
                          <label for="_lt_event_street"><?php _e('Event Street:'); ?></label>
                          <input type="text" name="_lt_event_street" value="<?php echo $detal["_lt_event_street"] ?? ""; ?>"/>
                     </div>
@@ -223,22 +226,22 @@ class LastTap_EventController extends LastTap_BaseController
                 </div>
             </div>
             <hr>
-            <div class="field">
-                <div class="ch-col-12">
-                    <div class="ch-col-5">
+            <div class="lastTap field">
+                <div class="lastTap col-lg-12">
+                    <div class="lastTap col-lg-5">
                         <label for="_lt_event_email"><?php _e('Event Email:'); ?></label>
                         <input type="email" name="_lt_event_email" value="<?php echo $detal["_lt_event_email"] ?? ""; ?>"/>
                     </div>
-                    <div class="ch-col-5">
+                    <div class="lastTap col-lg-5">
                         <label for="_lt_event_organizer"><?php _e('Event Organizers email:'); ?></label>
                         <input type="email" name="_lt_event_organizer" value="<?php echo $detal["_lt_event_organizer"] ?? ""; ?>"/>
                     </div>
-                    <div class="ch-col-5">
+                    <div class="lastTap col-lg-5">
                         <label for="_lt_event_phone"><?php _e('Event Phone:'); ?></label>
                         <input type="tel" name="_lt_event_phone" value="<?php echo $detal["_lt_event_phone"] ?? ""; ?>"/>
                     </div>
                 </div>
-            <div class="field">
+            <div class="lastTap field">
                 <label for="_lt_event_phone_2"><?php _e('Event Phone 2:'); ?></label>
                 <input type="tel" name="_lt_event_phone_2" value="<?php echo $detal["_lt_event_phone_2"] ?? ""; ?>"/>
             </div>
@@ -425,9 +428,15 @@ class LastTap_EventController extends LastTap_BaseController
             <?php
 
             ?>
-            <div class="ch-col-12">
-                <div class="ch-row">
-                        <div class="ch-col-7">
+
+
+                             <?php    if ( !$this->is_user_logged_in ) {
+                                         echo '<div class="lastTap col-lg-12 ch-tab links"> Please login by <a href="'.wp_login_url().'">clicking here</a>.</div>';
+                            }?>
+
+            <div class="lastTap col-lg-12">
+                <div class="lastTap row">
+                        <div class="lastTap col-lg-7">
 
             <img src="<?php echo $this->plugin_url . "/assets/icon/compose.svg"; ?>" style="width:20px; height:20px;">
             <strong><?php echo "\t\n" . __('Publish date:', 'last-tap-event'); ?></strong><?php echo the_date('M d Y'); ?><br>
@@ -460,8 +469,9 @@ class LastTap_EventController extends LastTap_BaseController
             <img src="<?php echo $this->plugin_url . "/assets/icon/finish.svg"; ?>" style="width:20px; height:20px;">
             <strong><?php echo "\t\n" . __('End event timestamp:', 'last-tap-event'); ?></strong><?php echo "\t\n" . $this->callbacks->formatDate($endEvent); ?><br>
                 </div>
-                    <div class="ch-col-5">
-                            <?php $price = get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_price'];
+                    <div class="lastTap col-lg-5">
+                            <?php
+                             $price = get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_price'];
 
                              $currency = get_option( 'event_currency', true );
 
@@ -470,9 +480,7 @@ class LastTap_EventController extends LastTap_BaseController
                                 $currency = null;
                              }
                         ?>                        <strong><?php printf( __('Price: %s %s ', 'last-tap-event'), $price, $currency);?>  </strong>
-                    </div> <!-- ch-col-7 -->
                     <hr>
-                    <div class="ch-col-5">
                         <?php 
 
                              $count_participant = $this->lastTap_count_event_participant($event->ID);
@@ -491,15 +499,16 @@ class LastTap_EventController extends LastTap_BaseController
                                 <strong><?php printf( 
                                     __('Nº of participants: %s', 'last-tap-event'), count($count_participant) 
                                     ); ?></strong>
-                    </div> <!-- ch-col-5 -->
+                    </div> <!-- col-lg-7 -->
+
                 </div>
             </div>
 
-            <div class="ch-col-12">
-                <div class="ch-row">
-                    <div class="ch-col-6">
+            <div class="lastTap col-lg-12">
+                <div class="lastTap row">
+                    <div class="lastTap col-lg-6">
 
-                        <label class="ch-center"><img
+                        <label class="lastTap center"><img
                                     src="<?php echo $this->plugin_url . "/assets/icon/location.svg"; ?>"
                                     style="width:40px; height:40px;">
                             <h2><?php _e(' Location', 'last-tap-event'); ?></h2></label>
@@ -521,9 +530,9 @@ class LastTap_EventController extends LastTap_BaseController
                         <br>
 
                     </div>
-                    <div class="ch-col-6">
+                    <div class="lastTap col-lg-6">
 
-                        <label class="ch-center"><img
+                        <label class="lastTap center"><img
                                     src="<?php echo $this->plugin_url . "/assets/icon/contacteditor.svg"; ?>"
                                     style="width:40px; height:40px;">
                             <h2><?php _e(' Contact', 'last-tap-event'); ?></h2></label>
@@ -550,16 +559,16 @@ class LastTap_EventController extends LastTap_BaseController
             
             <?php $event_permalink = get_permalink($event);
             $html = '';
-            $html .= '<h2 class="ch-title">';
+            $html .= '<h2 class="lastTap title">';
             $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event', 'last-tap-event') . '">';
             $html .= '</a>';
             $html .= '</h2>'; ?>
 
             <?php
 
-            $html .= '<div class="ch-row"><div class="ch-col-12">';
+            $html .= '<div class="lastTap row"><div class="lastTap col-lg-12">';
             $html .= $content;
-            $html .= '</div><div class="ch-col-12">';
+            $html .= '</div><div class="lastTap col-lg-12">';
             $html .= get_the_post_thumbnail($event->ID, 'thumbnail');
             $html .= "</div></div>"; 
             echo  $html;
@@ -570,14 +579,14 @@ class LastTap_EventController extends LastTap_BaseController
 
             ?>
 
-            <div class="ch-col-12">
-                <div class="ch-row">
+            <div class="lastTap col-lg-12">
+                <div class="lastTap row">
                     <hr>
-                    <div class="ch-col-12">
+                    <div class="lastTap col-lg-12">
                         <?php 
                         if($event_partici == count($count_participant)){?>
-                            <header class="header">
-                                <button class="ch-tab" style="background: red;" onclick="myFunction()"><?php esc_html_e( 'INSCRIPTIONS ARE CLOSED! We have reached the maximum number of members, and that is why registration is closed.!', 'last-tap-event' );?></button>
+                            <header class="lastTap header">
+                                <button class="lastTap tab" style="background: red;" onclick="myFunction()"><?php esc_html_e( 'INSCRIPTIONS ARE CLOSED! We have reached the maximum number of members, and that is why registration is closed.!', 'last-tap-event' );?></button>
                             </header>
                         <?php }else{
                             $this->get_participe_event_form();
@@ -657,20 +666,20 @@ class LastTap_EventController extends LastTap_BaseController
                 $event_title = get_the_title($event_id);
                 $event_permalink = get_permalink($event_id);
 
-                $html .= '<article class="ch-col-12 " style="border: 12px solid '.get_option( 'event_border_color').'">';
-                $html .= '<div class="ch-row">';
+                $html .= '<article class="lastTap col-lg-12 " style="border: 12px solid '.get_option( 'event_border_color').'">';
+                $html .= '<div class="lastTap row">';
 
-                $html .= '<h2 class="ch-title">';
+                $html .= '<h2 class="lastTap title">';
                 $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event', 'last-tap-event') . '">';
                 $html .= $event_title;
                 $html .= '</a>';
                 $html .= '</h2>';
 
 
-                $html .= '<section class="ch-col-6 sermon" >';
+                $html .= '<section class="lastTap col-lg-6 sermon" >';
 
                 $event_thumbnail = get_the_post_thumbnail($event_id, 'event-thumb');
-                $html .= '<div class="ch-col-1 image_content">';
+                $html .= '<div class="lastTap col-lg-1 image_content">';
 
                 $event_content = apply_filters('the_content', $event->post_content);
                 $html .= '</div>';
@@ -691,12 +700,12 @@ class LastTap_EventController extends LastTap_BaseController
                 if (!empty($event_thumbnail) || !empty($event_content)) {
 
                     if (!empty($event_thumbnail)) {
-                        $html .= '<p class="ch-col-3 image_content">';
+                        $html .= '<p class="lastTap col-lg-3 image_content">';
                         $html .= $event_thumbnail;
 
                         $html .= '</p>';
                     }else{
-                    $html .= '<p class="ch-col-3 image_content">';
+                    $html .= '<p class="lastTap col-lg-3 image_content">';
                     $html .= '<img src="' . $this->plugin_url . '/assets/images/no-image-available-icon-6.png">';
                     $html .= '</p>';
 
@@ -729,7 +738,7 @@ class LastTap_EventController extends LastTap_BaseController
 
                         $html .= '<img src="' . $this->plugin_url . '/assets/icon/finish.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('End event timestamp:', 'last-tap-event') . '</strong>' . "\t\n" . $this->callbacks->formatDate($endEvent) . '<br>';
                     $html .= '</section>';
-                    $html .= '<div class="ch-col-6">';
+                    $html .= '<div class="lastTap col-lg-6">';
                     $html .= $event_content;
                     $html .= '</div>';
 
@@ -743,10 +752,10 @@ class LastTap_EventController extends LastTap_BaseController
                 $html = apply_filters('event_after_main_content', $html);
 
                 //readmore
-                $html .= '<a class="link" href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event', 'last-tap-event') . '">' . __('View Event', 'last-tap-event') . '</a>';
+                $html .= '<a class="lastTap link" href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event', 'last-tap-event') . '">' . __('View Event', 'last-tap-event') . '</a>';
             $html .= '</section>';
             $html .= '</article>';
-            $html .= '<div class="cf"></div>';
+            $html .= '<div class="lastTap cf"></div>';
 
             }// and foreach
         } // and if
@@ -755,8 +764,12 @@ class LastTap_EventController extends LastTap_BaseController
     }
 
     public function get_participe_event_form(){
+        if ( $this->is_user_logged_in ) {
+                echo  do_shortcode( '[particip-form]', false );
+        }else{
+             echo 'Please login by <a href="'.wp_login_url().'">clicking here</a>.';
+        }
 
-       echo  do_shortcode( '[particip-form]', false );
     }
 
     public function lastTap_count_event_participant($event_id){
@@ -846,9 +859,5 @@ class LastTap_EventController extends LastTap_BaseController
 
         return $columns;
     }
-
-
-
-
 
 }

@@ -35,7 +35,9 @@ class LastTap_BaseController
             'media_widget' => __('Activate Media Widget', 'last-tap-event'),
             'location_widget' => __('Activate Location Widget', 'last-tap-event'),
             'notify_manager' => __('Activate Notification', 'last-tap-event'),
-            'templates_manager' => __('Activate Custom Templates', 'last-tap-event')
+            'templates_manager' => __('Activate Custom Templates', 'last-tap-event'),
+            'membership_manager' => __('Activate Membership Manager', 'k7-church'),
+
         );
     }
 

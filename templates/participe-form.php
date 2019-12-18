@@ -3,6 +3,15 @@ global $event, $wpdb;
 
 $postid = $wpdb->get_var( "SELECT ID FROM $wpdb->posts WHERE post_title = '" . $event . "'" );
 $getpost= get_post($postid);
+$current_user = wp_get_current_user();
+
+if(! ( $current_user instanceof WP_User ) ) {
+                return;
+  }
+
+$name = $current_user->display_name;
+$email = $current_user->user_email;
+
 
 ?>
 
@@ -18,13 +27,13 @@ $getpost= get_post($postid);
 
     <div class="field-container">
         <input type="text" class="field-input" placeholder="<?php esc_attr_e('Your Name', 'last-tap-event') ?>" id="name"
-               name="name" >
+               name="name" value="<?php echo $name ?? "";?>" >
         <small class="field-msg error" data-error="invalidName"><?php _e('Your Name is Required', 'last-tap-event') ?></small>
     </div>
 
     <div class="field-container">
         <input type="email" class="field-input" placeholder="<?php esc_attr_e('Your Email', 'last-tap-event') ?>" id="email"
-               name="email" >
+               name="email" value="<?php echo $email ?? "";?>" >
         <small class="field-msg error"
                data-error="invalidEmail"><?php _e('The Email address is not valid', 'last-tap-event') ?></small>
     </div>

@@ -50,6 +50,7 @@ final class LastTap_Init
             LastTap_NotificationController::class,
             LastTap_EventController::class,
             LastTap_ParticipantController::class,
+            LastTap_MembershipController::class,
         ];
     }
 
