@@ -1,27 +1,27 @@
 <div class="wrap">
-    <h1><?php _e('Taxonomy Manager', 'last-tap-event'); ?></h1>
+    <h1><?php _e('Taxonomy Manager', 'last-tap-events'); ?></h1>
     <?php settings_errors(); ?>
 
     <ul class="nav nav-tabs">
         <li class="<?php echo !isset($_POST["edit_taxonomy"]) ? 'active' : '' ?>"><a
-                    href="#tab-1"><?php _e('Your Taxonomies', 'last-tap-event'); ?></a></li>
+                    href="#tab-1"><?php _e('Your Taxonomies', 'last-tap-events'); ?></a></li>
         <li class="<?php echo isset($_POST["edit_taxonomy"]) ? 'active' : '' ?>">
             <a href="#tab-2">
-                <?php echo isset($_POST["edit_taxonomy"]) ? 'Edit' : 'Add' ?><?php _e('Taxonomy', 'last-tap-event'); ?>
+                <?php echo isset($_POST["edit_taxonomy"]) ? 'Edit' : 'Add' ?><?php _e('Taxonomy', 'last-tap-events'); ?>
             </a>
         </li>
-        <li><a href="#tab-3"><?php _e('Export', 'last-tap-event'); ?></a></li>
+        <li><a href="#tab-3"><?php _e('Export', 'last-tap-events'); ?></a></li>
     </ul>
 
     <div class="tab-content">
         <div id="tab-1" class="tab-pane <?php echo !isset($_POST["edit_taxonomy"]) ? 'active' : '' ?>">
 
-            <h3><?php _e('Manage Your Custom Taxonomies', 'last-tap-event'); ?></h3>
+            <h3><?php _e('Manage Your Custom Taxonomies', 'last-tap-events'); ?></h3>
 
             <?php
             $options = get_option('event_plugin_tax') ?: array();
 
-            echo '<table class="cpt-table"><tr><th>' . __('ID', 'last-tap-event') . '</th><th>' . __('Singular Name', 'last-tap-event') . '</th><th class="text-center">' . __('Hierarchical', 'last-tap-event') . '</th><th class="text-center">' . __('Actions', 'last-tap-event') . '</th></tr>';
+            echo '<table class="cpt-table"><tr><th>' . __('ID', 'last-tap-events') . '</th><th>' . __('Singular Name', 'last-tap-events') . '</th><th class="text-center">' . __('Hierarchical', 'last-tap-events') . '</th><th class="text-center">' . __('Actions', 'last-tap-events') . '</th></tr>';
 
             foreach ($options as $option) {
                 $hierarchical = isset($option['hierarchical']) ? "TRUE" : "FALSE";
@@ -58,7 +58,7 @@
         </div>
 
         <div id="tab-3" class="tab-pane">
-            <h3><?php _e('Export Your Taxonomies', 'last-tap-event'); ?></h3>
+            <h3><?php _e('Export Your Taxonomies', 'last-tap-events'); ?></h3>
 
         </div>
     </div>

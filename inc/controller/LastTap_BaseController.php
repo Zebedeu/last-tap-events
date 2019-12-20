@@ -27,15 +27,15 @@ class LastTap_BaseController
 
 
         $this->managers = array(
-            'participant_manager' => __('Activate Custom Participe', 'last-tap-event'),
-            'testimonial_manager' => __('Activate Testimonial Manager', 'last-tap-event'),
-            'cpt_manager' => __('Activate CPT Manager', 'last-tap-event'),
-            'taxonomy_manager' => __('Activate Taxonomy Manager', 'last-tap-event'),
-            'location_manager' => __('Activate Localion Manager', 'last-tap-event'),
-            'media_widget' => __('Activate Media Widget', 'last-tap-event'),
-            'location_widget' => __('Activate Location Widget', 'last-tap-event'),
-            'notify_manager' => __('Activate Notification', 'last-tap-event'),
-            'templates_manager' => __('Activate Custom Templates', 'last-tap-event'),
+            'participant_manager' => __('Activate Custom Participe', 'last-tap-events'),
+            'testimonial_manager' => __('Activate Testimonial Manager', 'last-tap-events'),
+            'cpt_manager' => __('Activate CPT Manager', 'last-tap-events'),
+            'taxonomy_manager' => __('Activate Taxonomy Manager', 'last-tap-events'),
+            'location_manager' => __('Activate Localion Manager', 'last-tap-events'),
+            'media_widget' => __('Activate Media Widget', 'last-tap-events'),
+            'location_widget' => __('Activate Location Widget', 'last-tap-events'),
+            'notify_manager' => __('Activate Notification', 'last-tap-events'),
+            'templates_manager' => __('Activate Custom Templates', 'last-tap-events'),
             'membership_manager' => __('Activate Membership Manager', 'k7-church'),
 
         );
@@ -53,8 +53,8 @@ class LastTap_BaseController
 
     public function lt_load_textdomain()
     {
-        unload_textdomain('last-tap-event');
-        load_plugin_textdomain('last-tap-event', false, plugin_basename(dirname(__FILE__, 3)) . '/languages');
+        unload_textdomain('last-tap-events');
+        load_plugin_textdomain('last-tap-events', false, plugin_basename(dirname(__FILE__, 3)) . '/languages');
     }
 
 }

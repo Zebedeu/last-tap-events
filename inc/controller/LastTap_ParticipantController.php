@@ -47,10 +47,13 @@ class LastTap_ParticipantController extends LastTap_BaseController
         $email = sanitize_email($_POST['email']);
         $telephone = sanitize_text_field($_POST['telephone']);
         $message = sanitize_text_field($_POST['message']);
+        $lastTap_title = sanitize_text_field($_POST['lastTap_title']);
         $party = isset($_POST['party']) ? 1 : 0;
         $post_event_id = sanitize_text_field($_POST['post_event_id']);
+        $lastTap_user_id = sanitize_text_field($_POST['lastTap_user_id']);
          
         $data = array(
+            'lastTap_user_id' => $lastTap_user_id,
             'post_event_id' => $post_event_id,
             'name' => $name,
             'email' => $email,
@@ -61,7 +64,7 @@ class LastTap_ParticipantController extends LastTap_BaseController
 
 
         $args = array(
-            'post_title' => __( 'New participant ', 'last-tap-event'),
+            'post_title' => $lastTap_title,
             'post_content' => $message,
             'post_author' => 1,
             'post_status' => 'publish',
@@ -76,9 +79,9 @@ class LastTap_ParticipantController extends LastTap_BaseController
 
             $to = ' <'.$event_organizer_email.'>';
 
-            $subject = apply_filters( 'lt_subject_participant', __('Hei! vou participar', 'last-tap-event'));
+            $subject = sprintf( apply_filters( 'lt_subject_participant', __('Hei! Yeah, I will participate in %s', 'last-tap-events')), $lastTap_title);
 
-            $message = apply_filters( 'lt_message_participant', sprintf(  __('Hi! %s,', 'last-tap-event'), "<br>". $message) );
+            $message = apply_filters( 'lt_message_participant', sprintf(  __('Hi! %s,', 'last-tap-events'), "<br>". $message) );
 
            (new LastTap_EmailController())->lt_send_email($to, $subject, $message);
             
@@ -116,8 +119,8 @@ class LastTap_ParticipantController extends LastTap_BaseController
     public function lt_participant_cpt()
     {
         $labels = array(
-            'name' => __('Participants','last-tap-event'),
-            'singular_name' => __('Participant', 'last-tap-event')
+            'name' => __('Participants','last-tap-events'),
+            'singular_name' => __('Participant', 'last-tap-events')
         );
 
         $args = array(
@@ -138,7 +141,7 @@ class LastTap_ParticipantController extends LastTap_BaseController
     {
         add_meta_box(
             'participant_author',
-            __( 'participant Options', 'last-tap-event'),
+            __( 'participant Options', 'last-tap-events'),
             array($this, 'lt_render_features_box'),
             'participant',
             'side',
@@ -164,6 +167,7 @@ class LastTap_ParticipantController extends LastTap_BaseController
         $approved = isset($data['approved']) ? $data['approved'] : false;
         $party = isset($data['party']) ? $data['party'] : false;
         $post_event_id = isset($data['post_event_id']) ? $data['post_event_id'] : false;
+        $lastTap_user_id = isset($data['lastTap_user_id']) ? $data['lastTap_user_id'] : false;
         ?>
         <p>
 
@@ -174,24 +178,26 @@ class LastTap_ParticipantController extends LastTap_BaseController
             ?>
             <input type="hidden" id="post_event_id" name="post_event_id" class="widefat"
                    value="<?php echo esc_attr($post_event_id); ?>">
-            <label class="meta-label" for="event_participant_author"><?php _e('Author Name', 'last-tap-event'); ?></label>
+            <input type="hidden" id="lastTap_user_id" name="lastTap_user_id" class="widefat"
+                   value="<?php echo esc_attr($lastTap_user_id); ?>">
+            <label class="meta-label" for="event_participant_author"><?php _e('Author Name', 'last-tap-events'); ?></label>
             <input type="text" id="event_participant_author" name="event_participant_author" class="widefat"
                    value="<?php echo esc_attr($name); ?>">
         </p>
         <p>
-            <label class="meta-label" for="event_participant_email"><?php _e('Author Email', 'last-tap-event'); ?></label>
+            <label class="meta-label" for="event_participant_email"><?php _e('Author Email', 'last-tap-events'); ?></label>
             <input type="email" id="event_participant_email" name="event_participant_email" class="widefat"
                    value="<?php echo esc_attr($email); ?>">
         </p>
         <p>
-            <label class="meta-label" for="event_participant_telephone"><?php _e('Author Telephone', 'last-tap-event'); ?></label>
+            <label class="meta-label" for="event_participant_telephone"><?php _e('Author Telephone', 'last-tap-events'); ?></label>
             <input type="text" id="event_participant_telephone" name="event_participant_telephone" class="widefat"
                    value="<?php echo esc_attr($telephone); ?>">
         </p>
 
         <div class="meta-container">
             <label class="meta-label w-50 text-left"
-                   for="event_participant_approved"><?php _e('Approved', 'last-tap-event'); ?></label>
+                   for="event_participant_approved"><?php _e('Approved', 'last-tap-events'); ?></label>
             <div class="text-right w-50 inline">
                 <div class="ui-toggle inline"><input type="checkbox" id="event_participant_approved"
                                                      name="event_participant_approved"
@@ -204,7 +210,7 @@ class LastTap_ParticipantController extends LastTap_BaseController
         </div>
         <div class="meta-container">
             <label class="meta-label w-50 text-left"
-                   for="event_participant_party"><?php _e('Partic', 'last-tap-event'); ?></label>
+                   for="event_participant_party"><?php _e('Partic', 'last-tap-events'); ?></label>
             <div class="text-right w-50 inline">
                 <div class="ui-toggle inline"><input type="checkbox" id="event_participant_party"
                                                      name="event_participant_party"
@@ -239,6 +245,7 @@ class LastTap_ParticipantController extends LastTap_BaseController
         }
 
         $data = array(
+            'lastTap_user_id' => sanitize_text_field($_POST['lastTap_user_id']),
             'post_event_id' => sanitize_text_field($_POST['post_event_id']),
             'name' => sanitize_text_field($_POST['event_participant_author']),
             'email' => sanitize_email($_POST['event_participant_email']),
@@ -255,11 +262,11 @@ class LastTap_ParticipantController extends LastTap_BaseController
         $date = $columns['date'];
         unset($columns['title'], $columns['date']);
 
-        $columns['name'] = __('Partic Name', 'last-tap-event');
+        $columns['name'] = __('Partic Name', 'last-tap-events');
         $columns['title'] = $title;
-        $columns['telephone'] =  __('Telphone', 'last-tap-event');
-        $columns['approved'] = __('Approved', 'last-tap-event');
-        $columns['party'] = __('Partic', 'last-tap-event');
+        $columns['telephone'] =  __('Telphone', 'last-tap-events');
+        $columns['approved'] = __('Approved', 'last-tap-events');
+        $columns['party'] = __('Partic', 'last-tap-events');
         $columns['date'] = $date;
 
         return $columns;
@@ -271,8 +278,8 @@ class LastTap_ParticipantController extends LastTap_BaseController
         $name = isset($data['name']) ? $data['name'] : '';
         $email = isset($data['email']) ? $data['email'] : '';
         $telephone = isset($data['telephone']) ? $data['telephone'] : '';
-        $approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>'. __( 'YES', 'last-tap-event').'</strong>' : __(  'NO', 'last-tap-event');
-        $party = isset($data['party']) && $data['party'] === 1 ? '<strong>'. __( 'YES', 'last-tap-event').'</strong>' : __(  'NO', 'last-tap-event');
+        $approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>'. __( 'YES', 'last-tap-events').'</strong>' : __(  'NO', 'last-tap-events');
+        $party = isset($data['party']) && $data['party'] === 1 ? '<strong>'. __( 'YES', 'last-tap-events').'</strong>' : __(  'NO', 'last-tap-events');
 
 
         switch ($column) {
@@ -297,9 +304,9 @@ class LastTap_ParticipantController extends LastTap_BaseController
 
     public function lt_set_partici_custom_columns_sortable($columns)
     {
-        $columns['name'] = __( 'name', 'last-tap-event');
-        $columns['approved'] = __( 'approved', 'last-tap-event');
-        $columns['party'] = __( 'partic', 'last-tap-event');
+        $columns['name'] = __( 'name', 'last-tap-events');
+        $columns['approved'] = __( 'approved', 'last-tap-events');
+        $columns['party'] = __( 'partic', 'last-tap-events');
 
         return $columns;
     }

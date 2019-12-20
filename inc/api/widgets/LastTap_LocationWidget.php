@@ -62,12 +62,12 @@ class LastTap_LocationWidget extends \WP_Widget
         $number_of_locations = (isset($instance['number_of_locations']) ? $instance['number_of_locations'] : 5);
 
         ?>
-        <p><?php _e( 'Select your options below', 'last-tap-event');?></p>
+        <p><?php _e( 'Select your options below', 'last-tap-events');?></p>
         <p>
-            <label for="<?php echo $this->get_field_name('location_id'); ?>"><?php _e('Location to display', 'last-tap-event'); ?></label>
+            <label for="<?php echo $this->get_field_name('location_id'); ?>"><?php _e('Location to display', 'last-tap-events'); ?></label>
             <select class="widefat" name="<?php echo $this->get_field_name('location_id'); ?>"
                     id="<?php echo $this->get_field_id('location_id'); ?>" value="<?php echo $location_id; ?>">
-                <option value="default"><?php _e('All Locations', ' last-tap-event'); ?></option>
+                <option value="default"><?php _e('All Locations', ' last-tap-events'); ?></option>
                 <?php
                 $args = array(
                     'posts_per_page' => -1,
@@ -87,15 +87,15 @@ class LastTap_LocationWidget extends \WP_Widget
             </select>
         </p>
         <p>
-            <small><?php _e('If you want to display multiple locations select how many below', 'last-tap-event'); ?></small>
+            <small><?php _e('If you want to display multiple locations select how many below', 'last-tap-events'); ?></small>
             <br/>
-            <label for="<?php echo $this->get_field_id('number_of_locations'); ?>"><?php _e('Number of Locations', 'last-tap-event'); ?></label>
+            <label for="<?php echo $this->get_field_id('number_of_locations'); ?>"><?php _e('Number of Locations', 'last-tap-events'); ?></label>
             <select class="widefat" name="<?php echo $this->get_field_name('number_of_locations'); ?>"
                     id="<?php echo $this->get_field_id('number_of_locations'); ?>"
                     value="<?php echo $number_of_locations; ?>">
                 <option value="default" <?php if ($number_of_locations == 'default') {
                     echo 'selected';
-                } ?>><?php _e('All Locations', 'last-tap-event'); ?>
+                } ?>><?php _e('All Locations', 'last-tap-events'); ?>
                 </option>
                 <option value="1" <?php if ($number_of_locations == '1') {
                     echo 'selected';

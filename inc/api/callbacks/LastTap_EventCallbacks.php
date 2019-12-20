@@ -36,7 +36,7 @@ class LastTap_EventCallbacks extends LastTap_BaseController
         
         <?php if ( get_option( 'comment_registration' ) && !$user_ID ) : ?>
         
-        <p><?php _e('You must be','last-tap-event');?> <a href="<?php echo wp_login_url( get_permalink() ); ?>"><?php _e('logged in</a> to post a comment.', 'last-tap-event');?></p>
+        <p><?php _e('You must be','last-tap-events');?> <a href="<?php echo wp_login_url( get_permalink() ); ?>"><?php _e('logged in</a> to post a comment.', 'last-tap-events');?></p>
         
         <?php else : ?>
         
@@ -50,26 +50,26 @@ class LastTap_EventCallbacks extends LastTap_BaseController
         
         <p>
         <input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="22" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
-        <label for="author"><?php _e('Name ','last-tap-event');?><?php if ( $req ) echo "( required )"; ?></label>
+        <label for="author"><?php _e('Name ','last-tap-events');?><?php if ( $req ) echo "( required )"; ?></label>
         </p>
         
         <p>
         <input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
-        <label for="email"><?php _e('Email', 'last-tap-event');?> ( <?php if ( $req ) echo "required, "; ?><?php _e(' never shared', 'last-tap-event' );?></label>
+        <label for="email"><?php _e('Email', 'last-tap-events');?> ( <?php if ( $req ) echo "required, "; ?><?php _e(' never shared', 'last-tap-events' );?></label>
         </p>
         
         <p>
         <input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" tabindex="3" />
-        <label for="url"><?php _e('Website','last-tap-event');?></label>
+        <label for="url"><?php _e('Website','last-tap-events');?></label>
         </p>
         
         <?php endif; ?>
         
         <p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
         
-        <p><?php _e('Some HTML is ok', 'last-tap-event');?>: <code><?php echo allowed_tags(); ?></code></p>
+        <p><?php _e('Some HTML is ok', 'last-tap-events');?>: <code><?php echo allowed_tags(); ?></code></p>
         
-        <p><input name="submit" type="submit" id="submit" tabindex="5" value="<?php _e('Submit Comment', 'last-tap-event');?>" /></p>
+        <p><input name="submit" type="submit" id="submit" tabindex="5" value="<?php _e('Submit Comment', 'last-tap-events');?>" /></p>
         <?php do_action( 'comment_form', $post->ID ); comment_id_fields(); ?>
         
         </form>

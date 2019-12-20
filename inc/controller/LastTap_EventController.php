@@ -46,20 +46,20 @@ class LastTap_EventController extends LastTap_BaseController
          */
         //Labels for post type
         $labels = array(
-            'name' => __('Event', 'last-tap-event'),
-            'singular_name' => __('Event', 'last-tap-event'),
-            'menu_name' => __('Events', 'last-tap-event'),
-            'name_admin_bar' => __('Event', 'last-tap-event'),
-            'add_new' => __('Add New', 'last-tap-event'),
-            'add_new_item' => __('Add New Event', 'last-tap-event'),
-            'new_item' => __('New Event', 'last-tap-event'),
-            'edit_item' => __('Edit Event', 'last-tap-event'),
-            'view_item' => __('View Event', 'last-tap-event'),
-            'all_items' => __('All Events', 'last-tap-event'),
-            'searlt_items' => __('Search Events', 'last-tap-event'),
-            'parent_item_colon' => __('Parent Event:', 'last-tap-event'),
-            'not_found' => __('No Event found.', 'last-tap-event'),
-            'not_found_in_trash' => __('No Events found in Trash.', 'last-tap-event'),
+            'name' => __('Event', 'last-tap-events'),
+            'singular_name' => __('Event', 'last-tap-events'),
+            'menu_name' => __('Events', 'last-tap-events'),
+            'name_admin_bar' => __('Event', 'last-tap-events'),
+            'add_new' => __('Add New', 'last-tap-events'),
+            'add_new_item' => __('Add New Event', 'last-tap-events'),
+            'new_item' => __('New Event', 'last-tap-events'),
+            'edit_item' => __('Edit Event', 'last-tap-events'),
+            'view_item' => __('View Event', 'last-tap-events'),
+            'all_items' => __('All Events', 'last-tap-events'),
+            'searlt_items' => __('Search Events', 'last-tap-events'),
+            'parent_item_colon' => __('Parent Event:', 'last-tap-events'),
+            'not_found' => __('No Event found.', 'last-tap-events'),
+            'not_found_in_trash' => __('No Events found in Trash.', 'last-tap-events'),
         );
         //arguments for post type
         $args = array(
@@ -70,7 +70,7 @@ class LastTap_EventController extends LastTap_BaseController
             'show_in_nav' => true,
             'query_var' => true,
             'hierarchical' => true,
-            'supports' => array('title', 'thumbnail', 'editor'),
+            'supports' => array('title', 'thumbnail', 'editor', 'excerpt'),
             'has_archive' => true,
             'menu_position' => 20,
             'show_in_admin_bar' => true,
@@ -91,12 +91,12 @@ class LastTap_EventController extends LastTap_BaseController
      */
     public function lt_eventposts_metaboxes()
     {
-        add_meta_box('event_date_start', __( 'Start Date and Time', 'last-tap-event'), array($this, 'event_date'), 'event', 'side', 'default', array('id' => '_start'));
-        add_meta_box('event_date_end', __('End Date and Time', 'last-tap-event'), array($this, 'event_date'), 'event', 'side', 'default', array('id' => '_end'));
+        add_meta_box('event_date_start', __( 'Start Date and Time', 'last-tap-events'), array($this, 'event_date'), 'event', 'side', 'default', array('id' => '_start'));
+        add_meta_box('event_date_end', __('End Date and Time', 'last-tap-events'), array($this, 'event_date'), 'event', 'side', 'default', array('id' => '_end'));
 
         add_meta_box(
             'event_location',
-            __( 'Event Location', 'last-tap-event'),
+            __( 'Event Location', 'last-tap-events'),
             array($this, 'event_location'),
             'event', 'normal',
             'default', array('id' => '_end'));
@@ -439,7 +439,7 @@ class LastTap_EventController extends LastTap_BaseController
                         <div class="lastTap col-lg-7">
 
             <img src="<?php echo $this->plugin_url . "/assets/icon/compose.svg"; ?>" style="width:20px; height:20px;">
-            <strong><?php echo "\t\n" . __('Publish date:', 'last-tap-event'); ?></strong><?php echo the_date('M d Y'); ?><br>
+            <strong><?php echo "\t\n" . __('Publish date:', 'last-tap-events'); ?></strong><?php echo the_date('M d Y'); ?><br>
             <?php
             // Gets the event start month from the meta field
             $month = get_post_meta($event->ID, '_event_detall_info', true)['_lt_start_month'];
@@ -459,15 +459,15 @@ class LastTap_EventController extends LastTap_BaseController
 
             ?>
             <img src="<?php echo $this->plugin_url . "/assets/icon/clock.svg"; ?>" style="width:20px; height:20px;">
-            <strong><?php echo "\t\n" . __('Event start date:', 'last-tap-event'); ?></strong><?php echo "\t\n" . $month . ' ' . $day . ' ' . $year; ?>
+            <strong><?php echo "\t\n" . __('Event start date:', 'last-tap-events'); ?></strong><?php echo "\t\n" . $month . ' ' . $day . ' ' . $year; ?>
             <br>
             <img src="<?php echo $this->plugin_url . "/assets/icon/timestampdate.svg"; ?>"
                  style="width:20px; height:20px;">
 
-            <strong><?php echo "\t\n" . __('Start event timestamp:', 'last-tap-event'); ?></strong><?php echo "\t\n" . $this->callbacks->formatDate($start); ?>
+            <strong><?php echo "\t\n" . __('Start event timestamp:', 'last-tap-events'); ?></strong><?php echo "\t\n" . $this->callbacks->formatDate($start); ?>
             <br>
             <img src="<?php echo $this->plugin_url . "/assets/icon/finish.svg"; ?>" style="width:20px; height:20px;">
-            <strong><?php echo "\t\n" . __('End event timestamp:', 'last-tap-event'); ?></strong><?php echo "\t\n" . $this->callbacks->formatDate($endEvent); ?><br>
+            <strong><?php echo "\t\n" . __('End event timestamp:', 'last-tap-events'); ?></strong><?php echo "\t\n" . $this->callbacks->formatDate($endEvent); ?><br>
                 </div>
                     <div class="lastTap col-lg-5">
                             <?php
@@ -476,10 +476,10 @@ class LastTap_EventController extends LastTap_BaseController
                              $currency = get_option( 'event_currency', true );
 
                              if( empty($price) ){
-                                $price = __('Free', 'last-tap-event');
+                                $price = __('Free', 'last-tap-events');
                                 $currency = null;
                              }
-                        ?>                        <strong><?php printf( __('Price: %s %s ', 'last-tap-event'), $price, $currency);?>  </strong>
+                        ?>                        <strong><?php printf( __('Price: %s %s ', 'last-tap-events'), $price, $currency);?>  </strong>
                     <hr>
                         <?php 
 
@@ -495,9 +495,9 @@ class LastTap_EventController extends LastTap_BaseController
 
                         ?>
 
-                            <strong><?php printf( __('Nº of places available:  %s ', 'last-tap-event'), $number); ?></strong><br><hr>
+                            <strong><?php printf( __('Nº of places available:  %s ', 'last-tap-events'), $number); ?></strong><br><hr>
                                 <strong><?php printf( 
-                                    __('Nº of participants: %s', 'last-tap-event'), count($count_participant) 
+                                    __('Nº of participants: %s', 'last-tap-events'), count($count_participant) 
                                     ); ?></strong>
                     </div> <!-- col-lg-7 -->
 
@@ -511,21 +511,21 @@ class LastTap_EventController extends LastTap_BaseController
                         <label class="lastTap center"><img
                                     src="<?php echo $this->plugin_url . "/assets/icon/location.svg"; ?>"
                                     style="width:40px; height:40px;">
-                            <h2><?php _e(' Location', 'last-tap-event'); ?></h2></label>
+                            <h2><?php _e(' Location', 'last-tap-events'); ?></h2></label>
 
                         <hr>
-                        <strong><?php _e('Event County:', 'last-tap-event'); ?></strong>
+                        <strong><?php _e('Event County:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_country']; ?></small>
                         <br>
-                        <strong><?php _e('Event City/Province:', 'last-tap-event'); ?></strong>
+                        <strong><?php _e('Event City/Province:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_city']; ?></small>
                         <br>
 
                         <hr>
-                        <strong><?php _e('Event Address:', 'last-tap-event'); ?></strong>
+                        <strong><?php _e('Event Address:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_address']; ?></small>
                         <br>
-                        <strong><?php _e('Event Street:', 'last-tap-event'); ?></strong>
+                        <strong><?php _e('Event Street:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_street']; ?></small>
                         <br>
 
@@ -535,20 +535,20 @@ class LastTap_EventController extends LastTap_BaseController
                         <label class="lastTap center"><img
                                     src="<?php echo $this->plugin_url . "/assets/icon/contacteditor.svg"; ?>"
                                     style="width:40px; height:40px;">
-                            <h2><?php _e(' Contact', 'last-tap-event'); ?></h2></label>
+                            <h2><?php _e(' Contact', 'last-tap-events'); ?></h2></label>
                         <hr>
-                        <strong><?php _e('Event Phone:', 'last-tap-event'); ?></strong>
+                        <strong><?php _e('Event Phone:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_phone']; ?></small>
                         <br>
-                        <strong><?php _e('Event Phone 2:', 'last-tap-event'); ?></strong>
+                        <strong><?php _e('Event Phone 2:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_phone_2']; ?></small>
                         <br>
 
                         <hr>
-                        <strong><?php _e('Event Email:', 'last-tap-event'); ?></strong>
+                        <strong><?php _e('Event Email:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_email']; ?></small>
                         <br>
-                        <strong><?php _e('Event or organizer email:', 'last-tap-event'); ?></strong>
+                        <strong><?php _e('Event or organizer email:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_organizer']; ?></small>
                         <br>
                     </div>
@@ -560,7 +560,7 @@ class LastTap_EventController extends LastTap_BaseController
             <?php $event_permalink = get_permalink($event);
             $html = '';
             $html .= '<h2 class="lastTap title">';
-            $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event', 'last-tap-event') . '">';
+            $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event', 'last-tap-events') . '">';
             $html .= '</a>';
             $html .= '</h2>'; ?>
 
@@ -586,7 +586,7 @@ class LastTap_EventController extends LastTap_BaseController
                         <?php 
                         if($event_partici == count($count_participant)){?>
                             <header class="lastTap header">
-                                <button class="lastTap tab" style="background: red;" onclick="myFunction()"><?php esc_html_e( 'INSCRIPTIONS ARE CLOSED! We have reached the maximum number of members, and that is why registration is closed.!', 'last-tap-event' );?></button>
+                                <button class="lastTap tab" style="background: red;" onclick="myFunction()"><?php esc_html_e( 'INSCRIPTIONS ARE CLOSED! We have reached the maximum number of members, and that is why registration is closed.!', 'last-tap-events' );?></button>
                             </header>
                         <?php }else{
                             $this->get_participe_event_form();
@@ -670,7 +670,7 @@ class LastTap_EventController extends LastTap_BaseController
                 $html .= '<div class="lastTap row">';
 
                 $html .= '<h2 class="lastTap title">';
-                $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event', 'last-tap-event') . '">';
+                $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event', 'last-tap-events') . '">';
                 $html .= $event_title;
                 $html .= '</a>';
                 $html .= '</h2>';
@@ -712,7 +712,7 @@ class LastTap_EventController extends LastTap_BaseController
 
                     }
                     if (!empty($event_content)) {
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/compose.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Publish date:'."\t\n", 'last-tap-event') . '</strong>' . get_the_date('M d Y') . '<br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/compose.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Publish date:'."\t\n", 'last-tap-events') . '</strong>' . get_the_date('M d Y') . '<br>';
 
                         ?>
                         <body onload='verHora()'><h3 id='relogio'></h3></body><?php
@@ -732,11 +732,11 @@ class LastTap_EventController extends LastTap_BaseController
                         $current_timestamp = $current_timestamp;
 
 
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/clock.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Event start date:', 'last-tap-event') . '</strong>' . "\t\n" . $month . ' ' . $day . ' ' . $year . '<br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/clock.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Event start date:', 'last-tap-events') . '</strong>' . "\t\n" . $month . ' ' . $day . ' ' . $year . '<br>';
 
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/timestampdate.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Start event timestamp:', 'last-tap-event') . '</strong>' . "\t\n" . $this->callbacks->formatDate($startEvent) . '<br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/timestampdate.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('Start event timestamp:', 'last-tap-events') . '</strong>' . "\t\n" . $this->callbacks->formatDate($startEvent) . '<br>';
 
-                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/finish.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('End event timestamp:', 'last-tap-event') . '</strong>' . "\t\n" . $this->callbacks->formatDate($endEvent) . '<br>';
+                        $html .= '<img src="' . $this->plugin_url . '/assets/icon/finish.svg" style="width:20px; height:20px;"><strong>' . "\t\n" . __('End event timestamp:', 'last-tap-events') . '</strong>' . "\t\n" . $this->callbacks->formatDate($endEvent) . '<br>';
                     $html .= '</section>';
                     $html .= '<div class="lastTap col-lg-6">';
                     $html .= $event_content;
@@ -752,7 +752,7 @@ class LastTap_EventController extends LastTap_BaseController
                 $html = apply_filters('event_after_main_content', $html);
 
                 //readmore
-                $html .= '<a class="lastTap link" href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event', 'last-tap-event') . '">' . __('View Event', 'last-tap-event') . '</a>';
+                $html .= '<a class="lastTap link" href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event', 'last-tap-events') . '">' . __('View Event', 'last-tap-events') . '</a>';
             $html .= '</section>';
             $html .= '</article>';
             $html .= '<div class="lastTap cf"></div>';
@@ -802,9 +802,9 @@ class LastTap_EventController extends LastTap_BaseController
         unset($columns['title'], $columns['date']);
 
         $columns['title'] = $title;
-        $columns['telephone'] =  __('Telephone', 'last-tap-event');
-        $columns['price'] =  __('Price', 'last-tap-event');
-        $columns['email'] =  __('Event Organizers email', 'last-tap-event');
+        $columns['telephone'] =  __('Telephone', 'last-tap-events');
+        $columns['price'] =  __('Price', 'last-tap-events');
+        $columns['email'] =  __('Event Organizers email', 'last-tap-events');
         $columns['date'] = $date;
 
         return $columns;
@@ -852,10 +852,10 @@ class LastTap_EventController extends LastTap_BaseController
 
     public function lt_set_event_custom_columns_sortable($columns)
     {
-        $columns['name'] = __( 'name', 'last-tap-event');
-        $columns['telephone'] = __( 'Telephone', 'last-tap-event');
-        $columns['email'] = __( 'Email', 'last-tap-event');
-        $columns['price'] = __( 'price', 'last-tap-event');
+        $columns['name'] = __( 'name', 'last-tap-events');
+        $columns['telephone'] = __( 'Telephone', 'last-tap-events');
+        $columns['email'] = __( 'Email', 'last-tap-events');
+        $columns['price'] = __( 'price', 'last-tap-events');
 
         return $columns;
     }

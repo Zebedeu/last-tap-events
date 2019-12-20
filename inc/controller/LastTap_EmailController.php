@@ -65,7 +65,7 @@ class LastTap_EmailController
         $num = get_post_meta($post->ID, '_notified_users', true);
 
         if ($post_type_object->publicly_queryable) {
-            @$msgs[$post_type][6] .= ' - '.$num.__(' notifications sent.', 'last-tap-event');
+            @$msgs[$post_type][6] .= ' - '.$num.__(' notifications sent.', 'last-tap-events');
 
         }
 

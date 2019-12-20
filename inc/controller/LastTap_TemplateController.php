@@ -15,12 +15,12 @@ class LastTap_TemplateController extends LastTap_BaseController
 
     public function lt_register()
     {
-        if (!$this->lt_activated('templates_manager')) return;
+        // if (!$this->lt_activated('templates_manager')) return;
 
         $this->templates = array(
-            'page-templates/location-template.php' => __('Location  Layout', 'last-tap-event'),
-            'page-templates/event-template.php' => __('Event  Layout', 'last-tap-event'),
-            'page-templates/event-membership.php' => __('Event MemberShip Layout', 'last-tap-event'),
+            'page-templates/location-template.php' => __('Location  Layout', 'last-tap-events'),
+            'page-templates/event-template.php' => __('Event  Layout', 'last-tap-events'),
+            'page-templates/event-membership.php' => __('Event MemberShip Layout', 'last-tap-events'),
         );
 
         add_filter('theme_page_templates', array($this, 'lt_custom_template'));

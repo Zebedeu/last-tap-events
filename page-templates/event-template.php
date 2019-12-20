@@ -42,14 +42,14 @@ get_header(); ?>
                      } ?>
                     <div class="lastTap row nopadding">
                         <div class="lastTap col-sm-6 nopadding">
-                            <time class="start pink"> <?php _e('Start', 'last-tap-event');?>
+                            <time class="start pink"> <?php _e('Start', 'last-tap-events');?>
                                 <span class="day"><?php echo $dd;?></span>
                                 <span class="month"><?php echo date('M', strtotime($start));?></span>
                                 <span class="year"><?php echo $yyy; ?></span>
                             </time>
                         </div>
                         <div class="lastTap col-sm-6 nopadding">
-                            <time class="end purple"><?php _e('End', 'last-tap-event');?> <span class="day"><?php echo $end_day; ?></span>
+                            <time class="end purple"><?php _e('End', 'last-tap-events');?> <span class="day"><?php echo $end_day; ?></span>
                                 <span class ="month"><?php echo date('M', strtotime($current_timestamp));?></span>
                                 <span class="year"><?php echo $end_year;?></span>
                             </time>
@@ -59,7 +59,7 @@ get_header(); ?>
                 <div class="lastTap panel-footer panel-primary">
                     <p><?php /* echo  $event_content; */ ?></p>
                     <?php get_template_part('single-event'); ?>
-                    <a href="<?php echo $event_permalink;?>" class="lastTap btn btn-success"><h4><?php _e('Viw Event...','last-tap-event');?></h4></a>
+                    <a href="<?php echo $event_permalink;?>" class="lastTap btn btn-success"><h4><?php _e('Viw Event...','last-tap-events');?></h4></a>
                 </div>
             </div>
         </div>

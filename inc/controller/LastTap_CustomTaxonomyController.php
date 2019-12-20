@@ -53,8 +53,8 @@ class LastTap_CustomTaxonomyController extends LastTap_BaseController
         $this->subpages = array(
             array(
                 'parent_slug' => 'event_plugin',
-                'page_title' => __('Custom Taxonomies', 'last-tap-event'),
-                'menu_title' => __('Taxonomy Manager', 'last-tap-event'),
+                'page_title' => __('Custom Taxonomies', 'last-tap-events'),
+                'menu_title' => __('Taxonomy Manager', 'last-tap-events'),
                 'capability' => 'manage_options',
                 'menu_slug' => 'event_taxonomy',
                 'callback' => array($this->callbacks, 'lt_adminTaxonomy')
@@ -80,7 +80,7 @@ class LastTap_CustomTaxonomyController extends LastTap_BaseController
         $args = array(
             array(
                 'id' => 'event_tax_index',
-                'title' => __('Custom Taxonomy Manager', 'last-tap-event'),
+                'title' => __('Custom Taxonomy Manager', 'last-tap-events'),
                 'callback' => array($this->tax_callbacks, 'lt_taxSectionManager'),
                 'page' => 'event_taxonomy'
             )
@@ -94,33 +94,33 @@ class LastTap_CustomTaxonomyController extends LastTap_BaseController
         $args = array(
             array(
                 'id' => 'taxonomy',
-                'title' => __('Custom Taxonomy ID', 'last-tap-event'),
+                'title' => __('Custom Taxonomy ID', 'last-tap-events'),
                 'callback' => array($this->tax_callbacks, 'lt_textField'),
                 'page' => 'event_taxonomy',
                 'section' => 'event_tax_index',
                 'args' => array(
                     'option_name' => 'event_plugin_tax',
                     'label_for' => 'taxonomy',
-                    'placeholder' => __('eg. genre', 'last-tap-event'),
+                    'placeholder' => __('eg. genre', 'last-tap-events'),
                     'array' => 'taxonomy'
                 )
             ),
             array(
                 'id' => 'singular_name',
-                'title' => __('Singular Name', 'last-tap-event'),
+                'title' => __('Singular Name', 'last-tap-events'),
                 'callback' => array($this->tax_callbacks, 'lt_textField'),
                 'page' => 'event_taxonomy',
                 'section' => 'event_tax_index',
                 'args' => array(
                     'option_name' => 'event_plugin_tax',
                     'label_for' => 'singular_name',
-                    'placeholder' => __('eg. Genre', 'last-tap-event'),
+                    'placeholder' => __('eg. Genre', 'last-tap-events'),
                     'array' => 'taxonomy'
                 )
             ),
             array(
                 'id' => 'hierarchical',
-                'title' => __('Hierarchical', 'last-tap-event'),
+                'title' => __('Hierarchical', 'last-tap-events'),
                 'callback' => array($this->tax_callbacks, 'lt_checkboxField'),
                 'page' => 'event_taxonomy',
                 'section' => 'event_tax_index',
@@ -133,7 +133,7 @@ class LastTap_CustomTaxonomyController extends LastTap_BaseController
             ),
             array(
                 'id' => 'objects',
-                'title' => __('Post Types', 'last-tap-event'),
+                'title' => __('Post Types', 'last-tap-events'),
                 'callback' => array($this->tax_callbacks, 'lt_checkboxPostTypesField'),
                 'page' => 'event_taxonomy',
                 'section' => 'event_tax_index',
