@@ -67,20 +67,20 @@ class LastTap_MediaWidget extends \WP_Widget
         $css = !empty($instance['css']) ? $instance['css'] : '';
         ?>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_attr_e('Title:', 'last-tap-event'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_attr_e('Title:', 'last-tap-events'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text"
                    value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('css')); ?>"><?php esc_attr_e('Image Style:', 'last-tap-event'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('css')); ?>"><?php esc_attr_e('Image Style:', 'last-tap-events'); ?></label>
 
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('css')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('css')); ?>" type="text"
                    value="<?php echo esc_attr($css); ?>">
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('image')); ?>"><?php esc_attr_e('Image:', 'last-tap-event'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('image')); ?>"><?php esc_attr_e('Image:', 'last-tap-events'); ?></label>
             <input class="widefat image-upload" id="<?php echo esc_attr($this->get_field_id('image')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('image')); ?>" type="text"
                    value="<?php echo esc_url($image); ?>">

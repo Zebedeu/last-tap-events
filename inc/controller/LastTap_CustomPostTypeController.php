@@ -53,8 +53,8 @@ class LastTap_CustomPostTypeController extends LastTap_BaseController
         $this->subpages = array(
             array(
                 'parent_slug' => 'event_plugin',
-                'page_title' => __('Custom Post Types', 'last-tap-event'),
-                'menu_title' => __('CPT Manager', 'last-tap-event'),
+                'page_title' => __('Custom Post Types', 'last-tap-events'),
+                'menu_title' => __('CPT Manager', 'last-tap-events'),
                 'capability' => 'manage_options',
                 'menu_slug' => 'event_cpt',
                 'callback' => array($this->callbacks, 'lt_adminCpt')
@@ -80,7 +80,7 @@ class LastTap_CustomPostTypeController extends LastTap_BaseController
         $args = array(
             array(
                 'id' => 'event_cpt_index',
-                'title' => __('Custom Post Type Manager', 'last-tap-event'),
+                'title' => __('Custom Post Type Manager', 'last-tap-events'),
                 'callback' => array($this->cpt_callbacks, 'lt_cptSectionManager'),
                 'page' => 'event_cpt'
             )
@@ -94,27 +94,27 @@ class LastTap_CustomPostTypeController extends LastTap_BaseController
         $args = array(
             array(
                 'id' => 'post_type',
-                'title' => __('Custom Post Type ID', 'last-tap-event'),
+                'title' => __('Custom Post Type ID', 'last-tap-events'),
                 'callback' => array($this->cpt_callbacks, 'lt_textField'),
                 'page' => 'event_cpt',
                 'section' => 'event_cpt_index',
                 'args' => array(
                     'option_name' => 'event_plugin_cpt',
                     'label_for' => 'post_type',
-                    'placeholder' => __('eg. product', 'last-tap-event'),
+                    'placeholder' => __('eg. product', 'last-tap-events'),
                     'array' => 'post_type'
                 )
             ),
             array(
                 'id' => 'singular_name',
-                'title' => __('Singular Name', 'last-tap-event'),
+                'title' => __('Singular Name', 'last-tap-events'),
                 'callback' => array($this->cpt_callbacks, 'lt_textField'),
                 'page' => 'event_cpt',
                 'section' => 'event_cpt_index',
                 'args' => array(
                     'option_name' => 'event_plugin_cpt',
                     'label_for' => 'singular_name',
-                    'placeholder' => __('eg. Product', 'last-tap-event'),
+                    'placeholder' => __('eg. Product', 'last-tap-events'),
                     'array' => 'post_type'
                 )
             ),
@@ -127,13 +127,13 @@ class LastTap_CustomPostTypeController extends LastTap_BaseController
                 'args' => array(
                     'option_name' => 'event_plugin_cpt',
                     'label_for' => 'plural_name',
-                    'placeholder' => __('eg. Products', 'last-tap-event'),
+                    'placeholder' => __('eg. Products', 'last-tap-events'),
                     'array' => 'post_type'
                 )
             ),
             array(
                 'id' => 'public',
-                'title' => __('Public', 'last-tap-event'),
+                'title' => __('Public', 'last-tap-events'),
                 'callback' => array($this->cpt_callbacks, 'lt_checkboxField'),
                 'page' => 'event_cpt',
                 'section' => 'event_cpt_index',
@@ -146,7 +146,7 @@ class LastTap_CustomPostTypeController extends LastTap_BaseController
             ),
             array(
                 'id' => 'has_archive',
-                'title' => __('Archive', 'last-tap-event'),
+                'title' => __('Archive', 'last-tap-events'),
                 'callback' => array($this->cpt_callbacks, 'lt_checkboxField'),
                 'page' => 'event_cpt',
                 'section' => 'event_cpt_index',

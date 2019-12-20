@@ -44,15 +44,15 @@ class LastTap_NotificationCallbacks extends LastTap_BaseController
         <table id="venue">
             <tbody>
             <tr>
-                <td class="label"><?php _e( 'Address', 'last-tap-event' ); ?></td>
+                <td class="label"><?php _e( 'Address', 'last-tap-events' ); ?></td>
                 <td><input type="text" id="address" name="venue[address]" value="<?php echo $address; ?>" size="30" /></td>
             </tr>
             <tr>
-                <td><?php _e( 'City', 'last-tap-event' ); ?></td>
+                <td><?php _e( 'City', 'last-tap-events' ); ?></td>
                 <td><input type="text" id="city" name="venue[city]" value="<?php echo $city; ?>" size="30" /></td>
             </tr>
             <tr>
-                <td><?php _e('Country', 'last-tap-event'); ?></td>
+                <td><?php _e('Country', 'last-tap-events'); ?></td>
                 <td>
                     <select name="venue[country]">
                         <option value="" <?php selected($country, ""); ?>>Select</option>
@@ -63,20 +63,20 @@ class LastTap_NotificationCallbacks extends LastTap_BaseController
                 </td>
             </tr>
             <tr>
-                <td><?php _e( 'zip', 'last-tap-event' ); ?></td>
+                <td><?php _e( 'zip', 'last-tap-events' ); ?></td>
                 <td><input type="text" id="zip" name="venue[zip]" value="<?php echo $zip; ?>" size="30" /></td>
             </tr>
             <tr>
-                <td><?php _e( 'Phone', 'last-tap-event' ); ?></td>
+                <td><?php _e( 'Phone', 'last-tap-events' ); ?></td>
                 <td><input type="text" id="phone" name="venue[phone]" value="<?php echo $phone; ?>" size="30" /></td>
             </tr>
             <tr>
-                <td><?php _e( 'Website', 'last-tap-event' ); ?></td>
+                <td><?php _e( 'Website', 'last-tap-events' ); ?></td>
                 <td><input type="text" id="website" name="venue[website]" value="<?php echo $website; ?>" size="30" /></td>
             </tr>
             
             <tr>
-                <td><?php _e('Disable notification', 'last-tap-event'); ?></td>
+                <td><?php _e('Disable notification', 'last-tap-events'); ?></td>
                 <td class="ui-toggle"><input class="ui-toggle" id="disable" type="checkbox" name="venue[disable]" value="1" <?php checked($disable, 'true'); ?> /></td>
             </tr>
 

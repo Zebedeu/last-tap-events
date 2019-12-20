@@ -52,12 +52,12 @@ class LastTap_NotificationController extends LastTap_BaseController
     public function lt_show_user_meta_fields($user)
     {
         ?>
-<h3><?php _e('Notification for receiving messages by country', 'last-tap-event'); ?></h3>
+<h3><?php _e('Notification for receiving messages by country', 'last-tap-events'); ?></h3>
 
 <table class="form-table">
 
     <tr>
-        <th scope="row"><?php _e('Country', 'last-tap-event'); ?></th>
+        <th scope="row"><?php _e('Country', 'last-tap-events'); ?></th>
 
         <td>
             <label for="country">
@@ -72,29 +72,29 @@ class LastTap_NotificationController extends LastTap_BaseController
                     <?php
         } ?>
                 </select>
-                <?php _e('Select country', 'last-tap-event'); ?>
+                <?php _e('Select country', 'last-tap-events'); ?>
             </label>
         </td>
     </tr>
 
     <tr>
-        <th scope="row"><?php _e('Notifications', 'last-tap-event'); ?></th>
+        <th scope="row"><?php _e('Notifications', 'last-tap-events'); ?></th>
         <td>
             <label for="notification">
                 <input id="notification" type="checkbox" name="notification" value="true"
                     <?php checked(esc_attr(get_user_meta($user->ID, 'notification', true)), 'true'); ?> />
-                <?php _e('Subscribe to email notifications', 'last-tap-event'); ?>
+                <?php _e('Subscribe to email notifications', 'last-tap-events'); ?>
             </label>
         </td>
     </tr>
 
     <tr>
-        <th scoper="row"><label for="telefono"><?php _e('Phone', 'last-tap-event'); ?></label></th>
+        <th scoper="row"><label for="telefono"><?php _e('Phone', 'last-tap-events'); ?></label></th>
         <td>
             <input type="text" name="phone" id="phone"
                 value="<?php echo esc_attr(get_user_meta($user->ID, 'phone', true)); ?>"
                 class="regular-text" /><br />
-            <span class="description"><?php _e('Phone number', 'last-tap-event'); ?></span>
+            <span class="description"><?php _e('Phone number', 'last-tap-events'); ?></span>
         </td>
     </tr>
 
@@ -140,7 +140,7 @@ class LastTap_NotificationController extends LastTap_BaseController
         foreach ($screens as $screen) {
             add_meta_box(
                 'lt_metabox',             // $id - meta_box ID
-                __('Venue information', 'last-tap-event'),      // $title - a title for the meta_box container
+                __('Venue information', 'last-tap-events'),      // $title - a title for the meta_box container
                 array($this->callbacks, 'lt_meta_box_callback'),   // $callback - the callback which outputs the html for the meta_box
                 $screen,                        // $post_type - where to show the meta_box. Possible values: 'post', 'page', 'dashboard', 'link', 'attachment', 'custom_post_type'
                 'advanced',                       // $context - possible values: 'normal', 'advanced', 'side'
@@ -217,11 +217,11 @@ class LastTap_NotificationController extends LastTap_BaseController
         foreach ($users as $user) {
             $to = $user->display_name.' <'.$user->user_email.'>';
 
-            $subject = sprintf(__('Hei! We have news for you from %s', 'last-tap-event'), $this->notification->notification_countrys[$country]);
+            $subject = sprintf(__('Hei! We have news for you from %s', 'last-tap-events'), $this->notification->notification_countrys[$country]);
 
-            $message = sprintf(__('Hi %s!', 'last-tap-event'), $user->display_name)."\r\n".
-        sprintf(__('We have a new post from %s', 'last-tap-event'), $this->notification->notification_countrys[$country])."\r\n".
-        sprintf(__('Read more on %s', 'last-tap-event'), $url).'.'."\r\n";
+            $message = sprintf(__('Hi %s!', 'last-tap-events'), $user->display_name)."\r\n".
+        sprintf(__('We have a new post from %s', 'last-tap-events'), $this->notification->notification_countrys[$country])."\r\n".
+        sprintf(__('Read more on %s', 'last-tap-events'), $url).'.'."\r\n";
 
            (new LastTap_EmailController())->lt_send_email($to, $subject, $message);
         }
@@ -250,7 +250,7 @@ class LastTap_NotificationController extends LastTap_BaseController
         $num = get_post_meta($post->ID, '_notified_users', true);
 
         if ($post_type_object->publicly_queryable) {
-            @$msgs[$post_type][6] .= ' - '.$num.__(' notifications sent.', 'last-tap-event');
+            @$msgs[$post_type][6] .= ' - '.$num.__(' notifications sent.', 'last-tap-events');
 
         }
 

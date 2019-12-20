@@ -17,7 +17,7 @@ class LastTap_MembershipController extends LastTap_BaseController
 
     public function lt_register()
     {
-        if (!$this->lt_activated('membership_manager')) return;
+        // if (!$this->lt_activated('membership_manager')) return;
 
         $this->settings = new LastTap_SettingsApi();
 
@@ -32,9 +32,9 @@ class LastTap_MembershipController extends LastTap_BaseController
     {
         $this->subpages = array(
             array(
-                'parent_slug' => __('event_plugin', 'last-tap-event'),
-                'page_title' => __('Membership Manager', 'last-tap-event'),
-                'menu_title' => __('Membership Manager', 'last-tap-event'),
+                'parent_slug' => __('event_plugin', 'last-tap-events'),
+                'page_title' => __('Membership Manager', 'last-tap-events'),
+                'menu_title' => __('Membership Manager', 'last-tap-events'),
                 'capability' => 'manage_options',
                 'menu_slug' => 'event_membership',
                 'callback' => array($this->callbacks, 'lt_adminMembership')

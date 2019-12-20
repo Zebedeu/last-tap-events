@@ -72,7 +72,7 @@ class LastTap_TestimonialController extends LastTap_BaseController
         );
 
         $args = array(
-            'post_title' => __( 'Testimonial from ' . $name, 'last-tap-event'),
+            'post_title' => __( 'Testimonial from ' . $name, 'last-tap-events'),
             'post_content' => $message,
             'post_author' => 1,
             'post_status' => 'publish',
@@ -119,7 +119,7 @@ class LastTap_TestimonialController extends LastTap_BaseController
     {
         $labels = array(
             'name' => 'Testimonials',
-            'singular_name' => __('Testimonial', 'last-tap-event')
+            'singular_name' => __('Testimonial', 'last-tap-events')
         );
 
         $args = array(
@@ -140,7 +140,7 @@ class LastTap_TestimonialController extends LastTap_BaseController
     {
         add_meta_box(
             'testimonial_author',
-            __( 'Testimonial Options', 'last-tap-event'),
+            __( 'Testimonial Options', 'last-tap-events'),
             array($this, 'lt_render_features_box'),
             'testimonial',
             'side',
@@ -159,18 +159,18 @@ class LastTap_TestimonialController extends LastTap_BaseController
         $featured = isset($data['featured']) ? $data['featured'] : false;
         ?>
         <p>
-            <label class="meta-label" for="event_testimonial_author"><?php _e('Author Name', 'last-tap-event'); ?></label>
+            <label class="meta-label" for="event_testimonial_author"><?php _e('Author Name', 'last-tap-events'); ?></label>
             <input type="text" id="event_testimonial_author" name="event_testimonial_author" class="widefat"
                    value="<?php echo esc_attr($name); ?>">
         </p>
         <p>
-            <label class="meta-label" for="event_testimonial_email"><?php _e('Author Email', 'last-tap-event'); ?></label>
+            <label class="meta-label" for="event_testimonial_email"><?php _e('Author Email', 'last-tap-events'); ?></label>
             <input type="email" id="event_testimonial_email" name="event_testimonial_email" class="widefat"
                    value="<?php echo esc_attr($email); ?>">
         </p>
         <div class="meta-container">
             <label class="meta-label w-50 text-left"
-                   for="event_testimonial_approved"><?php _e('Approved', 'last-tap-event'); ?></label>
+                   for="event_testimonial_approved"><?php _e('Approved', 'last-tap-events'); ?></label>
             <div class="text-right w-50 inline">
                 <div class="ui-toggle inline"><input type="checkbox" id="event_testimonial_approved"
                                                      name="event_testimonial_approved"
@@ -183,7 +183,7 @@ class LastTap_TestimonialController extends LastTap_BaseController
         </div>
         <div class="meta-container">
             <label class="meta-label w-50 text-left"
-                   for="event_testimonial_featured"><?php _e('Featured', 'last-tap-event'); ?></label>
+                   for="event_testimonial_featured"><?php _e('Featured', 'last-tap-events'); ?></label>
             <div class="text-right w-50 inline">
                 <div class="ui-toggle inline"><input type="checkbox" id="event_testimonial_featured"
                                                      name="event_testimonial_featured"
@@ -231,10 +231,10 @@ class LastTap_TestimonialController extends LastTap_BaseController
         $date = $columns['date'];
         unset($columns['title'], $columns['date']);
 
-        $columns['name'] = __('Author Name', 'last-tap-event');
+        $columns['name'] = __('Author Name', 'last-tap-events');
         $columns['title'] = $title;
-        $columns['approved'] = __('Approved', 'last-tap-event');
-        $columns['featured'] = __('Featured', 'last-tap-event');
+        $columns['approved'] = __('Approved', 'last-tap-events');
+        $columns['featured'] = __('Featured', 'last-tap-events');
         $columns['date'] = $date;
 
         return $columns;
@@ -245,8 +245,8 @@ class LastTap_TestimonialController extends LastTap_BaseController
         $data = get_post_meta($post_id, '_event_testimonial_key', true);
         $name = isset($data['name']) ? $data['name'] : '';
         $email = isset($data['email']) ? $data['email'] : '';
-        $approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>'. __( 'YES', 'last-tap-event').'</strong>' : __(  'NO', 'last-tap-event');
-        $featured = isset($data['featured']) && $data['featured'] === 1 ? '<strong>'. __( 'YES', 'last-tap-event').'</strong>' : __(  'NO', 'last-tap-event');
+        $approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>'. __( 'YES', 'last-tap-events').'</strong>' : __(  'NO', 'last-tap-events');
+        $featured = isset($data['featured']) && $data['featured'] === 1 ? '<strong>'. __( 'YES', 'last-tap-events').'</strong>' : __(  'NO', 'last-tap-events');
 
         switch ($column) {
             case 'name':
@@ -265,9 +265,9 @@ class LastTap_TestimonialController extends LastTap_BaseController
 
     public function lt_set_custom_columns_sortable($columns)
     {
-        $columns['name'] = __( 'name', 'last-tap-event');
-        $columns['approved'] = __( 'approved', 'last-tap-event');
-        $columns['featured'] = __( 'featured', 'last-tap-event');
+        $columns['name'] = __( 'name', 'last-tap-events');
+        $columns['approved'] = __( 'approved', 'last-tap-events');
+        $columns['featured'] = __( 'featured', 'last-tap-events');
 
         return $columns;
     }

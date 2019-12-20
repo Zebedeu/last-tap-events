@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         // collect all the data
         let data = {
+
+            lastTap_user_id: participantForm.querySelector('[name="lastTap_user_id"]').value,
             post_event_id: participantForm.querySelector('[name="post_event_id"]').value,
             name: participantForm.querySelector('[name="name"]').value,
             email: participantForm.querySelector('[name="email"]').value,
@@ -19,7 +21,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
 
         // validate everything
-        if (!data.name) {
+        if (!data.lastTap_user_id) {
+            return;
+        }
+     if (!data.post_event_id) {
+            return;
+        }
+     if (!data.name) {
             testimonialForm.querySelector('[data-error="invalidName"]').classList.add('show');
             return;
         }

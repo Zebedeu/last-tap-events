@@ -119,14 +119,14 @@ class LastTap_Dashboard extends LastTap_BaseController
             ),
             array(
                 'id' => 'event_id',
-                'title' => __( 'Settings', 'last-tap-event'),
+                'title' => __( 'Settings', 'last-tap-events'),
                 'callback' => array($this->callbacks, 'lt_event_section'),
                 'page' => 'event_settings'
 
             ),
             array(
                 'id' => 'event_color',
-                'title' => __( 'Color Control', 'last-tap-event'),
+                'title' => __( 'Color Control', 'last-tap-events'),
                 'callback' => array($this->callbacks, 'lt_event_section_color'),
                 'page' => 'colors'
 
@@ -145,7 +145,7 @@ class LastTap_Dashboard extends LastTap_BaseController
 
             array(
                 'id' => 'event_currency',
-                'title' => __('Currency ', 'last-tap-event'),
+                'title' => __('Currency ', 'last-tap-events'),
                 'callback' => array($this->callbacks, 'lt_currency'),
                 'page' => 'event_settings',
                 'section' => 'event_id',
@@ -158,7 +158,7 @@ class LastTap_Dashboard extends LastTap_BaseController
 
             array(
                 'id' => 'event_border_color',
-                'title' => __('Border color', 'last-tap-event'),
+                'title' => __('Border color', 'last-tap-events'),
                 'callback' => array($this->callbacks, 'lt_event_textFields_border'),
                 'page' => 'colors',
                 'section' => 'event_color',
@@ -170,7 +170,7 @@ class LastTap_Dashboard extends LastTap_BaseController
             ),
             array(
                 'id'=> 'event_background_color_button_show_form',
-                 'title' => __('Color background button', 'last-tap-event'),
+                 'title' => __('Color background button', 'last-tap-events'),
                  'callback' => array($this->callbacks, 'lt_chanche_background_color_button'),
                  'page' => 'colors',
                  'section'=> 'event_color',
@@ -182,7 +182,7 @@ class LastTap_Dashboard extends LastTap_BaseController
 
             array(
                 'id'=> 'event_text_color_button_show_form',
-                 'title' => __('Text Color button', 'last-tap-event'),
+                 'title' => __('Text Color button', 'last-tap-events'),
                  'callback' => array($this->callbacks, 'lt_chanche_text_color_button'),
                  'page' => 'colors',
                  'section'=> 'event_color',

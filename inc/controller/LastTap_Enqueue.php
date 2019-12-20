@@ -66,6 +66,7 @@ class LastTap_Enqueue extends LastTap_BaseController
     public function lt_enqueue_public()
     {
         wp_enqueue_style('boostrap-lastTap', $this->plugin_url . 'assets/css/bootstrap.css');
+        wp_enqueue_style('awesomeicons', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
         wp_enqueue_style('membership', $this->plugin_url . 'assets/css/membership.css');
         wp_enqueue_style('event_css3', $this->plugin_url . 'assets/css/lt-account.css');
         wp_enqueue_style('mypluginstyle', $this->plugin_url . 'assets/lt-style.css');

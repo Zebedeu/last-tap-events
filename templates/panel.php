@@ -19,8 +19,8 @@ function lt_PanelPublic($user_id, $length, $current_user)
                 <li>
                     <p><?php echo get_avatar($user_id, 200, '', '', array()); ?><p>
                 </li>
-                <li><?php echo __('Posts', 'last-tap-event') . "\t" . count_user_posts($user_id); ?></li>
-                <li><?php echo __('Comments', 'last-tap-event') . "\t" . $count; ?></li>
+                <li><?php echo __('Posts', 'last-tap-events') . "\t" . count_user_posts($user_id); ?></li>
+                <li><?php echo __('Comments', 'last-tap-events') . "\t" . $count; ?></li>
                 <li>*</li>
             </ul>
         </div>
@@ -29,15 +29,15 @@ function lt_PanelPublic($user_id, $length, $current_user)
 
             <div class="ch-tab">
                 <button class="ch-tablinks"
-                        onclick="openTabs(event, 'tab1')"><?php echo __('Recent Activity', 'last-tap-event'); ?></button>
+                        onclick="openTabs(event, 'tab1')"><?php echo __('Recent Activity', 'last-tap-events'); ?></button>
                 <button class="ch-tablinks"
-                        onclick="openTabs(event, 'tab2')"><?php echo __('Information', 'last-tap-event'); ?></button>
+                        onclick="openTabs(event, 'tab2')"><?php echo __('Information', 'last-tap-events'); ?></button>
                 <button class="ch-tablinks"
-                        onclick="openTabs(event, 'tab3')"><?php echo __('ANOTHER', 'last-tap-event'); ?></button>
+                        onclick="openTabs(event, 'tab3')"><?php echo __('ANOTHER', 'last-tap-events'); ?></button>
             </div>
 
             <div id="tab1" class="ch-tabcontent">
-                <h3><?php _e( 'Activity', 'last-tap-event'); ?></h3>
+                <h3><?php _e( 'Activity', 'last-tap-events'); ?></h3>
                 <table class="ch-table">
                     <tbody>
                     <?php
@@ -57,14 +57,14 @@ function lt_PanelPublic($user_id, $length, $current_user)
             <div id="tab2" class="ch-tabcontent">
                 <h3></h3>
                 <div class="panelt">
-                    <div class="ch-panel-heading"><?php _e( 'Email', 'last-tap-event'); ?><i class=""></i>
+                    <div class="ch-panel-heading"><?php _e( 'Email', 'last-tap-events'); ?><i class=""></i>
                     </div>
                     <div class="ch-body"><a
                                 href="<?php echo $current_user->user_email; ?>"><?php echo $current_user->user_email; ?></a>
                     </div>
                 </div>
                 <div class="ch-default">
-                    <div class="ch-panel-heading"><?php _e( 'Website ', 'last-tap-event'); ?><i class=""></i>
+                    <div class="ch-panel-heading"><?php _e( 'Website ', 'last-tap-events'); ?><i class=""></i>
                     </div>
                     <div class="ch-body"><a
                                 href="<?php echo $current_user->user_url; ?>"><?php echo $current_user->user_url; ?></a>
@@ -74,8 +74,8 @@ function lt_PanelPublic($user_id, $length, $current_user)
             </div>
 
             <div id="tab3" class="ch-tabcontent">
-                <h3><?php _e( 'ANOTHER', 'last-tap-event'); ?></h3>
-                <h2><?php echo __('Description', 'last-tap-event'); ?></h2>
+                <h3><?php _e( 'ANOTHER', 'last-tap-events'); ?></h3>
+                <h2><?php echo __('Description', 'last-tap-events'); ?></h2>
                 <p><?php $authorDesc = the_author_meta('description');
                     echo $authorDesc; ?>
                 </p>

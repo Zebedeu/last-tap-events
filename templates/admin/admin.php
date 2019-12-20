@@ -34,9 +34,9 @@
 
 
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab-1"><?php _e('Manage Settings', 'last-tap-event'); ?></a></li>
-                    <li><a href="#tab-2"><?php _e('Updates', 'last-tap-event'); ?></a></li>
-                    <li><a href="#tab-3"><?php _e('All Available Shortcodes', 'last-tap-event'); ?></a></li>
+                    <li class="active"><a href="#tab-1"><?php _e('Manage Settings', 'last-tap-events'); ?></a></li>
+                    <li><a href="#tab-2"><?php _e('Updates', 'last-tap-events'); ?></a></li>
+                    <li><a href="#tab-3"><?php _e('All Available Shortcodes', 'last-tap-events'); ?></a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -53,12 +53,12 @@
                     </div>
 
                     <div id="tab-2" class="tab-pane">
-                        <h3><?php _e('Updates', 'last-tap-event'); ?></h3>
+                        <h3><?php _e('Updates', 'last-tap-events'); ?></h3>
                         <p>
-                            == <?php _e('Changelog','last-tap-event');?> ==<br>
+                            == <?php _e('Changelog','last-tap-events');?> ==<br>
 
 
-                            == <?php _e('Upgrade Notice','last-tap-event');?> ==
+                            == <?php _e('Upgrade Notice','last-tap-events');?> ==
                         </p>
                     </div>
 
@@ -66,7 +66,7 @@
 
                         <P>
                             <?php __('K7 Event is a Wordpress plugin for churches that claims to be simple and objective for your
-                            church website ', 'last-tap-event');?>.
+                            church website ', 'last-tap-events');?>.
                         </P>
                         <div class='wrap'>
                             <?php
@@ -91,11 +91,11 @@
                                 </div>
                         </div>
                             
-                            <h2><?php _e('3. Go to Settings » Permalinks, and simply click on Save Changes button.', 'last-tap-event');?></h2></p>
-                            <em><?php _e('If you like this plugin, please', 'last-tap-event');?> <a href="http://wordpress.org/extend/plugins/last-tap-event"><?php _e('vote', 'last-tap-event');?></a>
+                            <h2><?php _e('3. Go to Settings » Permalinks, and simply click on Save Changes button.', 'last-tap-events');?></h2></p>
+                            <em><?php _e('If you like this plugin, please', 'last-tap-events');?> <a href="http://wordpress.org/extend/plugins/last-tap-event"><?php _e('vote', 'last-tap-events');?></a>
                                 .
-                                <?php _e('Author : ', 'last-tap-event');?><a href="https://github.com/zebedeu">Márcio Zebedeu</a>
-                                <?php _e('You can ', 'last-tap-event');?><a href="https://github.com/knut7/last-tap-event"><?php _e('for bugs, </a> thanks.</em>','last-tap-event');?>
+                                <?php _e('Author : ', 'last-tap-events');?><a href="https://github.com/zebedeu">Márcio Zebedeu</a>
+                                <?php _e('You can ', 'last-tap-events');?><a href="https://github.com/knut7/last-tap-event"><?php _e('for bugs, </a> thanks.</em>','last-tap-events');?>
 
                     </div>
                 </div>
@@ -109,9 +109,9 @@
 
 
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab-4"><?php _e('Event Settings', 'last-tap-event'); ?></a></li>
-                    <li><a href="#tab-5"><?php _e('Calendar event', 'last-tap-event'); ?></a></li>
-                    <li><a href="#tab-6"><?php _e('About', 'last-tap-event'); ?></a></li>
+                    <li class="active"><a href="#tab-4"><?php _e('Event Settings', 'last-tap-events'); ?></a></li>
+                    <li><a href="#tab-5"><?php _e('Calendar event', 'last-tap-events'); ?></a></li>
+                    <li><a href="#tab-6"><?php _e('About', 'last-tap-events'); ?></a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -133,7 +133,7 @@
                     </div>
 
                     <div id="tab-5" class="tab-pane">
-                        <h3><?php _e('Calendar', 'last-tap-event'); ?></h3>
+                        <h3><?php _e('Calendar', 'last-tap-events'); ?></h3>
                         <?php $the_posts = get_posts(array('post_type' => 'event'));
                             $data = array();
                         foreach ($the_posts as $key => $value) {
@@ -221,27 +221,27 @@
 
                         <P>
                             <?php __('K7 Event is a Wordpress plugin for churches that claims to be simple and objective for your
-                            church website ', 'last-tap-event');?>.
+                            church website ', 'last-tap-events');?>.
                         </P>
                         <div class='wrap'>
                             
 
-                            <p><?php __('Testimonial Form Shortcode', 'last-tap-event');?></p>
+                            <p><?php __('Testimonial Form Shortcode', 'last-tap-events');?></p>
                             <code>[testimonial-form]</code>
-                            <p><?php __('Testimonial SlideShow Shortcode', 'last-tap-event');?></p><br>
+                            <p><?php __('Testimonial SlideShow Shortcode', 'last-tap-events');?></p><br>
                             <code>[testimonial-slideshow]</code>
-                            <p><?php __('location for defaul ', 'last-tap-event');?></p><br>
+                            <p><?php __('location for defaul ', 'last-tap-events');?></p><br>
                             <code>[locations location_id=1]</code>
-                            <p><?php __('Location for namber the post', 'last-tap-event');?></p>
+                            <p><?php __('Location for namber the post', 'last-tap-events');?></p>
                             <code>[locations location_id=1 number_of_locations=1]</code>
                             <code>[locations location_id="1" number_of_locations=1 post_status="publish"]</code>
                             <br>
                             <p>
-                            <h2><?php __('3. Go to Settings » Permalinks, and simply click on Save Changes button.', 'last-tap-event');?></h2></p>
-                            <em><?php __('If you like this plugin, please', 'last-tap-event');?> <a href="http://wordpress.org/extend/plugins/last-tap-event"><?php __('vote', 'last-tap-event');?></a>
+                            <h2><?php __('3. Go to Settings » Permalinks, and simply click on Save Changes button.', 'last-tap-events');?></h2></p>
+                            <em><?php __('If you like this plugin, please', 'last-tap-events');?> <a href="http://wordpress.org/extend/plugins/last-tap-event"><?php __('vote', 'last-tap-events');?></a>
                                 .
-                                <?php __('Author : ', 'last-tap-event');?><a href="https://github.com/zebedeu">Máecio Zebedeu</a>
-                                <?php __('You can ', 'last-tap-event');?><a href="https://github.com/knut7/last-tap-event"><?php __('for bugs, </a> thanks.</em>','last-tap-event');?>
+                                <?php __('Author : ', 'last-tap-events');?><a href="https://github.com/zebedeu">Máecio Zebedeu</a>
+                                <?php __('You can ', 'last-tap-events');?><a href="https://github.com/knut7/last-tap-event"><?php __('for bugs, </a> thanks.</em>','last-tap-events');?>
 
                         </div>
                     </div>

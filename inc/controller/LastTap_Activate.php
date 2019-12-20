@@ -48,7 +48,7 @@ class LastTap_Activate
 
         //     $wp_role = new WP_Role;
         // }
-        $result = $wp_role->add_role('event_role', __('Member', 'last-tap-event'),
+        $result = $wp_role->add_role('event_role', __('Member', 'last-tap-events'),
             array(
 
                 'read' => true, // true allows this capability
