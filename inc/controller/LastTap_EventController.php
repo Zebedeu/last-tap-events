@@ -182,7 +182,6 @@ class LastTap_EventController extends LastTap_BaseController
 
 
 
-
         <div class="lastTap field-container">
 
             <div class="lastTap field">
@@ -474,6 +473,10 @@ class LastTap_EventController extends LastTap_BaseController
                              $price = get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_price'];
 
                              $currency = get_option( 'event_currency', true );
+
+                             if("" == $currency ){
+                                $currency = 'USD';
+                             }
 
                              if( empty($price) ){
                                 $price = __('Free', 'last-tap-events');

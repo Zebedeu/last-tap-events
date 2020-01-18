@@ -213,7 +213,8 @@ class LastTap_CustomPostTypeController extends LastTap_BaseController
                 'has_archive' => isset($option['has_archive']) ?: false,
                 'exclude_from_search' => false,
                 'publicly_queryable' => true,
-                'capability_type' => 'post'
+                'capability_type' => 'post',
+
             );
         }
     }

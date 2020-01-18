@@ -258,12 +258,11 @@ class LastTap_ParticipantController extends LastTap_BaseController
 
     public function lt_set_partici_custom_columns($columns)
     {
-        $title = $columns['title'];
         $date = $columns['date'];
         unset($columns['title'], $columns['date']);
 
         $columns['name'] = __('Partic Name', 'last-tap-events');
-        $columns['title'] = $title;
+        $columns['title'] = __('Event Name');
         $columns['telephone'] =  __('Telphone', 'last-tap-events');
         $columns['approved'] = __('Approved', 'last-tap-events');
         $columns['party'] = __('Partic', 'last-tap-events');

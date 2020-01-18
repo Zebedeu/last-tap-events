@@ -16,9 +16,8 @@ get_header(); ?>
                         $event_title = get_the_title($post_id);
                         $event_permalink = get_permalink($post_id);
                         $style = get_option( 'event_style_html' ) ?? 'class="lastTap img-responsive" alt="Event Image"';
-                        $event_thumbnail = get_the_post_thumbnail($post_id, 'event-thumb', array( 'class' => 'lastTap img-responsive', 'alt'=> 'Event Image') );
+                        $event_thumbnail = get_the_post_thumbnail($post_id, 'post-thumbnail', array( 'class' => 'lastTap img-responsive', 'alt'=> 'Event Image') );
                         $event_content = apply_filters('the_content', $value->post_content);
-
                         $event_content = strip_shortcodes(wp_trim_words($event_content, 40, '...'));
 
                         $mm =  get_post_meta( $post_id, '_event_detall_info', true )['_lt_start_month'];
@@ -57,9 +56,8 @@ get_header(); ?>
                     </div>
                 </div>
                 <div class="lastTap panel-footer panel-primary">
-                    <p><?php /* echo  $event_content; */ ?></p>
-                    <?php get_template_part('single-event'); ?>
-                    <a href="<?php echo $event_permalink;?>" class="lastTap btn btn-success"><h4><?php _e('Viw Event...','last-tap-events');?></h4></a>
+                    <p><?php  echo  $event_content;  ?></p>
+                    <a href="<?php echo $event_permalink;?>" class="lastTap btn btn-success"><h4><?php _e('View Event...','last-tap-events');?></h4></a>
                 </div>
             </div>
         </div>

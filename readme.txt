@@ -2,9 +2,9 @@
 Contributors: Márcio Zebedeu
 Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type Manager, Custom Taxonomy Manager, Testimonial, post, Advanced Notification System,  
 Requires at least: 5.2
-Tested up to: 5.3
+Tested up to: 5.3.2
 Requires PHP: 5.6.20
-Stable tag: 1.0.3
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,19 +77,4 @@ Sure! You are welcome to report any issues or add feature suggestions on the [Gi
 
 = 1.0.1 =
 add notification bubble
-fixe bug removed configuration page in event post type
-other bug
-
-= 1.0.2 =
-database optimisation / data from each event went on to be in a single array in postmeta
-fix bug Shortcode was not recording when commands have syntax errors -> [testimonial-form]
-
-= 1.0.3 =
-
-Warning:   Illegal string offset == correction of 8 critical errors
-
-= 1.0.4 = 
-
-add Qr Code
-fix bug for widget Media
-fix bug for widget Location
+fixe bug currency types
