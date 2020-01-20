@@ -31,7 +31,7 @@ class LastTap_LocationController extends LastTap_BaseController
         add_action('add_meta_boxes' , array($this , 'lt_add_location_meta_boxes')); //add meta boxes
         add_action('save_post_locations' , array($this , 'lt_save_location')); //save location
         add_filter('the_content' , array($this , 'lt_prepend_location_meta_to_content')); //gets our meta data and dispayed it before the content
-        $this->lt_setLocationSettingsPage();
+        // $this->lt_setLocationSettingsPage();
 
         add_shortcode('locations' , array($this , 'lt_location_shortcode_output'));
     }
@@ -53,21 +53,21 @@ class LastTap_LocationController extends LastTap_BaseController
 
     }
 
-    public function lt_setLocationSettingsPage()
-    {
-        $subpage = array(
-            array(
-                'parent_slug' => 'edit.php?post_type=locations' ,
-                'page_title' => __('Settings', 'last-tap-events') ,
-                'menu_title' => __('Settings', 'last-tap-events') ,
-                'capability' => 'manage_options' ,
-                'menu_slug' => 'event_location_settings' ,
-                'callback' => array($this->callbacks , 'lt_locationSettings')
-            )
-        );
+    // public function lt_setLocationSettingsPage()
+    // {
+    //     $subpage = array(
+    //         array(
+    //             'parent_slug' => 'edit.php?post_type=locations' ,
+    //             'page_title' => __('Settings', 'last-tap-events') ,
+    //             'menu_title' => __('Settings', 'last-tap-events') ,
+    //             'capability' => 'manage_options' ,
+    //             'menu_slug' => 'event_location_settings' ,
+    //             'callback' => array($this->callbacks , 'lt_locationSettings')
+    //         )
+    //     );
 
-        $this->settings->lt_addSubPages($subpage)->lt_register();
-    }
+    //     $this->settings->lt_addSubPages($subpage)->lt_register();
+    // }
 
 
     /**

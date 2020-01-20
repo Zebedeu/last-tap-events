@@ -138,9 +138,7 @@ final class LastTap_Currency
     if(empty($key)){
         return $this->currency['USD'];
     }else{
-
         return $this->currency[$key];
-
     }
    }
 

@@ -143,6 +143,7 @@ class LastTap_EventController extends LastTap_BaseController
         if (empty($min)) {
             $min = '00';
         }
+        echo '<div class="wrap">';
         $month_s = '<select name="' . $metabox_id . '_month">';
         for ($i = 1; $i < 13; $i = $i + 1) {
             $month_s .= "\t\t\t" . '<option value="' . zeroise($i, 2) . '"';
@@ -152,10 +153,11 @@ class LastTap_EventController extends LastTap_BaseController
         }
         $month_s .= '</select>';
         echo $month_s;
-        echo '<input type="text" name="' . $metabox_id . '_day" value="' . $day . '" size="2" maxlength="2" />';
-        echo '<input type="text" name="' . $metabox_id . '_year" value="' . $year . '" size="4" maxlength="4" /> @ ';
-        echo '<input type="text" name="' . $metabox_id . '_hour" value="' . $hour . '" size="2" maxlength="2"/>:';
-        echo '<input type="text" name="' . $metabox_id . '_minute" value="' . $min . '" size="2" maxlength="2" />';
+        echo '<input class="small-text" type="number" step="1" min="1" name="' . $metabox_id . '_day" value="' . $day . '" size="2"  />';
+        echo '<input class="small-text" type="number" step="1" min="1" name="' . $metabox_id . '_year" value="' . $year . '" size="4"  /> @ ';
+        echo '<input class="small-text" type="number" step="1" min="1" name="' . $metabox_id . '_hour" value="' . $hour . '" size="2" />:';
+        echo '<input class="small-text" type="number" step="1" min="1" name="' . $metabox_id . '_minute" value="' . $min . '" size="2"  />';
+        echo '</div>';
 
 
     }
@@ -182,71 +184,126 @@ class LastTap_EventController extends LastTap_BaseController
 
 
 
+    <div class="wrap">
+        <form>
+        <table class="form-table">
+            <tbody>
+                <tr>
 
-        <div class="lastTap field-container">
+                    <th>
 
-            <div class="lastTap field">
-                <div class="lastTap col-lg-12">
-                    <div class="lastTap col-lg-1">
-                        <label for="_lt_event_price"><?php _e('Event price :'); ?></label>
+                        <label for="input-text"><?php _e('Event price :'); ?></label>
+                    </th>
+                    <td>
+
                         <input type="text" name="_lt_event_price"  value="<?php echo $detal["_lt_event_price"] ?? ""; ?>" />
+                    </td>
 
-                    </div>
-                    <div class="lastTap col-lg-5">
-                        <label for="_lt_event_price"><?php _e('Event Currency :'); ?></label>
+
+                    <th>
+
+                        <label for="input-text"><?php _e('Event Currency :'); ?></label>
+                    </th>
+                    <td>
+
                             <?php echo $value = esc_attr( get_option( 'event_currency' ) );?>
-                    </div>
-                    <div class="lastTap col-lg-12">
-                         <label for="_lt_event_partic_limit"><?php _e('Event Participe Limits:'); ?></label>
-                        <input type="text" name="_lt_event_partic_limit" value="<?php echo $detal["_lt_event_partic_limit"] ?? ""; ?>"/>
-            
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="lastTap field">
-                <div class="lastTap col-lg-12">
-                    <div class="lastTap col-lg-5">
-                        <label for="_lt_event_country"><?php _e('Event Country:'); ?></label>
-                        <input type="text" name="_lt_event_country" value="<?php echo $detal["_lt_event_country"] ?? ""; ?>"/>
-                    </div>
-                    <div class="lastTap col-lg-5">
-                        <label for="_lt_event_city"><?php _e('Event City:'); ?></label>
-                        <input type="text" name="_lt_event_city" value="<?php echo $detal["_lt_event_city"] ?? ""; ?>"/>
-                    </div>
-                    <div class="lastTap col-lg-5">
-                        <label for="_lt_event_address"><?php _e('Event Address:'); ?></label>
-                        <input type="text" name="_lt_event_address" value="<?php echo $detal["_lt_event_address"] ?? ""; ?>"/>
-                    </div>
-                    <div class="lastTap col-lg-5">
-                         <label for="_lt_event_street"><?php _e('Event Street:'); ?></label>
-                         <input type="text" name="_lt_event_street" value="<?php echo $detal["_lt_event_street"] ?? ""; ?>"/>
-                    </div>
 
-                </div>
-            </div>
-            <hr>
-            <div class="lastTap field">
-                <div class="lastTap col-lg-12">
-                    <div class="lastTap col-lg-5">
-                        <label for="_lt_event_email"><?php _e('Event Email:'); ?></label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+
+                         <label for="input-text"><?php _e('Event Participe Limits:'); ?></label>
+                    </th>
+                    <td>
+
+                        <input type="text" name="_lt_event_partic_limit" value="<?php echo $detal["_lt_event_partic_limit"] ?? ""; ?>"/>
+                    </td>
+            
+
+
+                    <th>
+
+                        <label for="input-text"><?php _e('Event Country:'); ?></label>
+                    </th>
+                    <td>
+
+                        <input type="text" name="_lt_event_country" value="<?php echo $detal["_lt_event_country"] ?? ""; ?>"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+
+                        <label for="input-text"><?php _e('Event City:'); ?></label>
+                    </th>
+                    <td>
+
+                        <input type="text" name="_lt_event_city" value="<?php echo $detal["_lt_event_city"] ?? ""; ?>"/>
+                    </td>
+                    <th>
+                        <label for="input-text"><?php _e('Event Address:'); ?></label>
+
+                    </th>
+                    <td>
+                        <input type="text" name="_lt_event_address" value="<?php echo $detal["_lt_event_address"] ?? ""; ?>"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+
+                         <label for="input-text"><?php _e('Event Street:'); ?></label>
+                    </th>
+                    <td>
+
+                         <input type="text" name="_lt_event_street" value="<?php echo $detal["_lt_event_street"] ?? ""; ?>"/>
+                    </td>
+
+
+
+                    <th>
+
+                        <label for="input-text"><?php _e('Event Email:'); ?></label>
+                    </th>
+                    <td>
+
                         <input type="email" name="_lt_event_email" value="<?php echo $detal["_lt_event_email"] ?? ""; ?>"/>
-                    </div>
-                    <div class="lastTap col-lg-5">
-                        <label for="_lt_event_organizer"><?php _e('Event Organizers email:'); ?></label>
+                    </td>
+                    <tr>
+                    <th>
+
+                        <label for="input-text"><?php _e('Event Organizers email:'); ?></label>
+                    </th>
+                    <td>
+
                         <input type="email" name="_lt_event_organizer" value="<?php echo $detal["_lt_event_organizer"] ?? ""; ?>"/>
-                    </div>
-                    <div class="lastTap col-lg-5">
-                        <label for="_lt_event_phone"><?php _e('Event Phone:'); ?></label>
+                    </td>
+
+                    <th>
+
+                        <label for="input-text"><?php _e('Event Phone:'); ?></label>
+                    </th>
+                    <td>
+
                         <input type="tel" name="_lt_event_phone" value="<?php echo $detal["_lt_event_phone"] ?? ""; ?>"/>
-                    </div>
-                </div>
-            <div class="lastTap field">
-                <label for="_lt_event_phone_2"><?php _e('Event Phone 2:'); ?></label>
-                <input type="tel" name="_lt_event_phone_2" value="<?php echo $detal["_lt_event_phone_2"] ?? ""; ?>"/>
-            </div>
-        </div>
-        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+
+                    <label for="input-text"><?php _e('Event Phone 2:'); ?></label>
+                    </th>
+                    <td>
+
+                    <input type="tel" name="_lt_event_phone_2" value="<?php echo $detal["_lt_event_phone_2"] ?? ""; ?>"/>
+                    </td>
+               
+                </tr>               
+            </tbody>
+        </table>
+    </form>
+</div>
+
+
         <?php
     }
 
@@ -431,7 +488,7 @@ class LastTap_EventController extends LastTap_BaseController
 
 
                              <?php    if ( !$this->is_user_logged_in ) {
-                                         echo '<div class="lastTap col-lg-12 ch-tab links"> Please login by <a href="'.wp_login_url().'">clicking here</a>.</div>';
+                                         echo '<div class="lastTap col-lg-12 ch-tab links">'. __('Please login by', 'last-tap-events') .'<a href="'.wp_login_url().'">'. __('clicking here','last-tap-events').'</a>.</div>';
                             }?>
 
             <div class="lastTap col-lg-12">
@@ -474,6 +531,10 @@ class LastTap_EventController extends LastTap_BaseController
                              $price = get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_price'];
 
                              $currency = get_option( 'event_currency', true );
+
+                             if("" == $currency ){
+                                $currency = 'USD';
+                             }
 
                              if( empty($price) ){
                                 $price = __('Free', 'last-tap-events');

@@ -18,11 +18,11 @@
 
     <h2 class="nav-tab-wrapper">
         <a href="?page=event_plugin&tab=tab_one"
-           class="nav-tab <?php echo $active_tab == 'tab_one' ? 'nav-tab-active' : ''; ?>">GENERAL SETTINGS</a>
+           class="nav-tab <?php echo $active_tab == 'tab_one' ? 'nav-tab-active' : ''; ?>"><?php _e('General Settings','last-tap-events');?></a>
         <a href="?page=event_plugin&tab=events"
-           class="nav-tab <?php echo $active_tab == 'events' ? 'nav-tab-active' : ''; ?>">Events</a>
+           class="nav-tab <?php echo $active_tab == 'events' ? 'nav-tab-active' : ''; ?>"><?php _e('Events','last-tap-events');?></a>
         <a href="?page=event_plugin&tab=event_color"
-           class="nav-tab <?php echo $active_tab == 'event_color' ? 'nav-tab-active' : ''; ?>">Color Control</a>
+           class="nav-tab <?php echo $active_tab == 'event_color' ? 'nav-tab-active' : ''; ?>"><?php _e('Color Control','last-tap-events');?></a>
     </h2>
     <form method="post" action="options.php">
         <?php
@@ -111,7 +111,7 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab-4"><?php _e('Event Settings', 'last-tap-events'); ?></a></li>
                     <li><a href="#tab-5"><?php _e('Calendar event', 'last-tap-events'); ?></a></li>
-                    <li><a href="#tab-6"><?php _e('About', 'last-tap-events'); ?></a></li>
+                    <li><a href="#tab-6"><?php _e('All Shortcode', 'last-tap-events'); ?></a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -230,28 +230,28 @@
                             <code>[testimonial-form]</code>
                             <p><?php __('Testimonial SlideShow Shortcode', 'last-tap-events');?></p><br>
                             <code>[testimonial-slideshow]</code>
-                            <p><?php __('location for defaul ', 'last-tap-events');?></p><br>
+                            <p><?php __('location for default', 'last-tap-events');?></p><br>
                             <code>[locations location_id=1]</code>
                             <p><?php __('Location for namber the post', 'last-tap-events');?></p>
                             <code>[locations location_id=1 number_of_locations=1]</code>
                             <code>[locations location_id="1" number_of_locations=1 post_status="publish"]</code>
                             <br>
                             <p>
-                            <h2><?php __('3. Go to Settings » Permalinks, and simply click on Save Changes button.', 'last-tap-events');?></h2></p>
+                            <h4><?php __('3. Go to Settings » Permalinks, and simply click on Save Changes button.', 'last-tap-events');?></h4></p>
                             <em><?php __('If you like this plugin, please', 'last-tap-events');?> <a href="http://wordpress.org/extend/plugins/last-tap-event"><?php __('vote', 'last-tap-events');?></a>
                                 .
-                                <?php __('Author : ', 'last-tap-events');?><a href="https://github.com/zebedeu">Máecio Zebedeu</a>
+                                <?php __('Author : ', 'last-tap-events');?><a href="https://github.com/zebedeu">Márcio Zebedeu</a>
                                 <?php __('You can ', 'last-tap-events');?><a href="https://github.com/knut7/last-tap-event"><?php __('for bugs, </a> thanks.</em>','last-tap-events');?>
 
                         </div>
                     </div>
                 </div>
                 <?php 
-
                   
         }
          elseif ($active_tab == 'event_color') {
                   /** settings manager */ 
+                  echo "<br>";
 
                     settings_fields( 'event_options_group' );
                     do_settings_sections( 'colors' );
