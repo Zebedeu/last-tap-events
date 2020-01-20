@@ -83,6 +83,7 @@ require_once(dirname(__FILE__) . '/inc/controller/LastTap_EventController.php');
 require_once(dirname(__FILE__) . '/inc/controller/LastTap_ParticipantController.php');  
 
 
+
 /**
  * The code that runs during plugin activation
  */

@@ -38,6 +38,7 @@ class LastTap_BaseController
 
         );
     }
+    
 
     public function lt_activated(string $key)
     {

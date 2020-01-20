@@ -18,7 +18,7 @@ class LastTap_SettingsLinks extends LastTap_BaseController
 
     public function lt_settings_link($links)
     {
-        $settings_link = '<a href="admin.php?page=event_plugin">Settings</a>';
+        $settings_link = '<a href="admin.php?page=event_plugin">'.__('Settings','last-tap-events').'</a>';
         array_push($links, $settings_link);
         return $links;
     }

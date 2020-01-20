@@ -7,7 +7,7 @@
                     href="#tab-1"><?php _e('Your Taxonomies', 'last-tap-events'); ?></a></li>
         <li class="<?php echo isset($_POST["edit_taxonomy"]) ? 'active' : '' ?>">
             <a href="#tab-2">
-                <?php echo isset($_POST["edit_taxonomy"]) ? 'Edit' : 'Add' ?><?php _e('Taxonomy', 'last-tap-events'); ?>
+                <?php echo isset($_POST["edit_taxonomy"]) ? __('Edit', 'last-tap-events') : _e('Add Taxonomy', 'last-tap-events'); ?>
             </a>
         </li>
         <li><a href="#tab-3"><?php _e('Export', 'last-tap-events'); ?></a></li>
