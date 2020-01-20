@@ -196,6 +196,7 @@ class LastTap_EventController extends LastTap_BaseController
                     </th>
                     <td>
 
+
                         <input type="text" name="_lt_event_price"  value="<?php echo $detal["_lt_event_price"] ?? ""; ?>" />
                     </td>
 
