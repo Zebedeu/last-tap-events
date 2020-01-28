@@ -489,7 +489,7 @@ class LastTap_EventController extends LastTap_BaseController
                             }?>
 
             <div class="lastTap col-lg-12">
-                <div class="lastTap row card-header">
+                <div class="lastTap row card-header-event">
                         <div class="lastTap col-lg-7">
 
             <img src="<?php echo $this->plugin_url . "/assets/icon/compose.svg"; ?>" style="width:20px; height:20px;">
@@ -562,8 +562,8 @@ class LastTap_EventController extends LastTap_BaseController
             </div>
 
             <div class="lastTap col-lg-12">
-                <div class="lastTap row card-header">
-                    <div class="lastTap col-lg-5 card-header">
+                <div class="lastTap row card-header-event">
+                    <div class="lastTap col-lg-5 card-header-event">
 
                         <label class="lastTap center"><img
                                     src="<?php echo $this->plugin_url . "/assets/icon/location.svg"; ?>"
