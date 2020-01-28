@@ -17,6 +17,21 @@ foreach ($books as $book) {
     wp_delete_post($book->ID, true);
 }
 
+ 
+function event_delete_all_option(){
+	
+	$all_options = wp_load_alloptions();
+	$my_options  = '';
+
+	foreach ( $all_options as $name => $value ) {
+    	if ( stristr( $name, 'event' ) ) {
+        	$my_options =  $name;
+        	delete_option( $my_options );
+    	}
+	}
+}
+ 
+event_delete_all_option();
 // Access the database via SQL
 global $wpdb;
 $wpdb->query("DELETE FROM wp_posts WHERE post_type = 'event'");
