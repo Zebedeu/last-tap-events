@@ -119,30 +119,27 @@ class LastTap_EventController extends LastTap_BaseController
         // Use nonce for verification
         wp_nonce_field(plugin_basename(__FILE__), 'lt_eventposts_nonce');
         $time_adj = current_time('timestamp');
-        $month = get_post_meta($post->ID, $metabox_id . '_month', true);
-        if (empty($month)) {
+        $_event_detall_infos = get_post_meta($post->ID, '_event_detall_info', false);
+
             $month = gmdate('m', $time_adj);
-        }
-        $day = get_post_meta($post->ID, $metabox_id . '_day', true);
-        if (empty($day)) {
             $day = gmdate('d', $time_adj);
-        }
-        $year = get_post_meta($post->ID, $metabox_id . '_year', true);
-        if (empty($year)) {
             $year = gmdate('Y', $time_adj);
-        }
-
-        $hour = get_post_meta($post->ID, $metabox_id . '_hour', true);
-
-        if (empty($hour)) {
             $hour = gmdate('H', $time_adj);
-        }
-
-        $min = get_post_meta($post->ID, $metabox_id . '_minute', true);
-
-        if (empty($min)) {
             $min = '00';
-        }
+ foreach ($_event_detall_infos as $key => $_event_detall_info) {
+         
+
+        $month = $_event_detall_info[$metabox_id.'_month'];
+        
+        $day = $_event_detall_info[$metabox_id.'_day'];
+        
+        $year = $_event_detall_info[$metabox_id.'_year'];
+        
+        $hour = $_event_detall_info[$metabox_id.'_hour'];
+
+        $min = $_event_detall_info[$metabox_id.'_minute'];
+
+    }
         echo '<div class="wrap">';
         $month_s = '<select name="' . $metabox_id . '_month">';
         for ($i = 1; $i < 13; $i = $i + 1) {

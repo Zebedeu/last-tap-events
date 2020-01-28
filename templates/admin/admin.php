@@ -140,8 +140,9 @@
                             $post_id = $value->ID;
                         
                         $title['title'] = $value->post_title;
-                        $start['start'] = get_post_meta( $post_id, '_lt_start_eventtimestamp',  true );
-                        $end['end'] = get_post_meta( $post_id, '_lt_end_eventtimestamp',  true );
+                        $_event_detall_info = get_post_meta( $post_id, '_event_detall_info',  true );
+                        $start['start'] = $_event_detall_info['_lt_start_eventtimestamp']; 
+                        $end['end'] = $_event_detall_info['_lt_end_eventtimestamp'];
                         $data[] = array_merge($title, $start, $end);
                         }
                         $my = json_encode($data);
