@@ -15,9 +15,7 @@ class LastTap_ParticipantController extends LastTap_BaseController
 
     public function lt_register()
     {
-        if (!$this->lt_activated('participant_manager')) return;
 
-    
 
         $this->settings = new LastTap_SettingsApi();
 
