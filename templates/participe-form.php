@@ -87,7 +87,7 @@ $lastTap_user_id = $lastTap_current_user->ID;
     </div>
 
     <input type="hidden" name="action" value="submit_participant">
-    <input type="hidden" name="nonce" value="<?php echo wp_create_nonce("adv-nonce") ?>">
+    <input type="hidden" name="nonce" value="<?php echo wp_create_nonce("participant-nonce") ?>">
 
 </form>
 
