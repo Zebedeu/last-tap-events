@@ -484,8 +484,8 @@ class LastTap_EventController extends LastTap_BaseController
             ?>
 
 
-                             <?php    if ( !$this->is_user_logged_in ) {
-                                         echo '<div class="lastTap col-lg-12 ch-tab links">'. __('Please login by', 'last-tap-events') .'<a href="'.wp_login_url().'">'. __('clicking here','last-tap-events').'</a>.</div>';
+            <?php    if ( !$this->is_user_logged_in ) {
+                            echo '<div class="lastTap col-lg-12 links">'. __('Please login by', 'last-tap-events') .'<a href="'.wp_login_url().'">'. __(' clicking here','last-tap-events').'</a>.</div>';
                             }?>
 
             <div class="lastTap col-lg-12">
