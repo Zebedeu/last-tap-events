@@ -1,8 +1,4 @@
 
-div {
-    column-rule: 1px solid red;
-}
-
 .glyphicon { margin-right:5px;}
 .section-box h2 { margin-top:0px;}
 .section-box h2 a { font-size:15px; }
@@ -111,7 +107,7 @@ a.lastTap-icon {
   text-align: right;
 } 
 
-..ch-text-d {
+.ch-text-d {
   text-align: justify;
 } 
 .ch-row::after {
@@ -120,18 +116,10 @@ a.lastTap-icon {
     display: table;
 }
 
-[class*="col-"] {
-    float: left;
-    padding: 15px;
-}
-
 .ch-col-1 {
     width: 8.33%;
 }
 
-ul {
-    list-style-type: none;
-}
 .ch-col-2 {
     width: 16.66%;
 }
@@ -174,10 +162,6 @@ ul {
 
 .ch-col-12 {
     width: 100%;
-}
-
-html {
-    font-family: "Lucida Sans", sans-serif;
 }
 
 .ch-header {
