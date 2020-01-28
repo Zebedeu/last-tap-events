@@ -27,7 +27,6 @@ class LastTap_BaseController
 
 
         $this->managers = array(
-            'participant_manager' => __('Activate Custom Participe', 'last-tap-events'),
             'testimonial_manager' => __('Activate Testimonial Manager', 'last-tap-events'),
             'cpt_manager' => __('Activate CPT Manager', 'last-tap-events'),
             'taxonomy_manager' => __('Activate Taxonomy Manager', 'last-tap-events'),

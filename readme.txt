@@ -75,6 +75,7 @@ Sure! You are welcome to report any issues or add feature suggestions on the [Gi
 
 == Changelog ==
 = 1.0.3 =
+activate form for participants by default
 added function to delete all as plugin options
 = 1.0.2 =
 fixed several errors
