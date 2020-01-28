@@ -74,10 +74,10 @@ class LastTap_ParticipantController extends LastTap_BaseController
             )
         );
 
-            $event_organizer_email = get_post_meta( $post_event_id, '_lt_event_organizer', true );
+            $event_organizer_email = get_post_meta( $post_event_id, '_event_detall_info', true );
 
 
-            $to = ' <'.$event_organizer_email.'>';
+            $to = ' <'.$event_organizer_email['_lt_event_organizer'].'>';
 
             $subject = sprintf( apply_filters( 'lt_subject_participant', __('Hei! Yeah, I will participate in %s', 'last-tap-events')), $lastTap_title);
 
