@@ -74,7 +74,8 @@ Sure! You are welcome to report any issues or add feature suggestions on the [Gi
 
 
 == Changelog ==
-
+= 1.0.2 =
+fixed several errors
 = 1.0.1 =
 add notification bubble
 fixe bug currency types
