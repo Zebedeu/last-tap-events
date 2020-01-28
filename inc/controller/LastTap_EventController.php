@@ -489,11 +489,11 @@ class LastTap_EventController extends LastTap_BaseController
                             }?>
 
             <div class="lastTap col-lg-12">
-                <div class="lastTap row">
+                <div class="lastTap row card-header">
                         <div class="lastTap col-lg-7">
 
             <img src="<?php echo $this->plugin_url . "/assets/icon/compose.svg"; ?>" style="width:20px; height:20px;">
-            <strong><?php echo "\t\n" . __('Publish date:', 'last-tap-events'); ?></strong><?php echo the_date('M d Y'); ?><br>
+            <strong><?php _e('Publish date:', 'last-tap-events'); ?></strong><p><?php echo the_date('M d Y'); ?></p>
             <?php
             // Gets the event start month from the meta field
             $month = get_post_meta($event->ID, '_event_detall_info', true)['_lt_start_month'];
@@ -513,17 +513,16 @@ class LastTap_EventController extends LastTap_BaseController
 
             ?>
             <img src="<?php echo $this->plugin_url . "/assets/icon/clock.svg"; ?>" style="width:20px; height:20px;">
-            <strong><?php echo "\t\n" . __('Event start date:', 'last-tap-events'); ?></strong><?php echo "\t\n" . $month . ' ' . $day . ' ' . $year; ?>
-            <br>
+            <strong><?php echo "\t\n" . __('Event start date:', 'last-tap-events'); ?></strong><p><?php echo "\t\n" . $month . ' ' . $day . ' ' . $year; ?></p>
+            
             <img src="<?php echo $this->plugin_url . "/assets/icon/timestampdate.svg"; ?>"
                  style="width:20px; height:20px;">
 
-            <strong><?php echo "\t\n" . __('Start event timestamp:', 'last-tap-events'); ?></strong><?php echo "\t\n" . $this->callbacks->formatDate($start); ?>
-            <br>
+            <strong><?php echo "\t\n" . __('Start timestamp:', 'last-tap-events'); ?></strong><p><?php echo "\t\n" . $this->callbacks->formatDate($start); ?></p>
             <img src="<?php echo $this->plugin_url . "/assets/icon/finish.svg"; ?>" style="width:20px; height:20px;">
-            <strong><?php echo "\t\n" . __('End event timestamp:', 'last-tap-events'); ?></strong><?php echo "\t\n" . $this->callbacks->formatDate($endEvent); ?><br>
+            <strong><?php echo "\t\n" . __('End timestamp:', 'last-tap-events'); ?></strong><p><?php echo "\t\n" . $this->callbacks->formatDate($endEvent); ?></p>
                 </div>
-                    <div class="lastTap col-lg-5">
+                    <div class="lastTap col-lg-4">
                             <?php
                              $price = get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_price'];
 
@@ -563,15 +562,14 @@ class LastTap_EventController extends LastTap_BaseController
             </div>
 
             <div class="lastTap col-lg-12">
-                <div class="lastTap row">
-                    <div class="lastTap col-lg-6">
+                <div class="lastTap row card-header">
+                    <div class="lastTap col-lg-5 card-header">
 
                         <label class="lastTap center"><img
                                     src="<?php echo $this->plugin_url . "/assets/icon/location.svg"; ?>"
                                     style="width:40px; height:40px;">
                             <h2><?php _e(' Location', 'last-tap-events'); ?></h2></label>
-
-                        <hr>
+                        <br>
                         <strong><?php _e('Event County:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_country']; ?></small>
                         <br>
@@ -602,7 +600,6 @@ class LastTap_EventController extends LastTap_BaseController
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_phone_2']; ?></small>
                         <br>
 
-                        <hr>
                         <strong><?php _e('Event Email:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_email']; ?></small>
                         <br>
