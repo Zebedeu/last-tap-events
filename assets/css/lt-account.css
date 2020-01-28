@@ -718,7 +718,7 @@ padding: 3px 0px;
     }
   }
 
-.card-header {
+.card-header-event {
   /*color: #2196F3;*/
   padding: 0px;
   margin-left: 0;
@@ -729,10 +729,10 @@ padding: 3px 0px;
   transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-family:'Roboto,' sans-serif;
   font-weight: 800;
-  background:#2196F3;
+  /*background:#2196F3;*/
       
 }
-.card-heading {
+.card-heading-event {
   /*display: inline;*/
   line-height: 28px;
   margin-bottom: 8px;
@@ -778,7 +778,7 @@ padding: 3px 0px;
 
 }
 
-.card-list .card-item p, a {
+.card-list .card-item p{
   margin-left:2em;
   font-family:'Roboto,' sans-serif;
   font-weight: 200;
