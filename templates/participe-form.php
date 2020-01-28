@@ -48,7 +48,7 @@ $lastTap_user_id = $lastTap_current_user->ID;
     </div>
     <div class="field-container">
         <input type="text" class="field-input" placeholder="<?php esc_attr_e('Your Telephone', 'last-tap-events') ?>" id="telephone"
-               name="telephone" >
+               name="telephone" value="" >
         <small class="field-msg error"
                data-error="invalidTelephone"><?php _e('The Telephone is not valid', 'last-tap-events') ?></small>
     </div>
@@ -87,7 +87,7 @@ $lastTap_user_id = $lastTap_current_user->ID;
     </div>
 
     <input type="hidden" name="action" value="submit_participant">
-    <input type="hidden" name="nonce" value="<?php echo wp_create_nonce("participant-nonce") ?>">
+    <input type="hidden" name="nonce" value="<?php echo wp_create_nonce("adv-nonce") ?>">
 
 </form>
 

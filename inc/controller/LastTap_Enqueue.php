@@ -73,7 +73,7 @@ class LastTap_Enqueue extends LastTap_BaseController
         wp_enqueue_style('part_css', $this->plugin_url . 'assets/css/parti.css', array(), false, 'all');
         wp_enqueue_style('form_css', $this->plugin_url . 'assets/form.css', array(), false, 'all' );
         wp_enqueue_style('slider_css', $this->plugin_url . 'assets/slider.css', array(), false, 'all' );
-        wp_enqueue_script('form', $this->plugin_url. 'assets/form.js', array('jquery'), '1.0.0', false);
+        // wp_enqueue_script('form', $this->plugin_url. 'assets/form.js', array('jquery'), '1.0.0', false);
         wp_enqueue_script('form_parti', $this->plugin_url. 'src/js/parti.js', array('jquery'), '1.0.0', false);
         wp_enqueue_script('bootstrap_js', $this->plugin_url. 'assets/js/bootstrap.js', array('jquery'), '1.0.0', false);
         wp_enqueue_script('slide', $this->plugin_url. 'assets/slider.js', array('jquery'), '1.0.0', false);

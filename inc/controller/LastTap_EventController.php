@@ -196,7 +196,6 @@ class LastTap_EventController extends LastTap_BaseController
                     </th>
                     <td>
 
-
                         <input type="text" name="_lt_event_price"  value="<?php echo $detal["_lt_event_price"] ?? ""; ?>" />
                     </td>
 
@@ -863,7 +862,7 @@ class LastTap_EventController extends LastTap_BaseController
         $date = $columns['date'];
         unset($columns['title'], $columns['date']);
 
-        $columns['title'] = $title;
+        $columns['title'] = __( 'Event Title', 'last-tap-events');
         $columns['telephone'] =  __('Telephone', 'last-tap-events');
         $columns['price'] =  __('Price', 'last-tap-events');
         $columns['email'] =  __('Event Organizers email', 'last-tap-events');
@@ -874,15 +873,13 @@ class LastTap_EventController extends LastTap_BaseController
 
     public function lt_set_event_custom_columns_data($column, $post_id)
     {
-        // $title = get_post_meta($post_id, '_event_participant_key', true);
-        $telefone = get_post_meta($post_id, '_lt_event_phone', true);
-        $price = get_post_meta($post_id, '_lt_event_price', true);
-        $email = get_post_meta($post_id, '_lt_event_organizer', true);
+        $_event_detall_info = get_post_meta($post_id, '_event_detall_info', true);
+
         $corrency = esc_attr( get_option( 'event_currency' ) );
         // $title = isset($title['name']) ? $title['name'] : '';
-        $email = isset($email) ? $email : '';
-        $telephone = isset($telefone) ? $telefone : '';
-        $price = isset($price) ? $price : '00.00';
+        $email = isset($_event_detall_info['_lt_event_organizer']) ? $_event_detall_info['_lt_event_organizer'] : '';
+        $telephone = isset($_event_detall_info['_lt_event_phone']) ? $_event_detall_info['_lt_event_phone'] : '';
+        $price = isset($_event_detall_info['_lt_event_price']) ? $_event_detall_info['_lt_event_price'] : '00.00';
         $corrency = isset($corrency) ? $corrency : '';
 
 
@@ -916,8 +913,8 @@ class LastTap_EventController extends LastTap_BaseController
     {
         $columns['name'] = __( 'name', 'last-tap-events');
         $columns['telephone'] = __( 'Telephone', 'last-tap-events');
-        $columns['email'] = __( 'Email', 'last-tap-events');
         $columns['price'] = __( 'price', 'last-tap-events');
+        $columns['email'] = __( 'Email', 'last-tap-events');
 
         return $columns;
     }
