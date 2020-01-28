@@ -15,7 +15,7 @@ class LastTap_ParticipantController extends LastTap_BaseController
 
     public function lt_register()
     {
-    
+
 
         $this->settings = new LastTap_SettingsApi();
 
