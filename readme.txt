@@ -8,14 +8,14 @@ Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Last Tap Events is a Wordpress plugin that claims to be simple and objective so you can place event announcements on your site.== Description ==
-Last Tap Events is a Wordpress plugin that claims to be simple and objective so you can place event announcements on your site.
+== Description ==
+Last Tap Events is a WordPress plugin that claims to be simple and objective so you can place event announcements on your site.
 
 ==Also the plugin you can: ==
 add events
 Add places where there is a Events
 
-There is a Post Type manager where you can create several post type according to your will well with your texamonias.
+There is a Post Type manager where you can create several post type according to your will well with your taxonomies.
 
 == FIlters ==
 
@@ -55,7 +55,7 @@ Location for member the post
 [locations location_id=1 number_of_locations=1]
 [locations location_id="1" number_of_locations=1 post_status="publish"]
 
-add event on a page
+Add event on a page
 [event]
 
 
@@ -81,4 +81,4 @@ added function to delete all as plugin options
 fixed several errors
 = 1.0.1 =
 add notification bubble
-fixe bug currency types
+fixes bug currency types

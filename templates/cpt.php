@@ -1,27 +1,27 @@
 <div class="wrap">
-    <h1><?php _e('CPT Manager', 'last-tap-events'); ?></h1>
+    <h1><?php _e( 'Custom Post Types Manager', 'last-tap-events' ); ?></h1>
     <?php settings_errors(); ?>
 
     <ul class="nav nav-tabs">
         <li class="<?php echo !isset($_POST["edit_post"]) ? 'active' : '' ?>"><a
-                    href="#tab-1"><?php _e('Your Custom Post Types', 'last-tap-events'); ?></a></li>
+                    href="#tab-1"><?php _e( 'Your Custom Post Types', 'last-tap-events' ); ?></a></li>
         <li class="<?php echo isset($_POST["edit_post"]) ? 'active' : '' ?>">
             <a href="#tab-2">
                 <?php echo isset($_POST["edit_post"]) ? 'Edit' : 'Add' ?> Custom Post Type
             </a>
         </li>
-        <li><a href="#tab-3"><?php _e('Export', 'last-tap-events'); ?></a></li>
+        <li><a href="#tab-3"><?php _e( 'Export', 'last-tap-events'); ?></a></li>
     </ul>
 
     <div class="tab-content">
         <div id="tab-1" class="tab-pane <?php echo !isset($_POST["edit_post"]) ? 'active' : '' ?>">
 
-            <h3><?php _e('Manage Your Custom Post Types', 'last-tap-events'); ?></h3>
+            <h3><?php _e( 'Manage Your Custom Post Types', 'last-tap-events' ); ?></h3>
 
             <?php
             $options = get_option('event_plugin_cpt') ?: array();
 
-            echo '<table class="cpt-table"><tr><th>' . __("ID", "last-tap-event") . '</th><th>' . __("Singular Name", "last-tap-event") . '</th><th>' . __("Plural Name", "last-tap-event") . '</th><th class="text-center">' . __("Public", "last-tap-event") . '</th><th class="text-center">' . __("Archive", "last-tap-event") . '</th><th class="text-center">' . __("Actions", "last-tap-event") . '</th></tr>';
+            echo '<table class="cpt-table"><tr><th>' . __( "ID", "last-tap-event" ) . '</th><th>' . __("Singular Name", "last-tap-event") . '</th><th>' . __( "Plural Name", "last-tap-event" ) . '</th><th class="text-center">' . __( "Public", "last-tap-event" ) . '</th><th class="text-center">' . __( "Archive", "last-tap-event" ) . '</th><th class="text-center">' . __( "Actions", "last-tap-event" ) . '</th></tr>';
 
             foreach ($options as $option) {
                 $public = isset($option['public']) ? "TRUE" : "FALSE";
@@ -31,14 +31,14 @@
 
                 echo '<form method="post" action="" class="inline-block">';
                 echo '<input type="hidden" name="edit_post" value="' . $option['post_type'] . '">';
-                submit_button('Edit', 'primary small', 'submit', false);
+                submit_button( 'Edit', 'Primary small', 'submit', false );
                 echo '</form> ';
 
                 echo '<form method="post" action="options.php" class="inline-block">';
                 settings_fields('event_plugin_cpt_settings');
                 echo '<input type="hidden" name="remove" value="' . $option['post_type'] . '">';
-                submit_button('Delete', 'delete small', 'submit', false, array(
-                    'onclick' => 'return confirm("' . __("Are you sure you want to delete this Custom Post Type? The data associated with it will not be deleted.", "last-tap-event") . '" );'
+                submit_button( 'Delete', 'Delete small', 'submit', false, array(
+                    'onclick' => 'return confirm("' . __( "Are you sure you want to delete this Custom Post Type? The data associated with it will not be deleted.", "last-tap-event" ) . '" );'
                 ));
                 echo '</form></td></tr>';
             }
@@ -59,49 +59,50 @@
         </div>
 
         <div id="tab-3" class="tab-pane">
-            <h3><?php _e('Export Your Custom Post Types', 'last-tap-events'); ?></h3>
+            <h3><?php _e( 'Export Your Custom Post Types', 'last-tap-events' ); ?></h3>
 
             <?php foreach ($options as $option) { ?>
 
                 <h3><?php echo $option['singular_name']; ?></h3>
 
                 <pre class="prettyprint">
+<?php
 // Register Custom Post Type
 function custom_post_type() {
 
 	$labels = array(
-		'name'                  => _x( 'Post Types', 'Post Type General Name', 'text_domain' ),
-		'singular_name'         => _x( '<?php echo $option['singular_name']; ?>', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'             => __( '<?php echo $option['plural_name']; ?>', 'text_domain' ),
-		'plural_name'             => __( '<?php echo $option['plural_name']; ?>', 'text_domain' ),
-		'name_admin_bar'        => __( 'Post Type', 'text_domain' ),
-		'archives'              => __( 'Item Archives', 'text_domain' ),
-		'attributes'            => __( 'Item Attributes', 'text_domain' ),
-		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-		'all_items'             => __( 'All Items', 'text_domain' ),
-		'add_new_item'          => __( 'Add New Item', 'text_domain' ),
-		'add_new'               => __( 'Add New', 'text_domain' ),
-		'new_item'              => __( 'New Item', 'text_domain' ),
-		'edit_item'             => __( 'Edit Item', 'text_domain' ),
-		'update_item'           => __( 'Update Item', 'text_domain' ),
-		'view_item'             => __( 'View Item', 'text_domain' ),
-		'view_items'            => __( 'View Items', 'text_domain' ),
-		'searlt_items'          => __( 'Search Item', 'text_domain' ),
-		'not_found'             => __( 'Not found', 'text_domain' ),
-		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
-		'featured_image'        => __( 'Featured Image', 'text_domain' ),
-		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
-		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
-		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
-		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
-		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
-		'items_list'            => __( 'Items list', 'text_domain' ),
-		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
-		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
+		'name'                  => _x( 'Post Types', 'Post Type General Name', 'last-tap-event' ),
+		'singular_name'         => _x( '<?php echo $option['singular_name']; ?>', 'Post Type Singular Name', 'last-tap-event' ),
+		'menu_name'             => __( '<?php echo $option['plural_name']; ?>', 'last-tap-event' ),
+		'plural_name'             => __( '<?php echo $option['plural_name']; ?>', 'last-tap-event' ),
+		'name_admin_bar'        => __( 'Post Type', 'last-tap-event' ),
+		'archives'              => __( 'Item Archives', 'last-tap-event' ),
+		'attributes'            => __( 'Item Attributes', 'last-tap-event' ),
+		'parent_item_colon'     => __( 'Parent Item:', 'last-tap-event' ),
+		'all_items'             => __( 'All Items', 'last-tap-event' ),
+		'add_new_item'          => __( 'Add New Item', 'last-tap-event' ),
+		'add_new'               => __( 'Add New', 'last-tap-event' ),
+		'new_item'              => __( 'New Item', 'last-tap-event' ),
+		'edit_item'             => __( 'Edit Item', 'last-tap-event' ),
+		'update_item'           => __( 'Update Item', 'last-tap-event' ),
+		'view_item'             => __( 'View Item', 'last-tap-event' ),
+		'view_items'            => __( 'View Items', 'last-tap-event' ),
+		'searlt_items'          => __( 'Search Item', 'last-tap-event' ),
+		'not_found'             => __( 'Not found', 'last-tap-event' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'last-tap-event' ),
+		'featured_image'        => __( 'Featured Image', 'last-tap-event' ),
+		'set_featured_image'    => __( 'Set featured image', 'last-tap-event' ),
+		'remove_featured_image' => __( 'Remove featured image', 'last-tap-event' ),
+		'use_featured_image'    => __( 'Use as featured image', 'last-tap-event' ),
+		'insert_into_item'      => __( 'Insert into item', 'last-tap-event' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this item', 'last-tap-event' ),
+		'items_list'            => __( 'Items list', 'last-tap-event' ),
+		'items_list_navigation' => __( 'Items list navigation', 'last-tap-event' ),
+		'filter_items_list'     => __( 'Filter items list', 'last-tap-event' ),
 	);
 	$args = array(
-		'label'                 => __( 'Post Type', 'text_domain' ),
-		'description'           => __( 'Post Type Description', 'text_domain' ),
+		'label'                 => __( 'Post Type', 'last-tap-event' ),
+		'description'           => __( 'Post Type Description', 'last-tap-event' ),
 		'labels'                => $labels,
 		'supports'              => false,
 		'taxonomies'            => array( 'category', 'post_tag' ),
@@ -122,6 +123,7 @@ function custom_post_type() {
 
 }
 add_action( 'init', 'custom_post_type', 0 );
+?>
 			</pre>
 
             <?php } ?>
