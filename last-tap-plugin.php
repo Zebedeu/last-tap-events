@@ -1,24 +1,24 @@
 <?php
 /**
- * @version 1.0
- * @package LastTapEvents
- * @link         https://github.com/zebedeu/last-tap-events
- * @author       Marcio Zebedeu
- * @copyright    2018 Marcio Zebedeu
- * @license      GPL2
+ * @version    1.0
+ * @package    LastTapEvents
+ * @link       https://github.com/zebedeu/last-tap-events
+ * @author     Marcio Zebedeu
+ * @copyright  2018 Marcio Zebedeu
+ * @license    GPL2
  */
 
 /**
- *  Plugin Name: Last Tap Events
- *  Description:  Last Tap Events is a Wordpress plugin that claims to be simple and objective so you can place event announcements on your site.
+ *  Plugin Name:  Last Tap Events
+ *  Description:  Last Tap Events is a WordPress plugin that claims to be simple and objective so you can place event announcements on your site.
  * GitHub Plugin URI: https://github.com/zebedeu/last-tap-events
  *  Version:      1.0.3
  *  Author:       Márcio Zebedeu
- *  Author URI:    http://marciozebedeu.com
+ *  Author URI:   http://marciozebedeu.com
  *  License:      GPL2
  *  License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  *  Text Domain:  last-tap-event
- *  Domain Path: /languages
+ *  Domain Path:  /languages
  */
 
 /*
@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 Copyright 2005-2015 Automattic, Inc.
 */
 
-// If this file is called firectly, abort!!!
+// If this file is called directly, abort!!!
 defined('ABSPATH') or die('Hey, what are you doing here? You silly human!');
 
 require_once(dirname(__FILE__) . '/inc/LastTap_Init.php');
