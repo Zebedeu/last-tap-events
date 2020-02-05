@@ -66,7 +66,7 @@
                 <h3><?php echo $option['singular_name']; ?></h3>
 
                 <pre class="prettyprint">
-<?php
+
 // Register Custom Post Type
 function custom_post_type() {
 
@@ -123,7 +123,7 @@ function custom_post_type() {
 
 }
 add_action( 'init', 'custom_post_type', 0 );
-?>
+
 			</pre>
 
             <?php } ?>
