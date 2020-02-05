@@ -1,5 +1,5 @@
 === Last Tap Events ===
-Contributors: Márcio Zebedeu
+Contributors: Márcio Zebedeu, passoniate
 Tags: Form, Register, Locations, Location Widget, Media Widget, Custom Post Type Manager, Custom Taxonomy Manager, Testimonial, post, Advanced Notification System,  
 Requires at least: 5.2
 Tested up to: 5.3.2
