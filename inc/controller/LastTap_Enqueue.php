@@ -78,7 +78,7 @@ class LastTap_Enqueue extends LastTap_BaseController
         wp_enqueue_script('bootstrap_js', $this->plugin_url. 'assets/js/bootstrap.js', array('jquery'), '1.0.0', false);
         wp_enqueue_script('slide', $this->plugin_url. 'assets/slider.js', array('jquery'), '1.0.0', false);
         wp_enqueue_script('custom_jsww', $this->plugin_url . 'assets/js/lt-account.js',array( 'jquery'));
-            wp_register_script( 'rkb-dynamic-qr-code', plugins_url( $this->plugin_url .'assets/qr_code/qrcode.min.js' , dirname(__FILE__) ), array('jquery'), '1.0', true);
+        wp_register_script( 'rkb-dynamic-qr-code', plugins_url( $this->plugin_url .'assets/qr_code/qrcode.min.js' , dirname(__FILE__) ), array('jquery'), '1.0', true);
 
         // wp_enqueue_script('qr_code_js_min', $this->plugin_url . 'assets/qr_code/qrcode.min.js', array(), '', true);
         // wp_enqueue_script('qr_code_js', $this->plugin_url . 'assets/qr_code/qrcode.js',array(), '', true);
