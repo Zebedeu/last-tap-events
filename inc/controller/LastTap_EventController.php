@@ -33,9 +33,6 @@ class LastTap_EventController extends LastTap_BaseController
         add_filter('manage_edit-event_sortable_columns', array($this, 'lt_set_event_custom_columns_sortable'));
         add_action('init', function(){ $this->is_user_logged_in = is_user_logged_in(); $this->is_user_logged_in; });
 
-
-
-
     }
     
     public function lt_eventposts()
@@ -110,7 +107,6 @@ class LastTap_EventController extends LastTap_BaseController
          prefix _lt
         */
 
-
         $metabox_id = '_lt'. $args['args']['id'];
 
         global $post, $wp_locale, $postEvent;
@@ -176,9 +172,7 @@ class LastTap_EventController extends LastTap_BaseController
         $event_partici = get_post_meta($post->ID, '_lt_event_partic_limit', true); 
         $event_price = get_post_meta($post->ID, '_lt_event_price', true); 
 
-
         $detal = get_post_meta($post->ID, '_event_detall_info', true); ?>
-
 
 
     <div class="wrap">
@@ -216,9 +210,6 @@ class LastTap_EventController extends LastTap_BaseController
 
                         <input type="text" name="_lt_event_partic_limit" value="<?php echo $detal["_lt_event_partic_limit"] ?? ""; ?>"/>
                     </td>
-            
-
-
                     <th>
 
                         <label for="input-text"><?php _e('Event Country:'); ?></label>
@@ -471,17 +462,13 @@ class LastTap_EventController extends LastTap_BaseController
 
         $event = $post;
 
-
         $current_time = current_time('mysql');
         list($today_year, $today_month, $today_day, $hour, $minute, $second) = preg_split('([^0-9])', $current_time);
         $current_timestamp = $today_year . '-' . $today_month . '-' . $today_day . ' ' . $hour . ':' . $minute;
 
 
-        if ($post_type == 'event' && is_singular('event')) { ?>
+        if ( $post_type == 'event' && is_singular('event')) { ?>
             <body onload='verHora()'><h3 id='relogio'></h3>
-            <?php
-
-            ?>
 
 
             <?php    if ( !$this->is_user_logged_in ) {
@@ -563,7 +550,7 @@ class LastTap_EventController extends LastTap_BaseController
 
             <div class="lastTap col-lg-12">
                 <div class="lastTap row card-header-event">
-                    <div class="lastTap col-lg-5 card-header-event">
+                    <div class="lastTap col-lg-6 card-header-event">
 
                         <label class="lastTap center"><img
                                     src="<?php echo $this->plugin_url . "/assets/icon/location.svg"; ?>"
@@ -592,14 +579,14 @@ class LastTap_EventController extends LastTap_BaseController
                                     src="<?php echo $this->plugin_url . "/assets/icon/contacteditor.svg"; ?>"
                                     style="width:40px; height:40px;">
                             <h2><?php _e(' Contact', 'last-tap-events'); ?></h2></label>
-                        <hr>
+                        <br>
                         <strong><?php _e('Event Phone:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_phone']; ?></small>
                         <br>
                         <strong><?php _e('Event Phone 2:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_phone_2']; ?></small>
                         <br>
-
+                        <hr>
                         <strong><?php _e('Event Email:', 'last-tap-events'); ?></strong>
                         <small><?php echo "\t\n" . get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_email']; ?></small>
                         <br>
