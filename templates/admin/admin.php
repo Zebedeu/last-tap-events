@@ -65,7 +65,7 @@
                     <div id="tab-3" class="tab-pane">
 
                         <P>
-                            <?php __( 'K7 Event is a Wordpress plugin for churches that claims to be simple and objective for your church website ', 'last-tap-events');?>.
+                            <?php __( 'Last Tap Events is a WordPress plugin for churches that claims to be simple and objective for your Events website.', 'last-tap-events');?>.
                         </P>
                         <div class='wrap'>
                             <?php
@@ -220,7 +220,7 @@
                     <div id="tab-6" class="tab-pane">
 
                         <P>
-                            <?php __( 'K7 Event is a WordPress plugin for churches that claims to be simple and objective for your church website ', 'last-tap-events' );?>.
+                            <?php __( 'Last Tap Events is a WordPress plugin for churches that claims to be simple and objective for your Events website.', 'last-tap-events' );?>.
                         </P>
                         <div class='wrap'>
                             

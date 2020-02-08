@@ -30,7 +30,7 @@ get_header(); ?>
 
         <div class="lastTap col-sm-3">
             <div class="lastTap panel panel-primary event-primary">
-                <div class="lastTap panel-heading"><h2><a href="<?php echo $event_permalink;?>"><?php echo $event_title;?></a></h2>
+                <div class="lastTap panel-heading text-center"><h2><a href="<?php echo $event_permalink;?>"><?php echo esc_html($event_title);?></a></h2>
                 </div>
                 <div class="lastTap panel-body nopadding">
                     <?php if( !$event_thumbnail ){

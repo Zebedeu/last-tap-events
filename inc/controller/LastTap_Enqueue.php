@@ -30,7 +30,6 @@ class LastTap_Enqueue extends LastTap_BaseController
         wp_enqueue_style('lastTap_css3', $this->plugin_url . 'assets/css/lt-account.css');
         wp_enqueue_script('lastTap_pluginscript', $this->plugin_url . 'assets/lt-script.js');
         
-
     }
 
 

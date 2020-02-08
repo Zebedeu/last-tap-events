@@ -80,11 +80,11 @@ function output_pdf() {
 function lt_fpdf_create_admin_page() {
 ?>
 <div class="wrap">
-    <h1>Atomic Smash - Wordpress PDF Generator</h1>
-    <p>Click below to generate a pdf from the content inside all the Wordpress Posts. </p>
+    <h1>Atomic Smash - WordPress PDF Generator</h1>
+    <p>Click below to generate a pdf from the content inside all the WordPress Posts. </p>
     <p>Each post will be on its own pdf page containing the post title and post content.</p>
 	<form method="post" id="lastTap-fdpf-form">
-        <button class="button button-primary" type="submit" name="generate_posts_pdf" value="generate">Generate PDF from Wordpress Posts</button>
+        <button class="button button-primary" type="submit" name="generate_posts_pdf" value="generate">Generate PDF from WordPress Posts</button>
     </form>
 </div>
 <?php
