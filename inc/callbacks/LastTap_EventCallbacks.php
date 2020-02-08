@@ -17,8 +17,8 @@ class LastTap_EventCallbacks extends LastTap_BaseController
 
     }
 
-    public function formatDate($date){
-        return $newData = date("F j Y H:i", strtotime($date));
+    public function formatDate($date, string $format = "F j Y H:i"){
+        return $newData = date($format, strtotime($date));
 
     }
 

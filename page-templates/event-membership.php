@@ -62,7 +62,7 @@ $email = $current_user->user_email;
 						<div class="lastTap  col-lg-12">
 							<ul class="lastTap  nav nav-tabs" id="myTab" role="tablist">
 								<li class="lastTap nav-item">
-									<a class="lastTap nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><?php _e('Eventos','last-tap-events');?></a>
+									<a class="lastTap nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><?php _e('Events','last-tap-events');?></a>
 								</li>
 										  <!-- <li class="lastTap nav-item">
 										    <a class="lastTap nav-link" id="profile-tab" data-toggle="tab" href="#perfil" role="tab" aria-controls="profile" aria-selected="false">Perfil</a>
@@ -121,12 +121,12 @@ $email = $current_user->user_email;
 						          </div> <!-- tab home -->
 									<div class="lastTap tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="profile-tab">
 										<div class="wrap">
-						    				<h1>Atomic Smash - Wordpress PDF Generator</h1>
-						    				<p>Click below to generate a pdf from the content inside all the Wordpress Posts. </p>
+						    				<h1>Atomic Smash - WordPress PDF Generator</h1>
+						    				<p>Click below to generate a pdf from the content inside all the WordPress Posts. </p>
 						    				<p>Each post will be on its own pdf page containing the post title and post content.</p>
 											<form method="post" id="lastTap-fdpf-form">
 
-						        				<button class="button button-primary" type="submit" name="generate_posts_pdf" value="generate">Generate PDF from Wordpress Posts</button>
+						        				<button class="button button-primary" type="submit" name="generate_posts_pdf" value="generate">Generate PDF from WordPress Posts</button>
 						    				</form>
 						    			</div>
 				  					</div>

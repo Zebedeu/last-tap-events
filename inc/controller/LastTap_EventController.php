@@ -32,6 +32,8 @@ class LastTap_EventController extends LastTap_BaseController
         add_action('manage_event_posts_custom_column', array($this, 'lt_set_event_custom_columns_data'), 10, 2);
         add_filter('manage_edit-event_sortable_columns', array($this, 'lt_set_event_custom_columns_sortable'));
         add_action('init', function(){ $this->is_user_logged_in = is_user_logged_in(); $this->is_user_logged_in; });
+        add_filter( "views_edit-event", array($this, 'modified_views_event_detail') );
+
 
     }
     
@@ -611,7 +613,7 @@ class LastTap_EventController extends LastTap_BaseController
             $html .= '<div class="lastTap row"><div class="lastTap col-lg-12">';
             $html .= $content;
             $html .= '</div><div class="lastTap col-lg-12">';
-            $html .= get_the_post_thumbnail($event->ID, 'thumbnail');
+            // $html .= get_the_post_thumbnail($event->ID, 'thumbnail');
             $html .= "</div></div>"; 
             echo  $html;
 
@@ -843,11 +845,12 @@ class LastTap_EventController extends LastTap_BaseController
         $date = $columns['date'];
         unset($columns['title'], $columns['date']);
 
-        $columns['title'] = __( 'Event Title', 'last-tap-events');
+        $columns['title'] = __( 'Event name', 'last-tap-events');
         $columns['telephone'] =  __('Telephone', 'last-tap-events');
         $columns['price'] =  __('Price', 'last-tap-events');
         $columns['email'] =  __('Event Organizers email', 'last-tap-events');
-        $columns['date'] = $date;
+        $columns['location'] =  __('Location', 'last-tap-events');
+        $columns['data'] = __('Date and Time', 'last-tap-events');
 
         return $columns;
     }
@@ -861,28 +864,39 @@ class LastTap_EventController extends LastTap_BaseController
         $email = isset($_event_detall_info['_lt_event_organizer']) ? $_event_detall_info['_lt_event_organizer'] : '';
         $telephone = isset($_event_detall_info['_lt_event_phone']) ? $_event_detall_info['_lt_event_phone'] : '';
         $price = isset($_event_detall_info['_lt_event_price']) ? $_event_detall_info['_lt_event_price'] : '00.00';
+        $startEvent = isset($_event_detall_info['_lt_start_eventtimestamp']) ? $_event_detall_info['_lt_start_eventtimestamp'] : '00:00';
+        $andEvent = isset($_event_detall_info['_lt_end_eventtimestamp']) ? $_event_detall_info['_lt_end_eventtimestamp'] : '00:00';
+        $_lt_event_street = isset($_event_detall_info['_lt_event_street']) ? $_event_detall_info['_lt_event_street'] : '00:00';
+        $_lt_event_address = isset($_event_detall_info['_lt_event_address']) ? $_event_detall_info['_lt_event_address'] : '00:00';
+        $_lt_event_city = isset($_event_detall_info['_lt_event_city']) ? $_event_detall_info['_lt_event_city'] : '00:00';
+
         $corrency = isset($corrency) ? $corrency : '';
 
-
-  $upload_dir = wp_upload_dir();
-  $upload_dir = $upload_dir['baseurl'] . '/2019/12/wp-header-logo.png' ;
-  $a =preg_replace('/^https?:/', '', $upload_dir);
+        $upload_dir = wp_upload_dir();
+        $upload_dir = $upload_dir['baseurl'] . '/2019/12/wp-header-logo.png' ;
+        $a =preg_replace('/^https?:/', '', $upload_dir);
 
 
         switch ($column) {
-            case 'name':
-                echo '<strong>' . $title . '</strong><br/><a href="mailto:' . $email . '">' . $email . '</a>';
+            case 'title':
+                echo esc_html('<strong>' . $title . '</strong><br/><a href="mailto:' . $email . '">' . $email . '</a>');
                 break;
 
             case 'telephone':
-                echo $telephone;
+                echo esc_html($telephone);
                 break;
             case 'price':
-                echo $price . ' '.$corrency;
+                echo esc_html($price . ' '.$corrency);
                 break;
 
             case 'email':
-                echo $email;
+                echo esc_html($email);
+                break;
+            case 'location':
+                echo "<strong>" .$_lt_event_street . ' ' .  $_lt_event_address . "</strong><p>". ' ' . $_lt_event_city . '</p>';
+                break;
+            case 'data':
+                echo wp_kses_post( $this->callbacks->formatDate($startEvent, "F j Y" ) . ' - ' . $this->callbacks->formatDate($andEvent,  "F j Y") . '<p>'. __('Time:', 'last-tap-events'). $this->callbacks->formatDate($startEvent, "H:i" ) . ' - ' . $this->callbacks->formatDate($andEvent,  "H:i") . '</p>');
                 break;
 
         }
@@ -892,12 +906,26 @@ class LastTap_EventController extends LastTap_BaseController
 
     public function lt_set_event_custom_columns_sortable($columns)
     {
-        $columns['name'] = __( 'name', 'last-tap-events');
+        $columns['title'] = __( 'name', 'last-tap-events');
         $columns['telephone'] = __( 'Telephone', 'last-tap-events');
         $columns['price'] = __( 'price', 'last-tap-events');
         $columns['email'] = __( 'Email', 'last-tap-events');
+        $columns['location'] = __( 'Location', 'last-tap-events');
+        $columns['data'] = __( 'Date and Time', 'last-tap-events');
 
         return $columns;
+    }
+
+    function modified_views_event_detail( $views ) 
+    {
+        $views['all'] = str_replace( 'All ', 'All Events ', $views['all'] );
+
+        if($views['publish']){
+             $views['publish'] = str_replace( 'Published ', __('Event Published ', 'last-tap-events'), $views['publish'] );
+        }
+
+        return $views;
+
     }
 
 }
