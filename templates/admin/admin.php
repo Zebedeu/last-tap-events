@@ -31,24 +31,18 @@
             <?php /** settings manager */ ?>
 
             <div class="wrap">
-
-
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab-1"><?php _e('Manage Settings', 'last-tap-events'); ?></a></li>
                     <li><a href="#tab-2"><?php _e( 'Updates', 'last-tap-events' ); ?></a></li>
                     <li><a href="#tab-3"><?php _e( 'All Available Shortcodes', 'last-tap-events' ); ?></a></li>
                 </ul>
-
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane active">
-                        <form method="post" action="options.php">
-
                             <?php
                             settings_fields('event_plugin_settings');
                             do_settings_sections('event_plugin');
                             submit_button();
                             ?>
-                        </form>
 
                     </div>
 
@@ -87,26 +81,25 @@
                                             ?>
 
                                         </table>
-                                </div>
-                        </div>
+                                </div><!-- section panel -->
+                        </div><!-- wrap -->
                             
                             <h2><?php _e( '3. Go to Settings » Permalinks, and simply click on Save Changes button.', 'last-tap-events' );?></h2></p>
                             <em><?php _e( 'If you like this plugin, please', 'last-tap-events' );?> <a href="http://wordpress.org/extend/plugins/last-tap-event"><?php _e( 'Vote', 'last-tap-events' );?></a>
-                                .
+ .
                                 <?php _e( 'Author : ', 'last-tap-events' );?><a href="https://github.com/zebedeu">Márcio Zebedeu</a>
-                                <?php _e( 'You can ', 'last-tap-events' );?><a href="https://github.com/knut7/last-tap-event"><?php _e('for bugs, </a> Thank you.</em>','last-tap-events' );?>
+                                <?php _e( 'You can ', 'last-tap-events' );?><a href="https://github.com/knut7/last-tap-event"><?php _e('for bugs', 'last-tap-events')?>, </a> <?php _e('Thank you', 'last-tap-events');?>.</em>
 
-                    </div>
-                </div>
-            </div>
+                    </div><!-- tab-3 -->
+                </div><!-- tab-content -->
+            </div><!-- wrap  -- >
+
 
             <?php
 
         } elseif ($active_tab == 'events') {
             ?>
-            <div class="wrap">
-
-
+             <div class="wrap">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab-4"><?php _e('Event Settings', 'last-tap-events'); ?></a></li>
                     <li><a href="#tab-5"><?php _e( 'Calendar event', 'last-tap-events' ); ?></a></li>
@@ -115,20 +108,13 @@
 
                 <div class="tab-content">
                     <div id="tab-4" class="tab-pane active">
-                        <form method="post" action="options.php">
-
-                            <?php
-
-                            /** settings manager */ 
-
-                    settings_fields( 'event_options_group' );
-                    do_settings_sections( 'event_settings' );
-                    submit_button( $text = null, $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = null );
-                            
-                            ?>
-
-                        </form>
-
+                        <?php
+                                    /** settings manager */ 
+                            settings_fields( 'event_options_group' );
+                            do_settings_sections( 'event_settings' );
+                            submit_button( $text = null, $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = null );
+                                    
+                        ?>
                     </div>
 
                     <div id="tab-5" class="tab-pane">
@@ -200,13 +186,6 @@
                             </script>
                             <style>
 
-                              body {
-                                margin: 40px 10px;
-                                padding: 0;
-                                font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-                                font-size: 14px;
-                              }
-
                               #calendar {
                                 max-width: 900px;
                                 margin: 0 auto;
@@ -215,7 +194,7 @@
                             </style>
                               <div id='calendar'></div>
 
-                    </div>
+                    </div><!-- tab-5 -->
 
                     <div id="tab-6" class="tab-pane">
 
@@ -238,13 +217,14 @@
                             <p>
                             <h4><?php __( '3. Go to Settings » Permalinks, and simply click on Save Changes button.', 'last-tap-events');?></h4></p>
                             <em><?php __('If you like this plugin, please', 'last-tap-events');?> <a href="http://wordpress.org/extend/plugins/last-tap-event"><?php __( 'Vote', 'last-tap-events' );?></a>
-                                .
-                                <?php __( 'Author : ', 'last-tap-events' );?><a href="https://github.com/zebedeu">Márcio Zebedeu</a>
-                                <?php __( 'You can ', 'last-tap-events' );?><a href="https://github.com/knut7/last-tap-event"><?php __( 'For bugs, </a> Thank You.</em>','last-tap-events' );?>
+                                <?php _e( 'Author : ', 'last-tap-events' );?><a href="https://github.com/zebedeu">Márcio Zebedeu</a>
+                                <?php _e( 'You can ', 'last-tap-events' );?><a href="https://github.com/knut7/last-tap-event"><?php _e('for bugs', 'last-tap-events')?>, </a> <?php _e('Thank you', 'last-tap-events');?>.</em>
 
-                        </div>
-                    </div>
-                </div>
+                        </div><!-- wrap -->
+                    </div><!-- tab-6 -->
+                </div><!-- tab-content -->
+            </div>
+           
                 <?php 
                   
         }

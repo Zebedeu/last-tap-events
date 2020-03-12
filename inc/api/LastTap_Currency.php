@@ -130,16 +130,17 @@ final class LastTap_Currency
    public function __construct()
    {
     $this->currency;
+    $this->code = $key = esc_attr( get_option( 'event_currency' ) );
    }
 
    public function lt_get_currency_name()
    {
-    $key = esc_attr( get_option( 'event_currency' ) );
-    if(empty($key)){
+    if(empty($this->code)){
         return $this->currency['USD'];
     }else{
-        return $this->currency[$key];
+        return $this->currency[$this->code];
     }
+
    }
 
    public function get_code(){

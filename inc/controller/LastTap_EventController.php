@@ -8,8 +8,6 @@
 
 defined('ABSPATH') || exit;
 
-
-
 class LastTap_EventController extends LastTap_BaseController
 
 {
@@ -154,7 +152,6 @@ class LastTap_EventController extends LastTap_BaseController
         echo '<input class="small-text" type="number" step="1" min="1" name="' . $metabox_id . '_minute" value="' . $min . '" size="2"  />';
         echo '</div>';
 
-
     }
 
     public function event_location()
@@ -182,57 +179,42 @@ class LastTap_EventController extends LastTap_BaseController
         <table class="form-table">
             <tbody>
                 <tr>
-
                     <th>
-
                         <label for="input-text"><?php _e('Event price :'); ?></label>
                     </th>
                     <td>
-
                         <input type="text" name="_lt_event_price"  value="<?php echo $detal["_lt_event_price"] ?? ""; ?>" />
                     </td>
-
-
                     <th>
-
                         <label for="input-text"><?php _e('Event Currency :'); ?></label>
                     </th>
                     <td>
-
                             <?php echo $value = esc_attr( get_option( 'event_currency' ) );?>
-
                     </td>
                 </tr>
                 <tr>
                     <th>
-
                          <label for="input-text"><?php _e('Event Participe Limits:'); ?></label>
                     </th>
                     <td>
-
                         <input type="text" name="_lt_event_partic_limit" value="<?php echo $detal["_lt_event_partic_limit"] ?? ""; ?>"/>
                     </td>
                     <th>
-
                         <label for="input-text"><?php _e('Event Country:'); ?></label>
                     </th>
                     <td>
-
                         <input type="text" name="_lt_event_country" value="<?php echo $detal["_lt_event_country"] ?? ""; ?>"/>
                     </td>
                 </tr>
                 <tr>
                     <th>
-
                         <label for="input-text"><?php _e('Event City:'); ?></label>
                     </th>
                     <td>
-
                         <input type="text" name="_lt_event_city" value="<?php echo $detal["_lt_event_city"] ?? ""; ?>"/>
                     </td>
                     <th>
                         <label for="input-text"><?php _e('Event Address:'); ?></label>
-
                     </th>
                     <td>
                         <input type="text" name="_lt_event_address" value="<?php echo $detal["_lt_event_address"] ?? ""; ?>"/>
@@ -240,50 +222,36 @@ class LastTap_EventController extends LastTap_BaseController
                 </tr>
                 <tr>
                     <th>
-
                          <label for="input-text"><?php _e('Event Street:'); ?></label>
                     </th>
                     <td>
-
                          <input type="text" name="_lt_event_street" value="<?php echo $detal["_lt_event_street"] ?? ""; ?>"/>
                     </td>
-
-
-
                     <th>
-
                         <label for="input-text"><?php _e('Event Email:'); ?></label>
                     </th>
                     <td>
-
                         <input type="email" name="_lt_event_email" value="<?php echo $detal["_lt_event_email"] ?? ""; ?>"/>
                     </td>
                     <tr>
                     <th>
-
                         <label for="input-text"><?php _e('Event Organizers email:'); ?></label>
                     </th>
                     <td>
-
                         <input type="email" name="_lt_event_organizer" value="<?php echo $detal["_lt_event_organizer"] ?? ""; ?>"/>
                     </td>
-
                     <th>
-
                         <label for="input-text"><?php _e('Event Phone:'); ?></label>
                     </th>
                     <td>
-
                         <input type="tel" name="_lt_event_phone" value="<?php echo $detal["_lt_event_phone"] ?? ""; ?>"/>
                     </td>
                 </tr>
                 <tr>
                     <th>
-
                     <label for="input-text"><?php _e('Event Phone 2:'); ?></label>
                     </th>
                     <td>
-
                     <input type="tel" name="_lt_event_phone_2" value="<?php echo $detal["_lt_event_phone_2"] ?? ""; ?>"/>
                     </td>
                
@@ -292,7 +260,6 @@ class LastTap_EventController extends LastTap_BaseController
         </table>
     </form>
 </div>
-
 
         <?php
     }
@@ -398,7 +365,6 @@ class LastTap_EventController extends LastTap_BaseController
     public function lt_get_the_event_date()
     {
         global $post;
-
 
         $eventdate = '';
         $month = get_post_meta($post->ID, '_month', true);
@@ -512,26 +478,27 @@ class LastTap_EventController extends LastTap_BaseController
             <strong><?php echo "\t\n" . __('End timestamp:', 'last-tap-events'); ?></strong><p><?php echo "\t\n" . $this->callbacks->formatDate($endEvent); ?></p>
                 </div>
                     <div class="lastTap col-lg-4">
-                            <?php
-                             $price = get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_price'];
+                    <?php
+                        $price = get_post_meta($event->ID, '_event_detall_info', true)['_lt_event_price'];
 
-                             $currency = get_option( 'event_currency', true );
+                        $currency = get_option( 'event_currency', true );
 
-                             if("" == $currency ){
-                                $currency = 'USD';
-                             }
+                        if("" == $currency ){
+                        $currency = 'USD';
+                        }
 
-                             if( empty($price) ){
-                                $price = __('Free', 'last-tap-events');
-                                $currency = null;
-                             }
-                        ?>                        <strong><?php printf( __('Price: %s %s ', 'last-tap-events'), $price, $currency);?>  </strong>
-                    <hr>
+                        if( empty($price) ){
+                        $price = __('Free', 'last-tap-events');
+                        $currency = null;
+                        }
+                        ?>
+
+                        <strong><?php printf( __('Price: %s %s ', 'last-tap-events'), $price, $currency);?>  </strong>
+                        <hr>
                         <?php 
-
-                             $count_participant = $this->lastTap_count_event_participant($event->ID);
-
-                            $number = 0;
+                        $count_participant = $this->lastTap_count_event_participant($event->ID);
+                        
+                        $number = 0;
 
                         if($event_partici != 0){
                             $number = ($event_partici - count($count_participant));
@@ -541,10 +508,8 @@ class LastTap_EventController extends LastTap_BaseController
 
                         ?>
 
-                            <strong><?php printf( __('Nº of places available:  %s ', 'last-tap-events'), $number); ?></strong><br><hr>
-                                <strong><?php printf( 
-                                    __('Nº of participants: %s', 'last-tap-events'), count($count_participant) 
-                                    ); ?></strong>
+                        <strong><?php printf( __('Nº of places available:  %s ', 'last-tap-events'), $number); ?></strong><br><hr>
+                        <strong><?php printf( __('Nº of participants: %s', 'last-tap-events'), count($count_participant) ); ?></strong>
                     </div> <!-- col-lg-7 -->
 
                 </div>
@@ -599,16 +564,13 @@ class LastTap_EventController extends LastTap_BaseController
 
                 </div>
             </div>
-
             
             <?php $event_permalink = get_permalink($event);
             $html = '';
             $html .= '<h2 class="lastTap title">';
             $html .= '<a href="' . esc_url($event_permalink) . '" title="' . esc_attr__('view Event', 'last-tap-events') . '">';
             $html .= '</a>';
-            $html .= '</h2>'; ?>
-
-            <?php
+            $html .= '</h2>';
 
             $html .= '<div class="lastTap row"><div class="lastTap col-lg-12">';
             $html .= $content;
@@ -657,8 +619,6 @@ class LastTap_EventController extends LastTap_BaseController
 
         add_image_size( 'event-thumb', 270, 175, false );
 
-
-
         //default args
         $default_args = array(
             'event_id' => '',
@@ -675,7 +635,6 @@ class LastTap_EventController extends LastTap_BaseController
                 }
             }
         }
-
 
         //find event
         $event_args = array(
@@ -719,7 +678,6 @@ class LastTap_EventController extends LastTap_BaseController
                 $html .= '</a>';
                 $html .= '</h2>';
 
-
                 $html .= '<section class="lastTap col-lg-6 sermon" >';
 
                 $event_thumbnail = get_the_post_thumbnail($event_id, 'event-thumb');
@@ -731,7 +689,6 @@ class LastTap_EventController extends LastTap_BaseController
                 if (!empty($event_content)) {
                     $event_content = strip_shortcodes(wp_trim_words($event_content, 40, '...'));
                 }
-
 
                 // http://codex.wordpress.org/Function_Reference/current_time
                 $current_time = current_time('mysql');
@@ -785,8 +742,6 @@ class LastTap_EventController extends LastTap_BaseController
                     $html .= '<div class="lastTap col-lg-6">';
                     $html .= $event_content;
                     $html .= '</div>';
-
-
                     }
 
                 }
@@ -817,24 +772,23 @@ class LastTap_EventController extends LastTap_BaseController
     }
 
     public function lastTap_count_event_participant($event_id){
-
-        $all_post_ids = get_posts(array(
-                                'fields'          => 'post_id',
-                                'posts_per_page'  => -1,
-                                'post_type' => 'participant'
-                            ));
-                            $count_participant = [];
-                        foreach ($all_post_ids as $k => $v) {
-                            $count = get_post_meta( $v->ID, '_event_participant_key', false );
-                                foreach ($count as $key => $value) {
-                                    if($value['post_event_id'] == $event_id && $value['approved'] == 1){
-                                        $count_participant[] = $value['post_event_id'];
-                                    }
-                                }
-                                 
-                            }
-
-                            return $count_participant;
+        $all_post_ids = get_posts(
+            array(
+                'fields'            => 'post_id',
+                'posts_per_page'    => -1,
+                'post_type'         => 'participant'
+            )
+        );
+        $count_participant = [];
+            foreach ($all_post_ids as $k => $v) {
+                $count = get_post_meta( $v->ID, '_event_participant_key', false );
+                    foreach ($count as $key => $value) {
+                        if($value['post_event_id'] == $event_id && $value['approved'] == 1){
+                            $count_participant[] = $value['post_event_id'];
+                        }
+                    }               
+                }
+        return $count_participant;
 
 
     }
@@ -876,7 +830,6 @@ class LastTap_EventController extends LastTap_BaseController
         $upload_dir = $upload_dir['baseurl'] . '/2019/12/wp-header-logo.png' ;
         $a =preg_replace('/^https?:/', '', $upload_dir);
 
-
         switch ($column) {
             case 'title':
                 echo esc_html('<strong>' . $title . '</strong><br/><a href="mailto:' . $email . '">' . $email . '</a>');
@@ -898,11 +851,8 @@ class LastTap_EventController extends LastTap_BaseController
             case 'data':
                 echo wp_kses_post( $this->callbacks->formatDate($startEvent, "F j Y" ) . ' - ' . $this->callbacks->formatDate($andEvent,  "F j Y") . '<p>'. __('Time:', 'last-tap-events'). $this->callbacks->formatDate($startEvent, "H:i" ) . ' - ' . $this->callbacks->formatDate($andEvent,  "H:i") . '</p>');
                 break;
-
         }
-
     }
-
 
     public function lt_set_event_custom_columns_sortable($columns)
     {
@@ -920,12 +870,9 @@ class LastTap_EventController extends LastTap_BaseController
     {
         $views['all'] = str_replace( 'All ', 'All Events ', $views['all'] );
 
-        if($views['publish']){
+        if(!empty($views['publish'])){
              $views['publish'] = str_replace( 'Published ', __('Event Published ', 'last-tap-events'), $views['publish'] );
         }
-
         return $views;
-
     }
-
 }

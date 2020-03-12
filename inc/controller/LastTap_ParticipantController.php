@@ -16,6 +16,7 @@ class LastTap_ParticipantController extends LastTap_BaseController
     public function lt_register()
     {
 
+        $this->callbacks_events = new LastTap_EventCallbacks();
 
         $this->settings = new LastTap_SettingsApi();
 
@@ -128,7 +129,7 @@ class LastTap_ParticipantController extends LastTap_BaseController
             'menu_icon' => 'dashicons-admin-site-alt',
             'exclude_from_search' => true,
             'publicly_queryable' => false,
-            'supports' => array('thumbnail', 'title', 'editor'),
+            'supports' => array('title', 'editor'),
             'show_in_rest' => false
         );
 
@@ -261,10 +262,10 @@ class LastTap_ParticipantController extends LastTap_BaseController
 
         $columns['name'] = __('Partic Name', 'last-tap-events');
         $columns['title'] = __('Event Name');
+        $columns['dateAndTime'] = __( 'Date and Time', 'last-tap-events');
         $columns['telephone'] =  __('Telphone', 'last-tap-events');
-        $columns['approved'] = __('Approved', 'last-tap-events');
         $columns['party'] = __('Partic', 'last-tap-events');
-        $columns['date'] = $date;
+        $columns['approved'] = __('Approved', 'last-tap-events');
 
         return $columns;
     }
@@ -272,29 +273,35 @@ class LastTap_ParticipantController extends LastTap_BaseController
     public function lt_set_partici_custom_columns_data($column, $post_id)
     {
         $data = get_post_meta($post_id, '_event_participant_key', true);
+        $post_event_id = $data['post_event_id'];
         $name = isset($data['name']) ? $data['name'] : '';
         $email = isset($data['email']) ? $data['email'] : '';
         $telephone = isset($data['telephone']) ? $data['telephone'] : '';
         $approved = isset($data['approved']) && $data['approved'] === 1 ? '<strong>'. __( 'YES', 'last-tap-events').'</strong>' : __(  'NO', 'last-tap-events');
         $party = isset($data['party']) && $data['party'] === 1 ? '<strong>'. __( 'YES', 'last-tap-events').'</strong>' : __(  'NO', 'last-tap-events');
 
+        $_event_detall_info = get_post_meta($post_event_id, '_event_detall_info', true);
+        $startEvent = isset($_event_detall_info['_lt_start_eventtimestamp']) ? $_event_detall_info['_lt_start_eventtimestamp'] : '00:00';
+        $andEvent = isset($_event_detall_info['_lt_end_eventtimestamp']) ? $_event_detall_info['_lt_end_eventtimestamp'] : '00:00';
+
 
         switch ($column) {
             case 'name':
                 echo '<strong>' . $name . '</strong><br/><a href="mailto:' . $email . '">' . $email . '</a>';
                 break;
-
+            case 'dateAndTime':
+                echo wp_kses_post( $this->callbacks_events->formatDate($startEvent, "F j Y" ) . ' - ' . $this->callbacks_events->formatDate($andEvent,  "F j Y") . '<p>'. __('Time:', 'last-tap-events'). $this->callbacks_events->formatDate($startEvent, "H:i" ) . ' - ' . $this->callbacks_events->formatDate($andEvent,  "H:i") . '</p>');
+                break;
+            
             case 'telephone':
                 echo $telephone;
+                break;
+            case 'party':
+                echo $party;
                 break;
             case 'approved':
                 echo $approved;
                 break;
-
-            case 'party':
-                echo $party;
-                break;
-            
         }
 
     }
@@ -302,8 +309,10 @@ class LastTap_ParticipantController extends LastTap_BaseController
     public function lt_set_partici_custom_columns_sortable($columns)
     {
         $columns['name'] = __( 'name', 'last-tap-events');
+        $columns['dateAndTime'] = __( 'Date and Time', 'last-tap-events');
         $columns['approved'] = __( 'approved', 'last-tap-events');
         $columns['party'] = __( 'partic', 'last-tap-events');
+
 
         return $columns;
     }

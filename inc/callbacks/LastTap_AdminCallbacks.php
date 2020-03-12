@@ -205,11 +205,17 @@ public function lt_chanche_text_color_button()
         $value = esc_attr( get_option( 'event_currency' ) );
         $currency_list = new LastTap_Currency();
 
+        if(empty($value)) {
+            $output = $currency_list->lt_get_currency_name();
+        } else{
+            $output = $value;
+        }
+
+
         ?>
         <select name="event_currency">
-            <option value="event_currency" <?php selected( $value, ""); ?>> <?php echo $value; ?> <option>
             <?php foreach (apply_filters( 'event_currency_list', $currency_list->lt_currency_list() ) as $key => $curr) {?>
-               <option  value="<?php echo $key;?>"><?php selected( $value, $key );?> <?php echo $curr;?></option>;
+               <option  value="<?php echo $key;?>" <?php selected( $value, $key );?>><?php echo $curr;?></option>;
             <?php } ?>
         </select>
         <?php

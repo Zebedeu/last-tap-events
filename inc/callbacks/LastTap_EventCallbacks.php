@@ -44,7 +44,7 @@ class LastTap_EventCallbacks extends LastTap_BaseController
         
         <?php if ( $user_ID ) : ?>
         
-        <p>Logged in as <a href="<?php echo get_option( 'siteurl' ); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url( get_permalink() ); ?>" title="Log out of this account">Log out &raquo;</a></p>
+        <p><?php esc_html_e('Logged in as','last-tap-events');?> <a href="<?php echo get_option( 'siteurl' ); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url( get_permalink() ); ?>" title="<?php esc_attr_e(' Log out of this account','last-tap-events');?>"><?php esc_html_e('Log out &raquo;','last-tap-events');?></a></p>
         
         <?php else : ?>
         
